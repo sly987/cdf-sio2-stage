@@ -1,0 +1,9 @@
+%%mocodo
+:::
+Personnel: idPerso, mail, mdp, nom, prénom
+:::
+
+
+:
+envoyé: pdf, #idPerso->Personnel->idPerso, idDate
+::::

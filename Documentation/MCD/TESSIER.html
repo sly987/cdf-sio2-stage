@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta charset='utf-8'>
+<style>
+  #mld .relation { font-variant: small-caps; font-weight: bold }
+  #mld .primary { text-decoration: underline }
+  #mld .foreign { font-style: oblique }
+  #mld .normal { }
+</style>
+</head>
+<body>
+<div id='mld'>
+<div>
+  <span class='relation'>Personnel</span> (
+    <span class='primary'>idPerso</span>,
+    <span class='normal'>mail</span>,
+    <span class='normal'>mdp</span>,
+    <span class='normal'>nom</span>,
+    <span class='normal'>prénom</span>
+  )
+</div>
+<div>
+  <span class='relation'>envoyé</span> (
+    <span class='primary'>pdf</span>,
+    <span class='foreign'>idPerso</span>,
+    <span class='foreign'>idDate</span>
+  )
+</div>
+<!--
+<div>
+  <span class='relation'>date</span> (
+    <span class='primary'>idDate</span>
+  )
+</div>
+-->
+</div>
+</body>
+</html>
