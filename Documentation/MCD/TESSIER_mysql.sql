@@ -7,22 +7,52 @@ CREATE TABLE `PERSONNEL` (
   `mdp` VARCHAR(42),
   `nom` VARCHAR(42),
   `prénom` VARCHAR(42),
+  `admin(o/n)` VARCHAR(42),
   PRIMARY KEY (`idperso`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `EXERCER` (
+  `idperso` VARCHAR(42),
+  `idstatut` VARCHAR(42),
+  PRIMARY KEY (`idperso`, `idstatut`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `ENVOYÉ` (
   `pdf` VARCHAR(42),
   `idperso` VARCHAR(42),
-  `iddate` VARCHAR(42),
+  `mois` VARCHAR(42),
   PRIMARY KEY (`pdf`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `ÊTREACTIF` (
+  `mois` VARCHAR(42),
+  `idperso` VARCHAR(42),
+  PRIMARY KEY (`mois`, `idperso`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `STATUT` (
+  `idstatut` VARCHAR(42),
+  `libellé` VARCHAR(42),
+  PRIMARY KEY (`idstatut`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `MOIS` (
+  `mois` VARCHAR(42),
+  `année` VARCHAR(42),
+  PRIMARY KEY (`mois`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 /*
-CREATE TABLE `DATE` (
-  `iddate` VARCHAR(42),
-  PRIMARY KEY (`iddate`)
+CREATE TABLE `ANNÉE` (
+  `année` VARCHAR(42),
+  PRIMARY KEY (`année`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 */
 
--- ALTER TABLE `ENVOYÉ` ADD FOREIGN KEY (`iddate`) REFERENCES `DATE` (`iddate`);
+ALTER TABLE `EXERCER` ADD FOREIGN KEY (`idstatut`) REFERENCES `STATUT` (`idstatut`);
+ALTER TABLE `EXERCER` ADD FOREIGN KEY (`idperso`) REFERENCES `PERSONNEL` (`idperso`);
+ALTER TABLE `ENVOYÉ` ADD FOREIGN KEY (`mois`) REFERENCES `MOIS` (`mois`);
 ALTER TABLE `ENVOYÉ` ADD FOREIGN KEY (`idperso`) REFERENCES `PERSONNEL` (`idperso`);
+ALTER TABLE `ÊTREACTIF` ADD FOREIGN KEY (`idperso`) REFERENCES `PERSONNEL` (`idperso`);
+ALTER TABLE `ÊTREACTIF` ADD FOREIGN KEY (`mois`) REFERENCES `MOIS` (`mois`);
+-- ALTER TABLE `MOIS` ADD FOREIGN KEY (`année`) REFERENCES `ANNÉE` (`année`);

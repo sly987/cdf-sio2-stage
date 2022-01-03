@@ -1,9 +1,20 @@
 %%mocodo
 :::
-Personnel: idPerso, mail, mdp, nom, prénom
+Personnel: idPerso, mail, mdp, nom, prénom, admin(O/N)
+:
+Exercer: #idPerso->Personnel->idPerso, _#idStatut->statut->idStatut
 :::
 
 
 :
-envoyé: pdf, #idPerso->Personnel->idPerso, idDate
+envoyé: pdf, #idPerso->Personnel->idPerso, #Mois->Mois->Mois
+:
+êtreActif: #Mois->Mois->Mois, _#idPerso->Personnel->idPerso
+:
+statut: idStatut, libellé
+:::
+
+
+:::
+Mois: Mois, année
 ::::

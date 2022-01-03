@@ -16,20 +16,45 @@
     <span class='normal'>mail</span>,
     <span class='normal'>mdp</span>,
     <span class='normal'>nom</span>,
-    <span class='normal'>prénom</span>
+    <span class='normal'>prénom</span>,
+    <span class='normal'>admin(O/N)</span>
+  )
+</div>
+<div>
+  <span class='relation'>Exercer</span> (
+    <span class='foreign primary'>idPerso</span>,
+    <span class='foreign primary'>idStatut</span>
   )
 </div>
 <div>
   <span class='relation'>envoyé</span> (
     <span class='primary'>pdf</span>,
     <span class='foreign'>idPerso</span>,
-    <span class='foreign'>idDate</span>
+    <span class='foreign'>Mois</span>
+  )
+</div>
+<div>
+  <span class='relation'>êtreActif</span> (
+    <span class='foreign primary'>Mois</span>,
+    <span class='foreign primary'>idPerso</span>
+  )
+</div>
+<div>
+  <span class='relation'>statut</span> (
+    <span class='primary'>idStatut</span>,
+    <span class='normal'>libellé</span>
+  )
+</div>
+<div>
+  <span class='relation'>Mois</span> (
+    <span class='primary'>Mois</span>,
+    <span class='foreign'>année</span>
   )
 </div>
 <!--
 <div>
-  <span class='relation'>date</span> (
-    <span class='primary'>idDate</span>
+  <span class='relation'>Année</span> (
+    <span class='primary'>année</span>
   )
 </div>
 -->
