@@ -12,7 +12,7 @@ Après clone, faire sudo apt install php-xml, composer update,composer install, 
 
 <h4>Domaines Laravel</h4>
 resource controller<br>
-eloquent<br>
+eloquent : https://laravel.com/docs/5.1/quickstart<br>
 policies<br>
 notif + mail<br>
 file storage = disque privé(no url)<br>
