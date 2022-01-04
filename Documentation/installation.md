@@ -8,7 +8,7 @@ composer create-project --prefer-dist laravel/laravel nomduprojet
 sudo wget https://github.com/shiftkey/desktop/releases/download/release-2.9.3-linux3/GitHubDesktop-linux-2.9.3-linux3.deb <br>
 sudo apt-get install gdebi-core <br>
 sudo gdebi GitHubDesktop-linux-2.9.3-linux3.deb<br> <br>
-Après clone, faire composer install, cp .env.example .env, php artisan key:generate.<br>
+Après clone, faire sudo apt install php-xml, composer update,composer install, cp .env.example .env, php artisan key:generate.<br>
 
 <h4>Domaines Laravel</h4>
 resource controller<br>
