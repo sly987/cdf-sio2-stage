@@ -10,6 +10,18 @@ sudo apt-get install gdebi-core <br>
 sudo gdebi GitHubDesktop-linux-2.9.3-linux3.deb<br> <br>
 Après clone, faire composer install, cp .env.example .env, php artisan key:generate.<br>
 
+<h4>Domaines Laravel</h4>
+resource controller<br>
+eloquent<br>
+policies<br>
+notif + mail<br>
+file storage = disque privé(no url)<br>
+task scheduling<br>
+queues = mode sync(début), mode queue(deploiement)<br>
+mailcatcher pour tester les envoie de mail<br><br>
+
+déploiement sur docker<br>
+
 <h4>Sources & Outils</h4>
 Arborescence intéressante <br>
 https://www.appvizer.fr/magazine/operations/gestion-de-projet/cahier-des-charges <br><br>
@@ -19,4 +31,3 @@ Cloner correctement<br>
 https://oshara.ca/fr/blog/comment-installer-une-application-web-laravel-que-vous-avez-clone-depuis-git<br><br>
 
 <h5>Outils : Word(CDC), Mocodonline(MCD), Lucidchart(Arbre), Figma(Maquette), Github et GithubDesktop (Stockage et versioning du code), Laravel(Framework), Php(Langage)</h5>
-
