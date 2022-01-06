@@ -13,11 +13,13 @@ Après clone, faire sudo apt install php-xml, composer update,composer install, 
 <h4>Domaines Laravel</h4>
 resource controller<br>
 eloquent : https://laravel.com/docs/5.1/quickstart<br>
-policies<br>
-notif + mail<br>
-file storage = disque privé(no url)<br>
-task scheduling<br>
-queues = mode sync(début), mode queue(deploiement)<br>
+policies : https://laravel.com/docs/8.x/authorization<br>
+notif : https://laravel.com/docs/8.x/notifications<br>
+mail : https://laravel.com/docs/8.x/mail<br>
+file storage = disque privé(no url) : https://laravel.com/docs/8.x/filesystem<br>
+task scheduling : https://laravel.com/docs/5.1/scheduling<br>
+css : https://laravel.com/docs/8.x/mix<br>
+queues = mode sync(début), mode queue(deploiement) : https://laravel.com/docs/8.x/queues<br>
 mailcatcher pour tester les envoie de mail<br><br>
 
 déploiement sur docker<br>
