@@ -1,0 +1,24 @@
+%%mocodo
+:
+notifier: #notification_id->notifications->notification_id, _#document_Id->documents->document_Id
+:
+documents: document_Id, pdf, envoyé(O/N), #User_id->Users->User_id, #année_id->Mois->année_id, #Mois_id->Mois->Mois_id
+:::
+statuts: statut_id, libellé
+:
+
+
+:
+notifications: notification_id, contenu, intervalle
+:::
+Users: User_id, mail, mdp, nom, prénom, admin(O/N)
+:
+Exercer: #User_id->Users->User_id, _#statut_id->statuts->statut_id
+:
+
+
+::::
+Mois: année_id, _Mois_id
+:
+êtreActif: #année_id->Mois->année_id, _#Mois_id->Mois->Mois_id, _#User_id->Users->User_id
+:
