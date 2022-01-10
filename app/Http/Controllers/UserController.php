@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Database\Eloquent\Collection;
 
 class UserController extends Controller
 {
@@ -17,6 +18,11 @@ class UserController extends Controller
     public function index()
     {
         return view('welcome');
+        // $users = User::all();
+        // echo '<pre>' . var_export($users, true) . '</pre>';
+        // highlight_string("<?php\n\$users =\n" . var_export($users,true) . ";\n?//>");
+        // dd($users);
+
     }
 
     /**
