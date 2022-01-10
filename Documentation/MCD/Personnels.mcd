@@ -1,0 +1,17 @@
+Année : annéesId
+êtreActif, 0N Mois, 0N Personnel:
+Personnel: persosId, mail, mdp, nom, prénom, admin(O/N)
+Exercer, 1N Personnel, 0N statut:
+statut : statutsId, libellé
+
+correspondre, _11 Mois, 1N Année:
+Mois : MoisId
+avoir envoyé, 0N Personnel, 11 envoyé:
+notifier , 0N notification, 0N Personnel:
+notification: notificationsId, contenu, intervalle
+
+:
+concerner, 11 envoyé, 0N Mois:
+envoyé: envoyésId, pdf
+confirmer , 01 envoyé, 11 confirmé
+confirmé: confirmésId
