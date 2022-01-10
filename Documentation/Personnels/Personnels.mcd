@@ -1,0 +1,14 @@
+notifier , 0N notifications, 0N documents:
+documents: document_Id, pdf, envoyé(O/N)
+avoir envoyé, 0N Users, 11 documents:
+statuts : statut_id, libellé
+
+notifications: notification_id, contenu, intervalle
+concerner, 11 documents, 0N Mois:
+Users: User_id, mail, mdp, nom, prénom, admin(O/N)
+Exercer, 1N Users, 0N statuts:
+
+Années : année_id
+correspondre, _11 Mois, 1N Années:
+Mois : Mois_id
+êtreActif, 0N Mois, 0N Users:
