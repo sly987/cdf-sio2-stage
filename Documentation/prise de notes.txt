@@ -6,3 +6,7 @@ Pour chaque itération
 5- policies
 6- notifications
 Un commit par itérations avec nom de la fonction ajouté
+
+enlever association etreactif
+utilisateur est actif un mois si un doc est attendu pour ce mois
+notification -> type notification (date, migration timestamp)
