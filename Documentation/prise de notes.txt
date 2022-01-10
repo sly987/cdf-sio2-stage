@@ -1,0 +1,8 @@
+Pour chaque itération
+1- migrations
+2- seeders
+3- controllers de type ressource
+4- views = formulaire
+5- policies
+6- notifications
+Un commit par itérations avec nom de la fonction ajouté
