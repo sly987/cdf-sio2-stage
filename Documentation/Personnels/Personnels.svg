@@ -2,176 +2,162 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
 "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 
-<svg width="453" height="321" view_box="0 0 453 321"
+<svg width="463" height="339" view_box="0 0 463 339"
 xmlns="http://www.w3.org/2000/svg"
-xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 le Mon, 10 Jan 2022 06:11:09</desc>
+xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 le Tue, 11 Jan 2022 05:11:11</desc>
 
-<rect id="frame" x="0" y="0" width="453" height="321" fill="#ffffbf" stroke="none" stroke-width="0"/>
-
-<!-- Association correspondre -->
-<line x1="299" y1="287" x2="174" y2="287" stroke="#74add1" stroke-width="2"/>
-<text x="245" y="304.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
-<line x1="245" y1="306.0" x2="266" y2="306.0" stroke="#d73027" stroke-width="1"/>
-<line x1="57" y1="287" x2="174" y2="287" stroke="#74add1" stroke-width="2"/>
-<text x="95" y="304.0" fill="#d73027" font-family="Verdana" font-size="12">1,N</text>
-<g id="association-correspondre">
-	<path d="M 207 262 a 14 14 90 0 1 14 14 V 287 h -94 V 276 a 14 14 90 0 1 14 -14" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
-	<path d="M 221 287.0 v 11 a 14 14 90 0 1 -14 14 H 141 a 14 14 90 0 1 -14 -14 V 287.0 H 94" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
-	<rect x="127" y="262" width="94" height="50" fill="none" rx="14" stroke="#74add1" stroke-width="2"/>
-	<line x1="127" y1="287" x2="221" y2="287" stroke="#74add1" stroke-width="1"/>
-	<text x="134" y="279.7" fill="#000000" font-family="Verdana" font-size="12">correspondre</text>
-</g>
-
-<!-- Association êtreActif -->
-<line x1="299" y1="287" x2="411" y2="287" stroke="#74add1" stroke-width="2"/>
-<text x="332" y="304.0" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
-<line x1="299" y1="169" x2="411" y2="287" stroke="#74add1" stroke-width="2"/>
-<text x="346" y="212.060221655" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
-<g id="association-êtreActif">
-	<path d="M 430 262 a 14 14 90 0 1 14 14 V 287 h -66 V 276 a 14 14 90 0 1 14 -14" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
-	<path d="M 444 287.0 v 11 a 14 14 90 0 1 -14 14 H 392 a 14 14 90 0 1 -14 -14 V 287.0 H 66" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
-	<rect x="378" y="262" width="66" height="50" fill="none" rx="14" stroke="#74add1" stroke-width="2"/>
-	<line x1="378" y1="287" x2="444" y2="287" stroke="#74add1" stroke-width="1"/>
-	<text x="385" y="279.7" fill="#000000" font-family="Verdana" font-size="12">êtreActif</text>
-</g>
+<rect id="frame" x="0" y="0" width="463" height="339" fill="#ffffff" stroke="none" stroke-width="0"/>
 
 <!-- Association avoir envoyé -->
-<line x1="299" y1="169" x2="299" y2="51" stroke="#74add1" stroke-width="2"/>
-<text x="304.0" y="93" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
-<line x1="174" y1="51" x2="299" y2="51" stroke="#74add1" stroke-width="2"/>
-<text x="225" y="68.0" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
+<line x1="65" y1="262" x2="65" y2="144" stroke="#878787" stroke-width="2"/>
+<text x="70.0" y="186" fill="#b2182b" font-family="Verdana" font-size="12">0,N</text>
+<line x1="192" y1="144" x2="65" y2="144" stroke="#878787" stroke-width="2"/>
+<text x="118" y="161.0" fill="#b2182b" font-family="Verdana" font-size="12">1,1</text>
 <g id="association-avoir envoyé">
-	<path d="M 332 26 a 14 14 90 0 1 14 14 V 51 h -94 V 40 a 14 14 90 0 1 14 -14" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
-	<path d="M 346 51.0 v 11 a 14 14 90 0 1 -14 14 H 266 a 14 14 90 0 1 -14 -14 V 51.0 H 94" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
-	<rect x="252" y="26" width="94" height="50" fill="none" rx="14" stroke="#74add1" stroke-width="2"/>
-	<line x1="252" y1="51" x2="346" y2="51" stroke="#74add1" stroke-width="1"/>
-	<text x="259" y="43.7" fill="#000000" font-family="Verdana" font-size="12">avoir envoyé</text>
+	<path d="M 98 119 a 14 14 90 0 1 14 14 V 144 h -94 V 133 a 14 14 90 0 1 14 -14" fill="#bababa" stroke="#bababa" stroke-width="0"/>
+	<path d="M 112 144.0 v 11 a 14 14 90 0 1 -14 14 H 32 a 14 14 90 0 1 -14 -14 V 144.0 H 94" fill="#e0e0e0" stroke="#e0e0e0" stroke-width="0"/>
+	<rect x="18" y="119" width="94" height="50" fill="none" rx="14" stroke="#878787" stroke-width="2"/>
+	<line x1="18" y1="144" x2="112" y2="144" stroke="#878787" stroke-width="1"/>
+	<text x="25" y="136.7" fill="#000000" font-family="Verdana" font-size="12">avoir envoyé</text>
 </g>
 
 <!-- Association Exercer -->
-<line x1="299" y1="169" x2="411" y2="169" stroke="#74add1" stroke-width="2"/>
-<text x="346" y="161.0" fill="#d73027" font-family="Verdana" font-size="12">1,N</text>
-<line x1="411" y1="51" x2="411" y2="169" stroke="#74add1" stroke-width="2"/>
-<text x="416.0" y="102" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="65" y1="262" x2="192" y2="262" stroke="#878787" stroke-width="2"/>
+<text x="112" y="279.0" fill="#b2182b" font-family="Verdana" font-size="12">1,N</text>
+<line x1="309" y1="262" x2="192" y2="262" stroke="#878787" stroke-width="2"/>
+<text x="259" y="279.0" fill="#b2182b" font-family="Verdana" font-size="12">0,N</text>
 <g id="association-Exercer">
-	<path d="M 428 144 a 14 14 90 0 1 14 14 V 169 h -62 V 158 a 14 14 90 0 1 14 -14" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
-	<path d="M 442 169.0 v 11 a 14 14 90 0 1 -14 14 H 394 a 14 14 90 0 1 -14 -14 V 169.0 H 62" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
-	<rect x="380" y="144" width="62" height="50" fill="none" rx="14" stroke="#74add1" stroke-width="2"/>
-	<line x1="380" y1="169" x2="442" y2="169" stroke="#74add1" stroke-width="1"/>
-	<text x="387" y="161.7" fill="#000000" font-family="Verdana" font-size="12">Exercer</text>
+	<path d="M 209 237 a 14 14 90 0 1 14 14 V 262 h -62 V 251 a 14 14 90 0 1 14 -14" fill="#bababa" stroke="#bababa" stroke-width="0"/>
+	<path d="M 223 262.0 v 11 a 14 14 90 0 1 -14 14 H 175 a 14 14 90 0 1 -14 -14 V 262.0 H 62" fill="#e0e0e0" stroke="#e0e0e0" stroke-width="0"/>
+	<rect x="161" y="237" width="62" height="50" fill="none" rx="14" stroke="#878787" stroke-width="2"/>
+	<line x1="161" y1="262" x2="223" y2="262" stroke="#878787" stroke-width="1"/>
+	<text x="168" y="254.7" fill="#000000" font-family="Verdana" font-size="12">Exercer</text>
 </g>
 
-<!-- Association concerner -->
-<line x1="174" y1="51" x2="174" y2="169" stroke="#74add1" stroke-width="2"/>
-<text x="179.0" y="110" fill="#d73027" font-family="Verdana" font-size="12">1,1</text>
-<line x1="299" y1="287" x2="174" y2="169" stroke="#74add1" stroke-width="2"/>
-<text x="270.733892788" y="254" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
-<g id="association-concerner">
-	<path d="M 197 144 a 14 14 90 0 1 14 14 V 169 h -74 V 158 a 14 14 90 0 1 14 -14" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
-	<path d="M 211 169.0 v 11 a 14 14 90 0 1 -14 14 H 151 a 14 14 90 0 1 -14 -14 V 169.0 H 74" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
-	<rect x="137" y="144" width="74" height="50" fill="none" rx="14" stroke="#74add1" stroke-width="2"/>
-	<line x1="137" y1="169" x2="211" y2="169" stroke="#74add1" stroke-width="1"/>
-	<text x="144" y="161.7" fill="#000000" font-family="Verdana" font-size="12">concerner</text>
+<!-- Association correspondre -->
+<line x1="309" y1="43" x2="407" y2="43" stroke="#878787" stroke-width="2"/>
+<text x="333" y="60.0" fill="#b2182b" font-family="Verdana" font-size="12">1,1</text>
+<line x1="333" y1="62.0" x2="354" y2="62.0" stroke="#b2182b" stroke-width="1"/>
+<line x1="407" y1="144" x2="407" y2="43" stroke="#878787" stroke-width="2"/>
+<text x="412.0" y="111" fill="#b2182b" font-family="Verdana" font-size="12">1,N</text>
+<g id="association-correspondre">
+	<path d="M 440 18 a 14 14 90 0 1 14 14 V 43 h -94 V 32 a 14 14 90 0 1 14 -14" fill="#bababa" stroke="#bababa" stroke-width="0"/>
+	<path d="M 454 43.0 v 11 a 14 14 90 0 1 -14 14 H 374 a 14 14 90 0 1 -14 -14 V 43.0 H 94" fill="#e0e0e0" stroke="#e0e0e0" stroke-width="0"/>
+	<rect x="360" y="18" width="94" height="50" fill="none" rx="14" stroke="#878787" stroke-width="2"/>
+	<line x1="360" y1="43" x2="454" y2="43" stroke="#878787" stroke-width="1"/>
+	<text x="367" y="35.7" fill="#000000" font-family="Verdana" font-size="12">correspondre</text>
 </g>
 
 <!-- Association notifier -->
-<line x1="57" y1="169" x2="57" y2="51" stroke="#74add1" stroke-width="2"/>
-<text x="62.0" y="119" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
-<line x1="174" y1="51" x2="57" y2="51" stroke="#74add1" stroke-width="2"/>
-<text x="101" y="68.0" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<line x1="65" y1="43" x2="192" y2="43" stroke="#878787" stroke-width="2"/>
+<text x="126" y="60.0" fill="#b2182b" font-family="Verdana" font-size="12">0,N</text>
+<line x1="192" y1="144" x2="192" y2="43" stroke="#878787" stroke-width="2"/>
+<text x="197.0" y="94" fill="#b2182b" font-family="Verdana" font-size="12">0,N</text>
 <g id="association-notifier">
-	<path d="M 72 26 a 14 14 90 0 1 14 14 V 51 h -58 V 40 a 14 14 90 0 1 14 -14" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
-	<path d="M 86 51.0 v 11 a 14 14 90 0 1 -14 14 H 42 a 14 14 90 0 1 -14 -14 V 51.0 H 58" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
-	<rect x="28" y="26" width="58" height="50" fill="none" rx="14" stroke="#74add1" stroke-width="2"/>
-	<line x1="28" y1="51" x2="86" y2="51" stroke="#74add1" stroke-width="1"/>
-	<text x="35" y="43.7" fill="#000000" font-family="Verdana" font-size="12">notifier</text>
+	<path d="M 207 18 a 14 14 90 0 1 14 14 V 43 h -58 V 32 a 14 14 90 0 1 14 -14" fill="#bababa" stroke="#bababa" stroke-width="0"/>
+	<path d="M 221 43.0 v 11 a 14 14 90 0 1 -14 14 H 177 a 14 14 90 0 1 -14 -14 V 43.0 H 58" fill="#e0e0e0" stroke="#e0e0e0" stroke-width="0"/>
+	<rect x="163" y="18" width="58" height="50" fill="none" rx="14" stroke="#878787" stroke-width="2"/>
+	<line x1="163" y1="43" x2="221" y2="43" stroke="#878787" stroke-width="1"/>
+	<text x="170" y="35.7" fill="#000000" font-family="Verdana" font-size="12">notifier</text>
 </g>
 
-<!-- Entity documents -->
-<g id="entity-documents">
-	<g id="frame-documents">
-		<rect x="128" y="9" width="92" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
-		<rect x="128" y="34.0" width="92" height="59" fill="#fee090" stroke="#fee090" stroke-width="0"/>
-		<rect x="128" y="9" width="92" height="84" fill="none" stroke="#f46d43" stroke-width="2"/>
-		<line x1="128" y1="34" x2="220" y2="34" stroke="#f46d43" stroke-width="1"/>
+<!-- Association concerner -->
+<line x1="192" y1="144" x2="309" y2="144" stroke="#878787" stroke-width="2"/>
+<text x="245" y="161.0" fill="#b2182b" font-family="Verdana" font-size="12">1,1</text>
+<line x1="309" y1="43" x2="309" y2="144" stroke="#878787" stroke-width="2"/>
+<text x="314.0" y="85" fill="#b2182b" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-concerner">
+	<path d="M 332 119 a 14 14 90 0 1 14 14 V 144 h -74 V 133 a 14 14 90 0 1 14 -14" fill="#bababa" stroke="#bababa" stroke-width="0"/>
+	<path d="M 346 144.0 v 11 a 14 14 90 0 1 -14 14 H 286 a 14 14 90 0 1 -14 -14 V 144.0 H 74" fill="#e0e0e0" stroke="#e0e0e0" stroke-width="0"/>
+	<rect x="272" y="119" width="74" height="50" fill="none" rx="14" stroke="#878787" stroke-width="2"/>
+	<line x1="272" y1="144" x2="346" y2="144" stroke="#878787" stroke-width="1"/>
+	<text x="279" y="136.7" fill="#000000" font-family="Verdana" font-size="12">concerner</text>
+</g>
+
+<!-- Entity Utilisateur -->
+<g id="entity-Utilisateur">
+	<g id="frame-Utilisateur">
+		<rect x="23" y="194" width="84" height="25" fill="#f4a582" stroke="#f4a582" stroke-width="0"/>
+		<rect x="23" y="219.0" width="84" height="111" fill="#fddbc7" stroke="#fddbc7" stroke-width="0"/>
+		<rect x="23" y="194" width="84" height="136" fill="none" stroke="#d6604d" stroke-width="2"/>
+		<line x1="23" y1="219" x2="107" y2="219" stroke="#d6604d" stroke-width="1"/>
 	</g>
-	<text x="140" y="26.7" fill="#000000" font-family="Verdana" font-size="12">documents</text>
-	<text x="133" y="51.8" fill="#000000" font-family="Verdana" font-size="12">document_Id</text>
-	<line x1="133" y1="54" x2="214" y2="54" stroke="#000000" stroke-width="1"/>
-	<text x="133" y="68.8" fill="#000000" font-family="Verdana" font-size="12">pdf</text>
-	<text x="133" y="85.8" fill="#000000" font-family="Verdana" font-size="12">envoyé(O/N)</text>
+	<text x="34" y="211.7" fill="#000000" font-family="Verdana" font-size="12">Utilisateur</text>
+	<text x="28" y="236.7" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="28" y1="239" x2="40" y2="239" stroke="#000000" stroke-width="1"/>
+	<text x="28" y="253.7" fill="#000000" font-family="Verdana" font-size="12">mail</text>
+	<text x="28" y="270.8" fill="#000000" font-family="Verdana" font-size="12">mdp</text>
+	<text x="28" y="287.8" fill="#000000" font-family="Verdana" font-size="12">nom</text>
+	<text x="28" y="304.8" fill="#000000" font-family="Verdana" font-size="12">prénom</text>
+	<text x="28" y="321.8" fill="#000000" font-family="Verdana" font-size="12">admin(O/N)</text>
+</g>
+
+<!-- Entity type_notification -->
+<g id="entity-type_notification">
+	<g id="frame-type_notification">
+		<rect x="9" y="9" width="112" height="25" fill="#f4a582" stroke="#f4a582" stroke-width="0"/>
+		<rect x="9" y="34.0" width="112" height="43" fill="#fddbc7" stroke="#fddbc7" stroke-width="0"/>
+		<rect x="9" y="9" width="112" height="68" fill="none" stroke="#d6604d" stroke-width="2"/>
+		<line x1="9" y1="34" x2="121" y2="34" stroke="#d6604d" stroke-width="1"/>
+	</g>
+	<text x="14" y="26.7" fill="#000000" font-family="Verdana" font-size="12">type_notification</text>
+	<text x="14" y="51.8" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="14" y1="54" x2="26" y2="54" stroke="#000000" stroke-width="1"/>
+	<text x="14" y="68.8" fill="#000000" font-family="Verdana" font-size="12">intervalle</text>
 </g>
 
 <!-- Entity Mois -->
 <g id="entity-Mois">
 	<g id="frame-Mois">
-		<rect x="271" y="262" width="56" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
-		<rect x="271" y="287.0" width="56" height="25" fill="#fee090" stroke="#fee090" stroke-width="0"/>
-		<rect x="271" y="262" width="56" height="50" fill="none" stroke="#f46d43" stroke-width="2"/>
-		<line x1="271" y1="287" x2="327" y2="287" stroke="#f46d43" stroke-width="1"/>
+		<rect x="290" y="18" width="38" height="25" fill="#f4a582" stroke="#f4a582" stroke-width="0"/>
+		<rect x="290" y="43.0" width="38" height="25" fill="#fddbc7" stroke="#fddbc7" stroke-width="0"/>
+		<rect x="290" y="18" width="38" height="50" fill="none" stroke="#d6604d" stroke-width="2"/>
+		<line x1="290" y1="43" x2="328" y2="43" stroke="#d6604d" stroke-width="1"/>
 	</g>
-	<text x="285" y="279.7" fill="#000000" font-family="Verdana" font-size="12">Mois</text>
-	<text x="276" y="304.8" fill="#000000" font-family="Verdana" font-size="12">Mois_id</text>
-	<line x1="276" y1="307" x2="322" y2="307" style="fill:none;stroke:#000000;stroke-width:1;stroke-dasharray:4;"/>
+	<text x="295" y="35.7" fill="#000000" font-family="Verdana" font-size="12">Mois</text>
+	<text x="295" y="60.8" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="295" y1="63" x2="307" y2="63" style="fill:none;stroke:#000000;stroke-width:1;stroke-dasharray:4;"/>
 </g>
 
-<!-- Entity Users -->
-<g id="entity-Users">
-	<g id="frame-Users">
-		<rect x="257" y="101" width="84" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
-		<rect x="257" y="126.0" width="84" height="111" fill="#fee090" stroke="#fee090" stroke-width="0"/>
-		<rect x="257" y="101" width="84" height="136" fill="none" stroke="#f46d43" stroke-width="2"/>
-		<line x1="257" y1="126" x2="341" y2="126" stroke="#f46d43" stroke-width="1"/>
+<!-- Entity statut -->
+<g id="entity-statut">
+	<g id="frame-statut">
+		<rect x="286" y="228" width="46" height="25" fill="#f4a582" stroke="#f4a582" stroke-width="0"/>
+		<rect x="286" y="253.0" width="46" height="43" fill="#fddbc7" stroke="#fddbc7" stroke-width="0"/>
+		<rect x="286" y="228" width="46" height="68" fill="none" stroke="#d6604d" stroke-width="2"/>
+		<line x1="286" y1="253" x2="332" y2="253" stroke="#d6604d" stroke-width="1"/>
 	</g>
-	<text x="281" y="118.7" fill="#000000" font-family="Verdana" font-size="12">Users</text>
-	<text x="262" y="143.7" fill="#000000" font-family="Verdana" font-size="12">User_id</text>
-	<line x1="262" y1="146" x2="309" y2="146" stroke="#000000" stroke-width="1"/>
-	<text x="262" y="160.7" fill="#000000" font-family="Verdana" font-size="12">mail</text>
-	<text x="262" y="177.8" fill="#000000" font-family="Verdana" font-size="12">mdp</text>
-	<text x="262" y="194.8" fill="#000000" font-family="Verdana" font-size="12">nom</text>
-	<text x="262" y="211.8" fill="#000000" font-family="Verdana" font-size="12">prénom</text>
-	<text x="262" y="228.8" fill="#000000" font-family="Verdana" font-size="12">admin(O/N)</text>
+	<text x="291" y="245.7" fill="#000000" font-family="Verdana" font-size="12">statut</text>
+	<text x="291" y="270.8" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="291" y1="273" x2="303" y2="273" stroke="#000000" stroke-width="1"/>
+	<text x="291" y="287.8" fill="#000000" font-family="Verdana" font-size="12">libellé</text>
 </g>
 
-<!-- Entity Années -->
-<g id="entity-Années">
-	<g id="frame-Années">
-		<rect x="24" y="262" width="66" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
-		<rect x="24" y="287.0" width="66" height="25" fill="#fee090" stroke="#fee090" stroke-width="0"/>
-		<rect x="24" y="262" width="66" height="50" fill="none" stroke="#f46d43" stroke-width="2"/>
-		<line x1="24" y1="287" x2="90" y2="287" stroke="#f46d43" stroke-width="1"/>
+<!-- Entity fiche_de_paie -->
+<g id="entity-fiche_de_paie">
+	<g id="frame-fiche_de_paie">
+		<rect x="144" y="102" width="96" height="25" fill="#f4a582" stroke="#f4a582" stroke-width="0"/>
+		<rect x="144" y="127.0" width="96" height="59" fill="#fddbc7" stroke="#fddbc7" stroke-width="0"/>
+		<rect x="144" y="102" width="96" height="84" fill="none" stroke="#d6604d" stroke-width="2"/>
+		<line x1="144" y1="127" x2="240" y2="127" stroke="#d6604d" stroke-width="1"/>
 	</g>
-	<text x="34" y="279.7" fill="#000000" font-family="Verdana" font-size="12">Années</text>
-	<text x="29" y="304.8" fill="#000000" font-family="Verdana" font-size="12">année_id</text>
-	<line x1="29" y1="307" x2="85" y2="307" stroke="#000000" stroke-width="1"/>
+	<text x="149" y="119.7" fill="#000000" font-family="Verdana" font-size="12">fiche_de_paie</text>
+	<text x="149" y="144.8" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="149" y1="147" x2="161" y2="147" stroke="#000000" stroke-width="1"/>
+	<text x="149" y="161.8" fill="#000000" font-family="Verdana" font-size="12">lien_pdf</text>
+	<text x="149" y="178.8" fill="#000000" font-family="Verdana" font-size="12">envoyé(O/N)</text>
 </g>
 
-<!-- Entity notifications -->
-<g id="entity-notifications">
-	<g id="frame-notifications">
-		<rect x="9" y="127" width="96" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
-		<rect x="9" y="152.0" width="96" height="59" fill="#fee090" stroke="#fee090" stroke-width="0"/>
-		<rect x="9" y="127" width="96" height="84" fill="none" stroke="#f46d43" stroke-width="2"/>
-		<line x1="9" y1="152" x2="105" y2="152" stroke="#f46d43" stroke-width="1"/>
+<!-- Entity Année -->
+<g id="entity-Année">
+	<g id="frame-Année">
+		<rect x="382" y="119" width="50" height="25" fill="#f4a582" stroke="#f4a582" stroke-width="0"/>
+		<rect x="382" y="144.0" width="50" height="25" fill="#fddbc7" stroke="#fddbc7" stroke-width="0"/>
+		<rect x="382" y="119" width="50" height="50" fill="none" stroke="#d6604d" stroke-width="2"/>
+		<line x1="382" y1="144" x2="432" y2="144" stroke="#d6604d" stroke-width="1"/>
 	</g>
-	<text x="20" y="144.7" fill="#000000" font-family="Verdana" font-size="12">notifications</text>
-	<text x="14" y="169.8" fill="#000000" font-family="Verdana" font-size="12">notification_id</text>
-	<line x1="14" y1="172" x2="100" y2="172" stroke="#000000" stroke-width="1"/>
-	<text x="14" y="186.8" fill="#000000" font-family="Verdana" font-size="12">contenu</text>
-	<text x="14" y="203.8" fill="#000000" font-family="Verdana" font-size="12">intervalle</text>
-</g>
-
-<!-- Entity statuts -->
-<g id="entity-statuts">
-	<g id="frame-statuts">
-		<rect x="378" y="17" width="66" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
-		<rect x="378" y="42.0" width="66" height="43" fill="#fee090" stroke="#fee090" stroke-width="0"/>
-		<rect x="378" y="17" width="66" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
-		<line x1="378" y1="42" x2="444" y2="42" stroke="#f46d43" stroke-width="1"/>
-	</g>
-	<text x="390" y="34.7" fill="#000000" font-family="Verdana" font-size="12">statuts</text>
-	<text x="383" y="59.8" fill="#000000" font-family="Verdana" font-size="12">statut_id</text>
-	<line x1="383" y1="62" x2="438" y2="62" stroke="#000000" stroke-width="1"/>
-	<text x="383" y="76.8" fill="#000000" font-family="Verdana" font-size="12">libellé</text>
+	<text x="387" y="136.7" fill="#000000" font-family="Verdana" font-size="12">Année</text>
+	<text x="387" y="161.8" fill="#000000" font-family="Verdana" font-size="12">id</text>
+	<line x1="387" y1="164" x2="399" y2="164" stroke="#000000" stroke-width="1"/>
 </g>
 </svg>
