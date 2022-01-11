@@ -14,10 +14,20 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [UserController::class, 'index']);
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/professeurs/create', [UserController::class, 'create'])->name('professeurs.create');
+Route::post('/professeurs/create', [UserController::class, 'store'])->name('professeurs.store');
+Route::get('/professeurs', [UserController::class, 'index'])->name('professeurs');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/', function () {
+    return view('welcome');
+});
 
 require __DIR__.'/auth.php';
