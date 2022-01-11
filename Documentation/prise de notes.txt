@@ -10,3 +10,5 @@ Un commit par itérations avec nom de la fonction ajouté
 enlever association etreactif
 utilisateur est actif un mois si un doc est attendu pour ce mois
 notification -> type notification (date, migration timestamp)
+
+DB::statement("ALTER TABLE books AUTO_INCREMENT = 14000;");
