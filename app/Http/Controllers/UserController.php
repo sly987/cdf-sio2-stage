@@ -8,7 +8,7 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-
+use App\Models\Annee;
 class UserController extends Controller
 {
     /**
@@ -67,9 +67,11 @@ class UserController extends Controller
     public function show($id)
     {
         $prof = User::findOrFail($id);
+        $annees =Annee::all();
 
         return view('f_professeur', [
-            'prof' => $prof
+            'prof' => $prof,
+            'annees' => $annees
         ]);
     }
 

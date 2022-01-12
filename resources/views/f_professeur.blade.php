@@ -11,7 +11,9 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                 <select  name="#" id="#">
                     <option value="#">--Please choose an option--</option>
-                    <option value="#">Année</option>
+                        @foreach($annees as $annee)
+                    <option value= {{ $annee->id}}>{{$annee->id}}</option>
+                        @endforeach
                 </select>
                 </div>
             </div>
