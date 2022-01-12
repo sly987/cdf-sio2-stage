@@ -10,6 +10,23 @@ sudo apt-get install gdebi-core <br>
 sudo gdebi GitHubDesktop-linux-2.9.3-linux3.deb<br> <br>
 Après clone, faire sudo apt install php-xml, composer update,composer install, cp .env.example .env, php artisan key:generate.<br>
 
+delimiter limite
+
+create procedure fillMonth(anneeDebut bigint, anneeFin bigint)
+Begin
+
+set autocommit =0;
+while anneeDebut<=anneeFin do
+    set @i = 0;
+    while @i <12 do
+        insert into mois(id, annee_id) values(@i, anneeDebut);
+        set @i = @i+1;
+    end while;
+set anneeDebut =anneeDebut +1;
+end while;
+End; limite 
+
+delimiter ; limite
 <h4>Domaines Laravel</h4>
 resource controller<br>
 eloquent : https://laravel.com/docs/5.1/quickstart<br>
