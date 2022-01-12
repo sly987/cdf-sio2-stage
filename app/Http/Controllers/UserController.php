@@ -89,7 +89,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $prof = User::findOrFail($id);
+        return view('editform', [
+            'prof' => $prof
+        ]);
     }
 
     /**

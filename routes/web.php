@@ -24,6 +24,7 @@ Route::get('/professeurs/create', [UserController::class, 'create'])->name('prof
 Route::post('/professeurs/create', [UserController::class, 'store'])->name('professeurs.store');
 Route::get('/professeurs', [UserController::class, 'index'])->name('professeurs');
 Route::get('/professeurs/{id}', [UserController::class, 'show'])->name('professeurs.show');
+Route::get('/professeurs/edit/{id}', [UserController::class, 'edit'])->name('professeurs.edit');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

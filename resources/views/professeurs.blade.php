@@ -56,7 +56,7 @@
                                     <a href="{{ route('professeurs.show', ['id' => $prof->id]) }}">Voir fiches</a>
                                 </td>
                                 <td align="center">
-                                    <a href="#">Modifier</a>
+                                    <a href="{{ route('professeurs.edit', ['id' => $prof->id]) }}">Modifier</a>
                                 </td>
                             </tr>
                         </tbody>
