@@ -14,13 +14,13 @@
                         {{ ('Email : ') }}<input type="email" name="email"></input><br>
                         {{ ('Nom : ') }}<input type="text" name="nom"><br>                   
                         {{ ('Prenom : ') }}<input type="text" name="prenom"><br>
-                        {{ ('Mdp : ') }}<input type="hidden"><br>
+                        
                         {{ ('Admin ? ') }}
                         <input type='radio' name='admin' value='1'> 
                         Oui
                         <input type='radio' name='admin' value='0' checked> Non<br><br>
                         
-                        <!-- Un mdp sera généré et envoyé automatiquement par mail à l'utilisateur<br><br> -->
+                        Un mdp sera généré et envoyé automatiquement par mail à l'utilisateur<br><br>
                         <button type="submit">Créer</button>
                 </div>
             </div>
