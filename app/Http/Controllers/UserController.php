@@ -58,7 +58,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $prof = User::findOrFail($id);
+
+        return view('f_professeur', [
+            'prof' => $prof
+        ]);
     }
 
     /**

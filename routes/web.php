@@ -14,13 +14,16 @@ use App\Http\Controllers\UserController;
 |
 */
 
+//Page de connexion
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Admin
 Route::get('/professeurs/create', [UserController::class, 'create'])->name('professeurs.create');
 Route::post('/professeurs/create', [UserController::class, 'store'])->name('professeurs.store');
 Route::get('/professeurs', [UserController::class, 'index'])->name('professeurs');
-
+Route::get('/professeurs/{id}', [UserController::class, 'show'])->name('professeurs.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
