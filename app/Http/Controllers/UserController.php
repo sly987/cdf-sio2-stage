@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Annee;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use App\Models\Annee;
+
 class UserController extends Controller
 {
     /**
@@ -48,14 +50,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $mdp = Str::random(10);
         User::create([
             'email' => $request->email,
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'admin' => $request->admin,
-            'password' => Hash::make($request->password),
+            'password' => Hash::make($mdp),
         ]);
-        return view('createvalidate');
+        return view('createvalidate',[
+            'mdp' => $mdp
+        ]);
+        
     }
 
     /**
