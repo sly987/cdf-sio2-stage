@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class UserController extends Controller
 {
@@ -36,7 +37,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('form');
+        return view('createform');
     }
 
     /**
@@ -52,8 +53,9 @@ class UserController extends Controller
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'admin' => $request->admin,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
         ]);
+        echo('compte créer !');
     }
 
     /**
