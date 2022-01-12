@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $profs = User::orderBy('nom')->take(10)->get();
+        $profs = User::orderBy('nom')->take(1000)->get();
 
         return view('professeurs', [
             'profs' => $profs
@@ -36,7 +36,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('form');
     }
 
     /**
@@ -47,7 +47,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create([
+            'email' => $request->email,
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'admin' => $request->admin,
+            'password' => $request->password,
+        ]);
     }
 
     /**
