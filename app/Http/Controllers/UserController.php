@@ -55,7 +55,7 @@ class UserController extends Controller
             'admin' => $request->admin,
             'password' => Hash::make($request->password),
         ]);
-        echo('compte créer !');
+        return view('createvalidate');
     }
 
     /**
