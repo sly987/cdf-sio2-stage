@@ -48,5 +48,8 @@ Exemple de cahier des charges <br>
 https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fseraphin.legal%2Fwp-content%2Fuploads%2F2020%2F10%2FSeraphin.legal-Modele-de-cahier-des-charges-1.docx&wdOrigin=BROWSELINK <br><br>
 Cloner correctement<br>
 https://oshara.ca/fr/blog/comment-installer-une-application-web-laravel-que-vous-avez-clone-depuis-git<br><br>
+Radio edit & update<br>
+https://laracasts.com/discuss/channels/laravel/edit-radio-button-value-coming-from-database<br><br>
+
 
 <h5>Outils : Word(CDC), Mocodonline(MCD), Lucidchart(Arbre), Wirecc(Maquette), Github et GithubDesktop (Stockage et versioning du code), Laravel(Framework), Php(Langage)</h5>

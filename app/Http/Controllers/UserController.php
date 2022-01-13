@@ -20,11 +20,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $profs = User::orderBy('nom')->take(1000)->get();
-
+        $profs = User::orderBy('nom')->paginate(3);
+    
         return view('professeurs', [
             'profs' => $profs
         ]);
+
+
         // $users = User::all();
         // echo '<pre>' . var_export($users, true) . '</pre>';
         // highlight_string("<?php\n\$users =\n" . var_export($users,true) . ";\n?//>");
