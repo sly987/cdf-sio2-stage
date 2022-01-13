@@ -49,4 +49,4 @@ https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fseraphin.legal%2
 Cloner correctement<br>
 https://oshara.ca/fr/blog/comment-installer-une-application-web-laravel-que-vous-avez-clone-depuis-git<br><br>
 
-<h5>Outils : Word(CDC), Mocodonline(MCD), Lucidchart(Arbre), Figma(Maquette), Github et GithubDesktop (Stockage et versioning du code), Laravel(Framework), Php(Langage)</h5>
+<h5>Outils : Word(CDC), Mocodonline(MCD), Lucidchart(Arbre), Wirecc(Maquette), Github et GithubDesktop (Stockage et versioning du code), Laravel(Framework), Php(Langage)</h5>

@@ -27,7 +27,10 @@ Route::get('/professeurs/{id}', [UserController::class, 'show'])->name('professe
 Route::get('/professeurs/edit/{id}', [UserController::class, 'edit'])->name('professeurs.edit');
 Route::put('/professeurs/update/{id}', [UserController::class, 'update'])->name('professeurs.update');
 
-
+//Utilisateur
+Route::get('/h', function () {
+    return view('historique');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

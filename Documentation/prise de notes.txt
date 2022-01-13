@@ -16,7 +16,7 @@ $table->unsignedBigInteger('nom_clé_etrangere');
 $table->foreign('nom_clé_etrangere')->references('nom_clé_primaire')->on('table');
 
 Objectifs du moment :
-    - Creer la page modifier
-    - Auto généré un mdp
+    - Fonction de passe oublié (mails)
     - Début des policies
     - Page utilisateur dépot de fichier
+    - Page historique utilisateur
