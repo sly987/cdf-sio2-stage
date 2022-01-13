@@ -58,9 +58,11 @@ class UserController extends Controller
             'admin' => $request->admin,
             'password' => Hash::make($mdp),
         ]);
-        return view('createvalidate',[
-            'mdp' => $mdp
-        ]);
+
+        return redirect('professeurs')->with('status','La modification a été effectué');
+        // return view('createvalidate',[
+        //     'mdp' => $mdp
+        // ]);
         
     }
 
@@ -104,7 +106,15 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $prof = User::findOrFail($id);
+        
+            $prof->email = $request->input('email');
+            $prof->nom = $request->input('nom');
+            $prof->prenom = $request->input('prenom');
+            $prof->admin = $request->input('admin');
+            $prof->update();
+
+        return redirect('professeurs')->with('status','La modification a été effectué');
     }
 
     /**

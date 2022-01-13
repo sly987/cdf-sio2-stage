@@ -4,12 +4,17 @@
             {{ __('Liste des professeurs') }}
         </h2>
     </x-slot>
-
+    @if (session('status'))
+    <div class="alert alert-success">
+        <br>
+        <h4 align="center">{{ session('status') }}</h4>
+    </div>
+@endif
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <!-- Bouton création professeur -->
-            <a href="{{ route('professeurs.create') }}"><button type="button">Ajouter prof</button></a>
+            <a href="{{ route('professeurs.create') }}"><button class="btn btn-warning">Ajouter prof</button></a>
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
