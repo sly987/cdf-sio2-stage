@@ -12,8 +12,8 @@
                     <form method="POST" action="{{ route('professeurs.store') }}">
                     @csrf
                         {{ ('Email : ') }}<input type="email" name="email"></input><br>
-                        {{ ('Nom : ') }}<input type="text" name="nom"><br>                   
-                        {{ ('Prenom : ') }}<input type="text" name="prenom"><br>
+                        {{ ('Nom : ') }}<input type="text" name="nom"></input><br>                   
+                        {{ ('Prenom : ') }}<input type="text" name="prenom"></input><br>
                         
                         {{ ('Admin ? ') }}
                         <input type='radio' name='admin' value='1'> 

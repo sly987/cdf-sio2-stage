@@ -16,7 +16,7 @@ use App\Http\Controllers\UserController;
 
 //Page de connexion
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 //Admin
@@ -32,12 +32,14 @@ Route::get('/h', function () {
     return view('historique');
 });
 
+//Fiches de paie
+Route::post('/dashboard', [UserController::class, 'fichestore'])->name('dashboard.store');
+
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 require __DIR__.'/auth.php';

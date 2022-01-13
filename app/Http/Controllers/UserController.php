@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mois;
 use App\Models\User;
 use App\Models\Annee;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
@@ -20,7 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $profs = User::orderBy('nom')->paginate(3);
+        $profs = User::orderBy('nom')->paginate(10);
     
         return view('professeurs', [
             'profs' => $profs
@@ -66,6 +68,17 @@ class UserController extends Controller
         //     'mdp' => $mdp
         // ]);
         
+    }
+
+    public function fichestore(Request $request)
+    {
+        // $name = Storage::disk('local')->put('fiches', $request->fiche);
+        // $filename = date(Y).'_'.date(m) . '_BP_' . date(F) . '.' . $request->fiche->extension();
+        $filename = date("Y") . '_' . date("M") . '.' . $request->fiche->extension();
+        dd($request->file('fiche')->storeAs(
+            'fiches2',
+            $filename
+        )); 
     }
 
     /**
