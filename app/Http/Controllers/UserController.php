@@ -15,6 +15,19 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class UserController extends Controller
 {
+
+    //Doit etre connecté Middleware
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    //Page de connexion vers dashboard si connecté avec le middleware au dessus
+    public function connexion()
+    {
+        return view('dashboard');
+    }
+
     /**
      * Display a listing of the resource.
      *

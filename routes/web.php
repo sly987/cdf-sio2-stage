@@ -15,9 +15,7 @@ use App\Http\Controllers\UserController;
 */
 
 //Page de connexion
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::get('/', [UserController::class, 'connexion']);
 
 //Admin
 Route::get('/professeurs/create', [UserController::class, 'create'])->name('professeurs.create');
