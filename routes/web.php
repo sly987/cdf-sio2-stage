@@ -28,9 +28,7 @@ Route::get('/professeurs/edit/{id}', [UserController::class, 'edit'])->name('pro
 Route::put('/professeurs/update/{id}', [UserController::class, 'update'])->name('professeurs.update');
 
 //Utilisateur
-Route::get('/h', function () {
-    return view('historique');
-});
+Route::get('/h', [UserController::class, 'showuser'])->name('historique.show');
 
 //Fiches de paie
 Route::get('/t', [UserController::class, 'fichecreate'])->name('televerse.create');

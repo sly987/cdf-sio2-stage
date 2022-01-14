@@ -105,6 +105,14 @@ class UserController extends Controller
         ]);
     }
 
+    public function showuser()
+    {
+        $annees =Annee::all();
+
+        return view('historique', [
+            'annees' => $annees
+        ]);
+    }
     /**
      * Show the form for editing the specified resource.
      *

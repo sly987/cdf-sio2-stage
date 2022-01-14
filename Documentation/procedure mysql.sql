@@ -13,8 +13,3 @@ while anneeDebut<=anneeFin do
 set anneeDebut =anneeDebut +1;
 end while;
 End; limite 
-
-
-
-
-
