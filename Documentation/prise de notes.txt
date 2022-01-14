@@ -20,3 +20,6 @@ Objectifs du moment :
     - Début des policies
     - Page utilisateur dépot de fichier
     - Page historique utilisateur
+    - Table fiche de paie
+    - Remanier les forms avec la biblio Collective
+    - Vérifier la validation des données

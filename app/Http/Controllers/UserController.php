@@ -72,6 +72,11 @@ class UserController extends Controller
         
     }
 
+    public function fichecreate()
+    {
+        return view('televerse');
+    }
+
     public function fichestore(Request $request)
     {
         // $name = Storage::disk('local')->put('fiches', $request->fiche);

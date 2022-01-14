@@ -33,10 +33,8 @@ Route::get('/h', function () {
 });
 
 //Fiches de paie
-Route::post('/dashboard', [UserController::class, 'fichestore'])->name('dashboard.store');
-
-
-
+Route::get('/t', [UserController::class, 'fichecreate'])->name('televerse.create');
+Route::post('/t', [UserController::class, 'fichestore'])->name('televerse.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
