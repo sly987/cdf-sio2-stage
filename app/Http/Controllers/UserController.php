@@ -22,6 +22,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        //$this->authorize('viewAny', User::class );
         $profs = User::orderBy('nom')->paginate(10);
     
         return view('professeurs', [
@@ -43,6 +44,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', User::class );
         return view('createform');
     }
 
