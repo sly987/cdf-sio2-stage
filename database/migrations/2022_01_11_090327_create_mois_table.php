@@ -14,12 +14,11 @@ class CreateMoisTable extends Migration
     public function up()
     {
         Schema::create('mois', function (Blueprint $table) {
-            $table->id();
-            $table->integer('nb_mois');
+            $table->integer('mois_id');
             $table->foreignId('annee_id')->constrained();
+            $table->primary(['mois_id', 'annee_id']);
             
         });
-        DB::statement("ALTER TABLE mois AUTO_INCREMENT = 1;");
     }
 
     /**
