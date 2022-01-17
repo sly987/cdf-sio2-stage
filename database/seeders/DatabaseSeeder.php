@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Mois;
 use App\Models\User;
+
 use App\Models\Annee;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
@@ -29,7 +31,19 @@ class DatabaseSeeder extends Seeder
         ]);
         \App\Models\User::factory(10)->create();
         \App\Models\Annee::factory(10)->create();
-      
+        for($i=2010; $i<2020; $i++)
+        {
+            for($j=1; $j<=12;$j++)
+            {
+                Mois::create([
+                    'mois_id'=>$j,
+                    'annee_id'=>$i
+                ]);
+            }
+        }
+        
+
+        
         
     }
 }
