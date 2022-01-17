@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TeleverseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,23 +18,22 @@ use App\Http\Controllers\UserController;
 //Page de connexion
 Route::get('/', [UserController::class, 'connexion']);
 
-//Admin
-Route::get('/professeurs/create', [UserController::class, 'create'])->name('professeurs.create');
-Route::post('/professeurs/create', [UserController::class, 'store'])->name('professeurs.store');
-Route::get('/professeurs', [UserController::class, 'index'])->name('professeurs');
-Route::get('/professeurs/{id}', [UserController::class, 'show'])->name('professeurs.show');
-Route::get('/professeurs/edit/{id}', [UserController::class, 'edit'])->name('professeurs.edit');
-Route::put('/professeurs/update/{id}', [UserController::class, 'update'])->name('professeurs.update');
+//Main resources controller
+Route::resources([
+    'admin' => UserController::class,
+    'tele' => TeleverseController::class
+]);
 
-//Utilisateur
+//UtilisateurTest Page historique (à organiser)
 Route::get('/h', [UserController::class, 'showuser'])->name('historique.show');
 
 //Fiches de paie
-Route::get('/t', [UserController::class, 'fichecreate'])->name('televerse.create');
-Route::post('/t', [UserController::class, 'fichestore'])->name('televerse.store');
+// Route::get('/t', [UserController::class, 'fichecreate'])->name('televerse.create');
+// Route::post('/t', [UserController::class, 'fichestore'])->name('televerse.store');
 
+//Dashboard
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

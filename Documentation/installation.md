@@ -52,6 +52,10 @@ Radio edit & update<br>
 https://laracasts.com/discuss/channels/laravel/edit-radio-button-value-coming-from-database<br>
 excel import et export<br>
 https://github.com/SpartnerNL/Laravel-Excel<br><br>
+Formation complete<br>
+https://www.youtube.com/watch?v=2TIHglVz9NQ<br><br>
+Resource Controller<br>
+https://www.youtube.com/watch?v=J5WBTUr0QBE<br><br>
 
 
 

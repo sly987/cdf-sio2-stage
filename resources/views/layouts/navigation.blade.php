@@ -13,12 +13,12 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Accueil') }}
+                        <h4>Accueil</h4>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('professeurs')" :active="request()->routeIs('professeurs')">
-                        {{ __('Liste professeurs') }}
+                <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin')">
+                        <h4>Liste professeurs</h4>
                     </x-nav-link>
                 </div>
             </div>

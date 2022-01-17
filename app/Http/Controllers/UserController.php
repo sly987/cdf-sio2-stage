@@ -7,16 +7,12 @@ use App\Models\User;
 use App\Models\Annee;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class UserController extends Controller
 {
 
-    //Doit etre connecté Middleware
+    //Middleware : Doit etre connecté 
     public function __construct()
     {
         $this->middleware('auth');
@@ -25,7 +21,7 @@ class UserController extends Controller
     //Page de connexion vers dashboard si connecté avec le middleware au dessus
     public function connexion()
     {
-        return view('dashboard');
+        return view('admin.dashboard');
     }
 
     /**
@@ -38,9 +34,7 @@ class UserController extends Controller
         //$this->authorize('viewAny', User::class );
         $profs = User::orderBy('nom')->paginate(10);
     
-        return view('professeurs', [
-            'profs' => $profs
-        ]);
+        return view('admin.list', compact('profs'));
 
 
         // $users = User::all();
@@ -58,7 +52,7 @@ class UserController extends Controller
     public function create()
     {
         $this->authorize('create', User::class );
-        return view('createform');
+        return view('admin.create');
     }
 
     /**
@@ -78,27 +72,11 @@ class UserController extends Controller
             'password' => Hash::make($mdp),
         ]);
 
-        return redirect('professeurs')->with('status','La modification a été effectué');
+        return redirect('admin')->with('status','La création a été effectué');
         // return view('createvalidate',[
         //     'mdp' => $mdp
         // ]);
         
-    }
-
-    public function fichecreate()
-    {
-        return view('televerse');
-    }
-
-    public function fichestore(Request $request)
-    {
-        // $name = Storage::disk('local')->put('fiches', $request->fiche);
-        // $filename = date(Y).'_'.date(m) . '_BP_' . date(F) . '.' . $request->fiche->extension();
-        $filename = date("Y") . '_' . date("M") . '.' . $request->fiche->extension();
-        dd($request->file('fiche')->storeAs(
-            'fiches2',
-            $filename
-        )); 
     }
 
     /**
@@ -112,12 +90,13 @@ class UserController extends Controller
         $prof = User::findOrFail($id);
         $annees =Annee::all();
 
-        return view('f_professeur', [
-            'prof' => $prof,
-            'annees' => $annees
+        return view('admin.show', [
+            'annees'=>$annees,
+            'prof'=>$prof
         ]);
     }
 
+    //Controller historique (à grouper)
     public function showuser()
     {
         $annees =Annee::all();
@@ -135,7 +114,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $prof = User::findOrFail($id);
-        return view('editform', [
+        return view('admin.edit', [
             'prof' => $prof
         ]);
     }
@@ -156,8 +135,8 @@ class UserController extends Controller
             $prof->prenom = $request->input('prenom');
             $prof->admin = $request->input('admin');
             $prof->update();
-
-        return redirect('professeurs')->with('status','La modification a été effectué');
+ 
+        return redirect('admin')->with('status','La modification a été effectué');
     }
 
     /**

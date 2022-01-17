@@ -14,12 +14,3 @@ notification -> type notification (date, migration timestamp)
 DB::statement("ALTER TABLE books AUTO_INCREMENT = 14000;");
 $table->unsignedBigInteger('nom_clé_etrangere');
 $table->foreign('nom_clé_etrangere')->references('nom_clé_primaire')->on('table');
-
-Objectifs du moment :
-    - Fonction de passe oublié (mails)
-    - Début des policies
-    - Page utilisateur dépot de fichier
-    - Page historique utilisateur
-    - Table fiche de paie
-    - Remanier les forms avec la biblio Collective
-    - Vérifier la validation des données

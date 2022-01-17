@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Liste des professeurs') }}
+            <h4>Liste des professeurs</h4>
         </h2>
     </x-slot>
     @if (session('status'))
@@ -14,7 +14,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <!-- Bouton création professeur -->
-            <a href="{{ route('professeurs.create') }}"><button class="btn btn-warning">Ajouter prof</button></a>
+            <a href="{{ route('admin.create') }}"><button class="btn btn-warning">Ajouter prof</button></a>
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -58,10 +58,10 @@
                                     Actif
                                 </td>
                                 <td align="center">
-                                    <a href="{{ route('professeurs.show', ['id' => $prof->id]) }}">Voir fiches</a>
+                                    <a href="{{ route('admin.show', $prof->id) }}">Voir fiches</a>
                                 </td>
                                 <td align="center">
-                                    <a href="{{ route('professeurs.edit', ['id' => $prof->id]) }}">Modifier</a>
+                                    <a href="{{ route('admin.edit', $prof->id) }}">Modifier</a>
                                 </td>
                             </tr>
                         </tbody>
