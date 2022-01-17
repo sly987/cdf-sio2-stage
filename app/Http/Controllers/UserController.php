@@ -64,6 +64,15 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $mdp = Str::random(10);
+        $request->validate([
+            'email'=>[
+                'required',
+                'email',
+                'unique:users,email'
+            ],
+            'nom'=> 'required',
+            'prenom'=> 'required',
+        ]);
         User::create([
             'email' => $request->email,
             'nom' => $request->nom,
