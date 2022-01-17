@@ -110,8 +110,19 @@ class UserController extends Controller
     {
         $annees =Annee::all();
 
-        return view('historique', [
+        return view('historiques', [
             'annees' => $annees
+        ]);
+    }
+
+    public function lesmois($id)
+    {
+        $annees = Annee::findOrFail($id);
+        $mois = Mois::all();
+
+        return view('historique', [
+            'annees'=>$annees,
+            'mois'=>$mois
         ]);
     }
     /**

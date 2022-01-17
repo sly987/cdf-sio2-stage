@@ -9,13 +9,16 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                {{ $annees->id }}
-                @forelse($annees->mois as $mois)
-                    <div>{{ $mois->mois_id }}</div>
-                    @empty
-                    <span>Aucun mois cette année</span>
-                    @endforelse
-                </div>
+                @foreach($annees as $annee)     
+                <form action="{{ route('historique.showing' , ['id' => $annee->id]) }}">
+                <select>
+                    <option value="#">--Please choose an option--</option>
+                    <option>{{ $annee->id }}</option>
+                    @endforeach
+                </select>
+                <button type="submit">Valider</button>
+                </form>
+            </div>
             </div>
         </div>
     </div>

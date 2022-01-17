@@ -26,10 +26,8 @@ Route::resources([
 
 //UtilisateurTest Page historique (à organiser)
 Route::get('/h', [UserController::class, 'showuser'])->name('historique.show');
+Route::get('/h/{id}', [UserController::class, 'lesmois'])->name('historique.showing');
 
-//Fiches de paie
-// Route::get('/t', [UserController::class, 'fichecreate'])->name('televerse.create');
-// Route::post('/t', [UserController::class, 'fichestore'])->name('televerse.store');
 
 //Dashboard
 Route::get('/dashboard', function () {
