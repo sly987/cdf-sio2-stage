@@ -10,7 +10,7 @@ class Mois extends Model
 {
     use HasFactory;
     public $timestamps = FALSE;
-    public function post()
+    public function annee()
     {
         return $this->belongsTo(Annee::class);
     }

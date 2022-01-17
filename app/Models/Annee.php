@@ -11,7 +11,7 @@ class Annee extends Model
 {
     use HasFactory;
     public $timestamps = FALSE;
-    public function comments()
+    public function mois()
     {
         return $this-> hasMany(Mois::class);
 
