@@ -41,6 +41,11 @@ mailcatcher pour tester les envoie de mail<br><br>
 
 déploiement sur docker<br>
 
+Installer mailcatcher correctement :<br>
+sudo apt install ruby-full;
+sudo apt-get install -y libsqlite3-dev;
+sudo gem install mailcatcher
+
 <h4>Sources & Outils</h4>
 Arborescence intéressante <br>
 https://www.appvizer.fr/magazine/operations/gestion-de-projet/cahier-des-charges <br><br>
@@ -59,4 +64,4 @@ https://www.youtube.com/watch?v=J5WBTUr0QBE<br><br>
 
 
 
-<h5>Outils : Word(CDC), Mocodonline(MCD), Lucidchart(Arbre), Wirecc(Maquette), Github et GithubDesktop (Stockage et versioning du code), Laravel(Framework), Php(Langage)</h5>
+<h5>Outils : Word(CDC), Mocodonline(MCD), Lucidchart(Arbre), Wirecc(Maquette), Github et GithubDesktop (Stockage et versioning du code), Laravel(Framework), Php(Langage), Php namespace resolver, Laravel Snippets(VSExtensions)</h5>
