@@ -15,19 +15,25 @@
                         @endforeach
                     @endif
 
-                    {!! Form::open(['route' => ['admin.update, $prof->id']]) !!}
-                    @csrf
-                    @method=('PUT')
-                        Email : <input type="email" name="email" value="{{ $prof->email }}"></input><br>
-                        Nom : <input type="text" name="nom" value="{{ $prof->nom }}"><br>                   
-                        Prenom : <input type="text" name="prenom" value="{{ $prof->prenom }}"><br><br>
-                        Admin ? 
-                        <input type='radio' name='admin' value='1' {{ $prof->admin == '1' ? 'checked' : '' }}> Oui
-                        <input type='radio' name='admin' value='0' {{ $prof->admin == '0' ? 'checked' : '' }}> Non
-                        <br><br>
-                        
-                        <button type="submit">Modifier</button>
-                        {!! Form::close !!}
+                    {!! Form::model($prof, ['method' =>'PUT', 'route'=>['admin.update', $prof->id]]) !!}
+
+                        {{ Form::label('email','Email : ') }}
+                        {{ Form::email('email', old('email'), ['class' => 'form-control']) }}
+                        <br>
+                        {{ Form::label('nom','Nom : ') }}
+                        {{ Form::text('nom', old('nom'), ['class' => 'form-control']) }}
+                        <br>
+                        {{ Form::label('prenom','Prenom : ') }}
+                        {{ Form::text('prenom', old('prenom'), ['class' => 'form-control']) }}
+                        <br>
+                        {{ Form::label('admin','Admin ? Oui ') }}
+                        {{ Form::radio('admin','1', old('admin'))}}
+                        {{ Form::label('admin','Non ') }}
+                        {{ Form::radio('admin', '0', old('admin'))}}
+                        <br>
+
+                        {{ Form::submit('Valider')}}
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
