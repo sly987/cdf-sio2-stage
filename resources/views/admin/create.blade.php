@@ -15,18 +15,24 @@
                         @endforeach
                     @endif
                     {!! Form::open(['route' => 'admin.store', 'method' => 'post']) !!}
-                    @csrf
-                        Email : <input type="email" name="email"></input><br>
-                        Nom : <input type="text" name="nom"></input><br>                   
-                        Prenom : <input type="text" name="prenom"></input><br>
-                        
-                        Admin ? 
-                        <input type='radio' name='admin' value='1'> 
-                        Oui
-                        <input type='radio' name='admin' value='0' checked> Non<br><br>
-                        
+
+                        {{ Form::label('email','Email : ') }}
+                        {{ Form::email('email', '', ['class' => 'form-control']) }}
+                        <br>
+                        {{ Form::label('nom','Nom : ') }}
+                        {{ Form::text('nom', '', ['class' => 'form-control']) }}
+                        <br>
+                        {{ Form::label('prenom','Prenom : ') }}
+                        {{ Form::text('prenom', '', ['class' => 'form-control']) }}
+                        <br>
+                        {{ Form::label('admin','Admin ? Oui ') }}
+                        {{ Form::radio('admin','1' )}}
+                        {{ Form::label('admin','Non ') }}
+                        {{ Form::radio('admin', '0', true)}}
+                        <br>
+
                         Un mdp sera généré et envoyé automatiquement par mail à l'utilisateur<br><br>
-                        <button type="submit">Créer</button>
+                        {{ Form::submit('Valider')}}
                     {!! Form::close() !!}
                 </div>
             </div>
