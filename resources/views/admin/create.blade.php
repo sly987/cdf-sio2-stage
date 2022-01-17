@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Creer un nouvel utilisateur') }}
+            Creer un nouvel utilisateur
         </h2>
     </x-slot>
 
@@ -14,19 +14,20 @@
                             <div class='text-red-500'>{{ $error }}</div>
                         @endforeach
                     @endif
-                    <form method="POST" action="{{ route('admin.store') }}">
+                    {!! Form::open(['route' => 'admin.store', 'method' => 'post']) !!}
                     @csrf
-                        {{ ('Email : ') }}<input type="email" name="email"></input><br>
-                        {{ ('Nom : ') }}<input type="text" name="nom"></input><br>                   
-                        {{ ('Prenom : ') }}<input type="text" name="prenom"></input><br>
+                        Email : <input type="email" name="email"></input><br>
+                        Nom : <input type="text" name="nom"></input><br>                   
+                        Prenom : <input type="text" name="prenom"></input><br>
                         
-                        {{ ('Admin ? ') }}
+                        Admin ? 
                         <input type='radio' name='admin' value='1'> 
                         Oui
                         <input type='radio' name='admin' value='0' checked> Non<br><br>
                         
                         Un mdp sera généré et envoyé automatiquement par mail à l'utilisateur<br><br>
                         <button type="submit">Créer</button>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

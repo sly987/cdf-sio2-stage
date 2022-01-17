@@ -149,6 +149,15 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $prof = User::findOrFail($id);
+
+        $request->validate([
+            'email'=>[
+                'required',
+                'email',
+            ],
+            'nom'=> 'required',
+            'prenom'=> 'required',
+        ]);
         
             $prof->email = $request->input('email');
             $prof->nom = $request->input('nom');

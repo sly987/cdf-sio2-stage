@@ -9,14 +9,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                @foreach($annees as $annee)     
-                <form action="{{ route('historique.showing' , ['id' => $annee->id]) }}">
-                <select>
-                    <option value="#">--Please choose an option--</option>
-                    <option>{{ $annee->id }}</option>
+                @foreach($annees as $annee) 
+{{ $annee->id }}
+<a href="{{ route('historique.showing' , ['id' => $annee->id]) }}">Valider</a>
+<br>
                     @endforeach
-                </select>
-                <button type="submit">Valider</button>
+
+                
                 </form>
             </div>
             </div>
