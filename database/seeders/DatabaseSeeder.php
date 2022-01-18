@@ -6,6 +6,7 @@ use App\Models\Mois;
 use App\Models\User;
 
 use App\Models\Annee;
+use App\Models\Fiche;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -30,8 +31,11 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
         \App\Models\User::factory(10)->create();
-        \App\Models\Annee::factory(10)->create();
-        for($i=2010; $i<2020; $i++)
+        \App\Models\Annee::factory(2)->create();
+
+
+
+        for($i=2020; $i<2022; $i++)
         {
             for($j=1; $j<=12;$j++)
             {
@@ -39,11 +43,19 @@ class DatabaseSeeder extends Seeder
                     'mois_id'=>$j,
                     'annee_id'=>$i
                 ]);
+
+                for($k=1;$k<=11;$k++)
+                {
+                    Fiche::create([
+                        'user_id'=>$k,
+                        'mois_id'=>$j,
+                        'annee_id'=>$i,
+                        'chemin_fiche' => '2022_Jan.png',
+                        'envoye(O/N)' => 0,
+                    ]);
+                }
+                
             }
         }
-        
-
-        
-        
     }
 }

@@ -17,7 +17,6 @@ class CreateMoisTable extends Migration
             $table->integer('mois_id');
             $table->foreignId('annee_id')->constrained();
             $table->primary(['mois_id', 'annee_id']);
-            
         });
     }
 

@@ -14,6 +14,10 @@ class Annee extends Model
     public function mois()
     {
         return $this-> hasMany(Mois::class);
+    }
 
+    public function fiches()
+    {
+        return $this-> hasMany(Fiche::class);
     }
 }

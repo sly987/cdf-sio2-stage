@@ -14,4 +14,9 @@ class Mois extends Model
     {
         return $this->belongsTo(Annee::class);
     }
+
+    public function fiches()
+    {
+        return $this->hasMany(Fiche::class);
+    }
 }
