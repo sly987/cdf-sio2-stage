@@ -1,0 +1,32 @@
+dd policie
+policie nn trouvé = droit refusé
+virer profcontroller
+appeler la policie dans edit
+
+passer un tableau associatif au select
+clé du tab recup par controller
+contient clé primaire en clé et libelle en valeur
+dans controller (store et update) $request -> nom de la liste on peut recup l'id de la val selec
+plus simple pas besoin de faire cela il faut juste un form 
+
+
+simple update
+massassignment
+
+temp password middleware need to change
+
+components
+
+no profcont
+url user
+
+virer envfiche
+un form sur page de garde pour chaque fiche attendu
+
+dashboard %de fiches en cours, prof retard
+
+historique fiche rework
+
+menu reglage sur droite (logout) :
+changer l'année d'exercice, variable de session
+menu pour config les notif (en dernier) delai, message, ses notifs
