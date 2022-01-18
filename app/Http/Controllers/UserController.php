@@ -105,26 +105,6 @@ class UserController extends Controller
         ]);
     }
 
-    //Controller historique (à grouper)
-    public function showuser()
-    {
-        $annees =Annee::all();
-
-        return view('historiques', [
-            'annees' => $annees
-        ]);
-    }
-
-    public function lesmois($id)
-    {
-        $annees = Annee::findOrFail($id);
-        $mois = Mois::all();
-
-        return view('historique', [
-            'annees'=>$annees,
-            'mois'=>$mois
-        ]);
-    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -159,12 +139,21 @@ class UserController extends Controller
             'prenom'=> 'required',
         ]);
         
-            $prof->email = $request->input('email');
-            $prof->nom = $request->input('nom');
-            $prof->prenom = $request->input('prenom');
-            $prof->admin = $request->input('admin');
-            $prof->update();
- 
+        // $prof = new User;
+
+        // $prof->email = $request->email;
+        // $prof->nom = $request->nom;
+        // $prof->prenom = $request->prenom;
+        // $prof->admin = $request->admin;
+        // $prof->password = $request->password;
+        // $prof->save();
+        
+        $prof->email = $request->input('email');
+        $prof->nom = $request->input('nom');
+        $prof->prenom = $request->input('prenom');
+        $prof->admin = $request->input('admin');
+        $prof->update();
+
         return redirect('admin')->with('status','La modification a été effectué');
     }
 

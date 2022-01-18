@@ -2,24 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mois;
+use App\Models\Annee;
 use Illuminate\Http\Request;
 
-class TeleverseController extends Controller
+class ProfController extends Controller
 {
-    //Middleware : l'utilisateur doit etre connecté
+
     public function __construct()
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function connexion()
+    {
+        return view('admin.dashboard');
+    }
+    
     public function index()
     {
-        //
+        $annees = Annee::all();
+
+        return view('user.history', [
+            'annees' => $annees
+        ]);
     }
 
     /**
@@ -29,7 +40,7 @@ class TeleverseController extends Controller
      */
     public function create()
     {
-        return view('user.upload');
+        //
     }
 
     /**
@@ -40,13 +51,7 @@ class TeleverseController extends Controller
      */
     public function store(Request $request)
     {
-        // $name = Storage::disk('local')->put('fiches', $request->fiche);
-        // $filename = date(Y).'_'.date(m) . '_BP_' . date(F) . '.' . $request->fiche->extension();
-        $filename = date("Y") . '_' . date("M") . '.' . $request->fiche->extension();
-        dd($request->file('fiche')->storeAs(
-            'fiches2',
-            $filename
-        )); 
+        //
     }
 
     /**
@@ -57,7 +62,13 @@ class TeleverseController extends Controller
      */
     public function show($id)
     {
-        //
+        $annees = Annee::findOrFail($id);
+        $mois = Mois::all();
+
+        return view('user.show', [
+            'annees'=>$annees,
+            'mois'=>$mois
+        ]);
     }
 
     /**

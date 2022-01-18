@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeleverseController;
 
@@ -21,7 +22,8 @@ Route::get('/', [UserController::class, 'connexion']);
 //Main resources controller
 Route::resources([
     'admin' => UserController::class,
-    'tele' => TeleverseController::class
+    'tele' => TeleverseController::class,
+    'user' => ProfController::class
 ]);
 
 //UtilisateurTest Page historique (à organiser)

@@ -21,6 +21,16 @@
                         <h4>Liste professeurs</h4>
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <x-nav-link :href="route('user.index')" :active="request()->routeIs('user')">
+                        <h4>Historique fiches</h4>
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <x-nav-link :href="route('tele.create')" :active="request()->routeIs('tele')">
+                        <h4>Envoyer fiches</h4>
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
