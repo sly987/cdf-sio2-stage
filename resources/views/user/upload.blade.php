@@ -9,12 +9,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                <form method="POST" action="{{ route('tele.store') }}" enctype="multipart/form-data">
-                    @csrf
-                    <label for="fiche">Téléverser votre fiche de paie</label>
+                {!! Form::open(['route' => 'tele.store', 'method' => 'post', 'files' => true]) !!}
 
-                        <input type="file" id="fiche" name="fiche" class="block my-2" accept="image/png, image/jpeg">
-                        <button type="submit">Envoyer</button>
+                {{ Form::label('fiche','Téléverser votre fiche de paie') }}
+                {{ Form::file('fiche') }}
+
+                {{ Form::submit('Valider') }}
+
+                {{!! Form::close() }}
                 </div>
             </div>
         </div>
