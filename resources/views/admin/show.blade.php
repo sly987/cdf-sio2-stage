@@ -38,7 +38,7 @@
                                 {{ $fiche->{'envoye(O/N)'} }}
                             </td>
                             <td align="center">
-                                {{ $fiche->mois_id }}
+                                {{ $fiche->mois->libelle }}
                             </td>
                         </tr>
                     </tbody>
