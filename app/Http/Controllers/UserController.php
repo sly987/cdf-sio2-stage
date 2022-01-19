@@ -45,14 +45,6 @@ class UserController extends Controller
         // dd($users);
     }
 
-    public function history()
-    {
-        $annees = Annee::all();
-
-        return view('user.history', [
-            'annees' => $annees
-        ]);
-    }
     /**
      * Show the form for creating a new resource.
      *

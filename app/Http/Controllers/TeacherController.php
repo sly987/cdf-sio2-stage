@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Annee;
 use Illuminate\Http\Request;
 
-class TeleverseController extends Controller
+class TeacherController extends Controller
 {
     //Middleware : l'utilisateur doit etre connecté
     public function __construct()
@@ -19,7 +21,11 @@ class TeleverseController extends Controller
      */
     public function index()
     {
-        //
+        $annees = Annee::all();
+
+        return view('user.history', [
+            'annees' => $annees
+        ]);
     }
 
     /**
@@ -57,7 +63,13 @@ class TeleverseController extends Controller
      */
     public function show($id)
     {
-        //
+        $prof = User::findOrFail($id);
+
+            $annee =Annee::all()->last();
+            return view('user.show', [
+                'annee'=>$annee,
+                'prof'=>$prof
+            ]);
     }
 
     /**

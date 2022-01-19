@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\TeleverseController;
+use App\Http\Controllers\TeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ Route::get('/', [UserController::class, 'connexion']);
 //Main resources controller
 Route::resources([
     'user' => UserController::class,
-    'tele' => TeleverseController::class
+    'teacher' => TeacherController::class
 ]);
 
 //Dashboard
