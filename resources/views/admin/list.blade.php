@@ -14,7 +14,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <!-- Bouton création professeur -->
-            <a href="{{ route('admin.create') }}"><button class="btn btn-warning">Ajouter prof</button></a>
+            <a href="{{ route('user.create') }}"><button class="btn btn-warning">Ajouter prof</button></a>
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -58,10 +58,10 @@
                                     Actif
                                 </td>
                                 <td align="center">
-                                    <a href="{{ route('admin.show', $prof->id) }}">Voir fiches</a>
+                                    <a href="{{ route('user.show', $prof->id) }}">Voir fiches</a>
                                 </td>
                                 <td align="center">
-                                    <a href="{{ route('admin.edit', $prof->id) }}">Modifier</a>
+                                    <a href="{{ route('user.edit', $prof->id) }}">Modifier</a>
                                 </td>
                             </tr>
                         </tbody>

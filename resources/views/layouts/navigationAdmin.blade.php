@@ -17,7 +17,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('admin.index')" :active="request()->routeIs('admin')">
+                <x-nav-link :href="route('user.index')" :active="request()->routeIs('admin')">
                         <h4>Liste professeurs</h4>
                     </x-nav-link>
                 </div>

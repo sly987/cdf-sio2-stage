@@ -45,6 +45,14 @@ class UserController extends Controller
         // dd($users);
     }
 
+    public function history()
+    {
+        $annees = Annee::all();
+
+        return view('user.history', [
+            'annees' => $annees
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -66,7 +74,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $mdp = Str::random(10);
         $request->validate([
             'email'=>[
                 'required',
@@ -76,18 +83,19 @@ class UserController extends Controller
             'nom'=> 'required',
             'prenom'=> 'required',
         ]);
-        User::create([
-            'email' => $request->email,
-            'nom' => $request->nom,
-            'prenom' => $request->prenom,
-            'admin' => $request->admin,
-            'password' => Hash::make($mdp),
-        ]);
+        $mdp = Str::random(8);
 
-        return redirect('admin')->with('status','La création a été effectué');
-        // return view('createvalidate',[
-        //     'mdp' => $mdp
-        // ]);
+        $user = new User;
+
+        $user->nom = $request->nom;
+        $user->prenom = $request->prenom;
+        $user->admin = $request->admin;
+        $user->email = $request->email;
+        $user->password = bcrypt($mdp);
+
+        $user->save();
+
+        return redirect('user')->with('status','La création a été effectué');
         
     }
 
@@ -146,23 +154,10 @@ class UserController extends Controller
             'nom'=> 'required',
             'prenom'=> 'required',
         ]);
-        
-        // $prof = new User;
 
-        // $prof->email = $request->email;
-        // $prof->nom = $request->nom;
-        // $prof->prenom = $request->prenom;
-        // $prof->admin = $request->admin;
-        // $prof->password = $request->password;
-        // $prof->save();
-        
-        $prof->email = $request->input('email');
-        $prof->nom = $request->input('nom');
-        $prof->prenom = $request->input('prenom');
-        $prof->admin = $request->input('admin');
-        $prof->update();
+        $prof->update($request->input());
 
-        return redirect('admin')->with('status','La modification a été effectué');
+        return redirect('user')->with('status','La modification a été effectué');
     }
 
     /**
