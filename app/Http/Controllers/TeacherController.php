@@ -19,13 +19,16 @@ class TeacherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $annees = Annee::all();
+        if($request->user()->can('view',User::class))
+        {
+            $annees = Annee::all();
 
-        return view('user.history', [
-            'annees' => $annees
-        ]);
+            return view('user.history', [
+                'annees' => $annees
+            ]);
+        }
     }
 
     /**
@@ -61,15 +64,17 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $prof = User::findOrFail($id);
-
+        if($request->user()->can('view', $prof ))
+        {
             $annee =Annee::all()->last();
             return view('user.show', [
                 'annee'=>$annee,
                 'prof'=>$prof
             ]);
+        }
     }
 
     /**
