@@ -19,7 +19,7 @@ class Fiche extends Model
         return $this->belongsTo(Mois::class);
     }
 
-    public function fiche()
+    public function annee()
     {
         return $this->belongsTo(Annee::class);
     }

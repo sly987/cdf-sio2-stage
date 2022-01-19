@@ -102,10 +102,9 @@ class UserController extends Controller
         $prof = User::findOrFail($id);
         if($request->user()->can('view', $prof))
         {
-            $annees =Annee::all();
-
+            $annee =Annee::all()->last();
             return view('admin.show', [
-                'annees'=>$annees,
+                'annee'=>$annee,
                 'prof'=>$prof
             ]);
         }
