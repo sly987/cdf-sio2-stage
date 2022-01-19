@@ -16,7 +16,6 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        //$this->authorizeResource(User::class, 'user');
     }
 
     //Page de connexion vers dashboard si connecté avec le middleware au dessus
@@ -30,12 +29,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //$this->authorize('viewAny', User::class );
         $profs = User::orderBy('nom')->paginate(10);
+        if($request->user()->can('viewAny',User::class))
+        {
     
-        return view('admin.list', compact('profs'));
+            return view('admin.list', compact('profs'));
+        }
 
 
         // $users = User::all();
@@ -50,10 +51,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $this->authorize('create', User::class );
-        return view('admin.create');
+        if($request->user()->can('create',User::class))
+        {
+            return view('admin.create');
+        }
     }
 
     /**
@@ -95,15 +98,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $prof = User::findOrFail($id);
-        $annees =Annee::all();
+        if($request->user()->can('view', $prof))
+        {
+            $annees =Annee::all();
 
-        return view('admin.show', [
-            'annees'=>$annees,
-            'prof'=>$prof
-        ]);
+            return view('admin.show', [
+                'annees'=>$annees,
+                'prof'=>$prof
+            ]);
+        }
     }
 
     /**
@@ -112,12 +118,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $prof = User::findOrFail($id);
-        return view('admin.edit', [
-            'prof' => $prof
-        ]);
+        if($request->user()->can('update', $prof))
+        {
+            return view('admin.edit', [
+                'prof' => $prof
+            ]);
+        }
     }
 
     /**
