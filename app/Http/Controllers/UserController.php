@@ -43,7 +43,6 @@ class UserController extends Controller
         // echo '<pre>' . var_export($users, true) . '</pre>';
         // highlight_string("<?php\n\$users =\n" . var_export($users,true) . ";\n?//>");
         // dd($users);
-
     }
 
     /**

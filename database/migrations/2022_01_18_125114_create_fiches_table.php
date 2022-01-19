@@ -17,14 +17,12 @@ class CreateFichesTable extends Migration
             $table->id();
             $table->string('chemin_fiche');
             $table->boolean('envoye(O/N)');
-            $table->foreignId('user_id')->constrained();
             $table->timestamps();
 
-            $table->unsignedBigInteger('annee_id');
-            $table->foreign('annee_id')->references('id')->on('annees');
 
-            $table->integer('mois_id'); 
-            $table->foreign('mois_id')->references('mois_id')->on('mois');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('annee_id')->constrained();
+            $table->foreignId('mois_id')->constrained();
             
         });
     }

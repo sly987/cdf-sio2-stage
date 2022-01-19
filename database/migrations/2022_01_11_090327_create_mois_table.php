@@ -14,9 +14,10 @@ class CreateMoisTable extends Migration
     public function up()
     {
         Schema::create('mois', function (Blueprint $table) {
-            $table->integer('mois_id');
+            $table->id();
+            $table->integer('mois');
+            $table->string('libelle');
             $table->foreignId('annee_id')->constrained();
-            $table->primary(['mois_id', 'annee_id']);
         });
     }
 

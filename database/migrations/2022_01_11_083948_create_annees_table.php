@@ -16,9 +16,8 @@ class CreateAnneesTable extends Migration
     {
         Schema::create('annees', function (Blueprint $table) {
             $table->id();    
+            $table->integer('annee');
         });
-        DB::statement("ALTER TABLE annees AUTO_INCREMENT = 2020;");
-        
     }
 
     /**

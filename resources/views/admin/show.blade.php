@@ -12,8 +12,9 @@
                 @foreach($annees as $annee) 
                             {{$annee->id}}
                             
-                            <br>
-                        @endforeach
+                    <br>
+                @endforeach
+
                 </div>
             </div>
         </div>

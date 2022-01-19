@@ -31,17 +31,36 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
         ]);
         \App\Models\User::factory(10)->create();
-        \App\Models\Annee::factory(2)->create();
 
+        $t_mois = array(
+            "janvier",
+            "fevrier",
+            "mars",
+            "avril",
+            "mai",
+            "juin",
+            "juillet",
+            "aout",
+            "septembre",
+            "octobre",
+            "novembre",
+            "decembre",
+        );
 
-
-        for($i=2020; $i<2022; $i++)
+        for($i=2020; $i<=2022; $i++)
         {
+            Annee::create([
+                'annee'=>$i
+            ]);
+
+
             for($j=1; $j<=12;$j++)
             {
+
                 Mois::create([
-                    'mois_id'=>$j,
-                    'annee_id'=>$i
+                    'mois'=>$j,
+                    'annee_id'=>$i-2019,
+                    'libelle'=>$t_mois[$j-1]
                 ]);
 
                 for($k=1;$k<=11;$k++)
@@ -49,7 +68,7 @@ class DatabaseSeeder extends Seeder
                     Fiche::create([
                         'user_id'=>$k,
                         'mois_id'=>$j,
-                        'annee_id'=>$i,
+                        'annee_id'=>$i-2019,
                         'chemin_fiche' => '2022_Jan.png',
                         'envoye(O/N)' => 0,
                     ]);
