@@ -53,14 +53,4 @@ class User extends Authenticatable
         return $this->hasMany(Fiche::class);
     }
 
-    public function getStorageInstance()
-    {
-        $dir = storage_path('app/public/'.$this->name.'/');
-        // Make sure the storage path exists and writeable
-        if (!is_writable($dir)) {
-            mkdir($dir, 0777, true);
-        }
-
-        return Storage::createLocalDriver(["root" => $dir]);
-    }
 }

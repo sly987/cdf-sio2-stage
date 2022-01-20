@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mois;
 use App\Models\User;
 use App\Models\Annee;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -21,7 +20,11 @@ class UserController extends Controller
     //Page de connexion vers dashboard si connecté avec le middleware au dessus
     public function connexion()
     {
-        return view('admin.dashboard');
+        
+        if(Auth::User()->admin===1)
+            return view('admin.dashboard');
+        else
+            return view('user.dashboard');
     }
 
     /**

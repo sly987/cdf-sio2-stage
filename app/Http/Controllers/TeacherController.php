@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Annee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class TeacherController extends Controller
 {
@@ -48,7 +49,8 @@ class TeacherController extends Controller
     {
         // $name = Storage::disk('local')->put('fiches', $request->fiche);
         $filename = date("Y") . '_' . date("M") . '_' . time() . '.' . $request->fiche->extension();
-        $request->file('fiche')->storeAs('',$filename); 
+        $privatedisk = Auth::user()->id;
+        dd($request->file('fiche')->storeAs($privatedisk,$filename)); 
     }
 
     /**
