@@ -21,13 +21,9 @@ class TeacherController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->user()->can('view',User::class))
+        if($request->user()->can('viewAny',User::class))
         {
-            $annees = Annee::all();
-
-            return view('user.history', [
-                'annees' => $annees
-            ]);
+            return view('user.dashboard');
         }
     }
 
@@ -50,12 +46,8 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         // $name = Storage::disk('local')->put('fiches', $request->fiche);
-        // $filename = date(Y).'_'.date(m) . '_BP_' . date(F) . '.' . $request->fiche->extension();
-        $filename = date("Y") . '_' . date("M") . '.' . $request->fiche->extension();
-        dd($request->file('fiche')->storeAs(
-            'fiches2',
-            $filename
-        )); 
+        $filename = date("Y") . '_' . date("M") . '_' . time() . '.' . $request->fiche->extension();
+        $request->file('fiche')->storeAs('',$filename); 
     }
 
     /**

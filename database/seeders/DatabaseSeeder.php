@@ -30,7 +30,17 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345678'), // password
             'remember_token' => Str::random(10),
         ]);
-        \App\Models\User::factory(10)->create();
+
+        User::create([
+            'nom'=>'user',
+            'prenom'=>'user',
+            'email'=>'user@mail.fr',
+            'admin'=>0,
+            'email_verified_at' => now(),
+            'password' => Hash::make('12345678'), // password
+            'remember_token' => Str::random(10),
+        ]);
+        \App\Models\User::factory(3)->create();
 
         $t_mois = array(
             "janvier",
@@ -63,7 +73,7 @@ class DatabaseSeeder extends Seeder
                     'libelle'=>$t_mois[$j-1]
                 ]);
 
-                for($k=1;$k<=11;$k++)
+                for($k=1;$k<=5;$k++)
                 {
                     Fiche::create([
                         'user_id'=>$k,
