@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Annee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TeacherController extends Controller
 {
@@ -21,7 +22,7 @@ class TeacherController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->user()->can('viewAny',User::class))
+        if($request->user()->can('view',Auth::user()))
         {
             return view('user.dashboard');
         }
