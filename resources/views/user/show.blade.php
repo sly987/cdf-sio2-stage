@@ -30,7 +30,9 @@
                     <tbody>
                         <tr>
                             <td align="center">
-                                <img src="{{ Storage::url($fiche->chemin_fiche) }}" alt="">
+                                @if($fiche->envoye == 1 AND $fiche->chemin_fiche =! "pathtest")
+                                <a href="{{ Storage::url($fiche->chemin_fiche) }}" download="$fiche->chemin_fiche">Télécharger</a>
+                                @endif
                             </td>
 
                             <td align="center">

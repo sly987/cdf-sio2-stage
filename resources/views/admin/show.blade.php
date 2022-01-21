@@ -31,11 +31,13 @@
                     <tbody>
                         <tr>
                             <td align="center">
-                                {{ $fiche->chemin_fiche }}
+                                @if($fiche->envoye == 1 AND $fiche->chemin_fiche != "pathtest")
+                                <a href="{{ Storage::url($fiche->chemin_fiche) }}" download="$fiche->chemin_fiche">Télécharger</a>
+                                @endif
                             </td>
 
                             <td align="center">
-                                {{ $fiche->{'envoye(O/N)'} }}
+                                {{ $fiche->envoye }}
                             </td>
                             <td align="center">
                                 {{ $fiche->mois->libelle }}
