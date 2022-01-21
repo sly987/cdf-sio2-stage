@@ -13,7 +13,24 @@
 
 
                     <div class="p-6 bg-white border-b border-gray-200">
-                        
+                        @forelse($prof->fiches as $fiche)
+                            @if($fiche->envoye == 0 AND $fiche->annee_id == 3)
+                                {{ $fiche->annee->annee }}
+                                {{ $fiche->mois->libelle }}
+                                <br>
+                                {!! Form::model($fiche, ['files'=>true,'method' =>'PUT', 'route'=>['teacher.update', $fiche->id]]) !!}
+
+                                {{ Form::label('chemin_fiche','Téléverser votre fiche de paie') }}
+                                {{ Form::file('chemin_fiche') }}
+                                <br>
+
+                                {{ Form::submit('Valider') }}
+                                {!! Form::close() !!}
+                                <br>
+                            @endif
+                        @empty
+                            <span>Aucun doc a rendre bien joué</span>
+                        @endforelse
 
                     </div>
                 </div>
