@@ -46,6 +46,8 @@ sudo apt install ruby-full;
 sudo apt-get install -y libsqlite3-dev;
 sudo gem install mailcatcher
 
+pour active le systeme de fichiers publics : faire php artisan storage:link<br>
+
 <h4>Sources & Outils</h4>
 Arborescence intéressante <br>
 https://www.appvizer.fr/magazine/operations/gestion-de-projet/cahier-des-charges <br><br>
@@ -62,6 +64,8 @@ https://www.youtube.com/watch?v=2TIHglVz9NQ<br><br>
 Resource Controller<br>
 https://www.youtube.com/watch?v=J5WBTUr0QBE<br><br>
 
+Les emojis<br>
+https://unicode.org/emoji/charts/full-emoji-list.html<br><br>
 
 
 <h5>Outils : Word(CDC), Mocodonline(MCD), Lucidchart(Arbre), Wirecc(Maquette), Github et GithubDesktop (Stockage et versioning du code), Laravel(Framework), Php(Langage), Php namespace resolver, Laravel Snippets(VSExtensions)</h5>
