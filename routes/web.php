@@ -28,6 +28,9 @@ Route::resources([
     'teacher' => TeacherController::class
 ]);
 
+//Liste prof
+Route::get('list', [UserController::class, 'list'])->name('user.list');
+
 //Dashboard
 Route::get('/dashboard', function () {
     if (Auth::user()->admin === 1)

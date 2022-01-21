@@ -37,7 +37,6 @@ class UserController extends Controller
         $profs = User::orderBy('nom')->paginate(10);
         if($request->user()->can('viewAny',User::class))
         {
-    
             return view('admin.list', compact('profs'));
         }
     }
