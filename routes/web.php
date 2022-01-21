@@ -30,4 +30,8 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+//mail
+
+Route::get('/mail', 'App\Http\Controllers\MailController@sending',);
+
 require __DIR__.'/auth.php';

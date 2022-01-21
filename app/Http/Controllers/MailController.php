@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\mailTest;
+use App\Mail\test;
 
 class MailController extends Controller
 {
@@ -15,12 +15,13 @@ class MailController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function sending()
     {
-        $user = User::findOrFail($request->id);
+
 
         // Ship the order...
 
-        Mail::to($request->user()->email)->send(new mailTest($user));
+        Mail::to('test@test.fr')->send(new test());
+        return view('mail.mailTest');
     }
 }

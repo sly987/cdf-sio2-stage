@@ -46,6 +46,10 @@ sudo apt install ruby-full;
 sudo apt-get install -y libsqlite3-dev;
 sudo gem install mailcatcher
 
+configurer mailcatcher
+MAIL_HOST=localhost dans le .env<br>
+aller sur 127.0.0.1:1080
+
 pour active le systeme de fichiers publics : faire php artisan storage:link<br>
 
 <h4>Sources & Outils</h4>

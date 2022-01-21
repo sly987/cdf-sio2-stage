@@ -19,7 +19,7 @@ class test extends Mailable
      */
     public function __construct()
     {
-        $this->user=$user;
+        //
     }
 
     /**
@@ -30,7 +30,7 @@ class test extends Mailable
     public function build()
     {
         return $this->from('admin@mail.fr', 'Example')
-                    ->view('mailTest');
+                    ->view('mail.mailTest');
         
     }
 }

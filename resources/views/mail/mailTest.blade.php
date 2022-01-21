@@ -15,7 +15,7 @@
 					<table class="content" align="center" cellpadding="0" cellspacing="0" border="0">
 						<tr>
 							<td>
-								Hello! {{$user->nom}}
+								Hello! 
 							</td>
 						</tr>
 					</table>
