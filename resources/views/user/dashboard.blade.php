@@ -11,15 +11,11 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     Bonjour professeur n°{{ Auth::user()->id }}
 
-                {!! Form::open(['route' => 'teacher.store', 'method' => 'post', 'files' => true]) !!}
 
-                    {{ Form::label('fiche','Téléverser votre fiche de paie') }}
-                    {{ Form::file('fiche') }}
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        
 
-                    {{ Form::submit('Valider') }}
-
-
-                {!! Form::close() !!}
+                    </div>
                 </div>
             </div>
         </div>

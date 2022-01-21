@@ -30,11 +30,11 @@
                     <tbody>
                         <tr>
                             <td align="center">
-                                {{ $fiche->chemin_fiche }}
+                                <img src="{{ Storage::url($fiche->chemin_fiche) }}" alt="">
                             </td>
 
                             <td align="center">
-                                {{ $fiche->{'envoye(O/N)'} }}
+                                {{ $fiche->envoye }}
                             </td>
                             <td align="center">
                                 {{ $fiche->mois->libelle }}

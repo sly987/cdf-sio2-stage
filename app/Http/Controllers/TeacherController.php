@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Annee;
+use App\Models\Fiche;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -29,36 +30,6 @@ class TeacherController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('user.upload');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        // $name = Storage::disk('local')->put('fiches', $request->fiche);
-        $filename = date("Y") . '_' . date("M") . '_' . time() . '.' . $request->fiche->extension();
-        $privatedisk = Auth::user()->id;
-        dd($request->file('fiche')->storeAs($privatedisk,$filename)); 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show(Request $request, $id)
     {
         $prof = User::findOrFail($id);
@@ -72,15 +43,18 @@ class TeacherController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function edit(Request $request, $id)
     {
-        //
+        $prof = User::findOrFail($id);
+        if($request->user()->can('view', $prof ))
+        {
+            $annee =Annee::all()->last();
+            return view('user.edit', [
+                'annee'=>$annee,
+                'prof'=>$prof
+            ]);
+        }
     }
 
     /**
@@ -92,7 +66,18 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = 1;
+        $filename = date('Y') . '_' . date('M') . '_' . time() . '.' . $request->chemin_fiche->extension();
+        $privatedisk = Auth::user()->id . '_' . Auth::user()->nom . '_' . Auth::user()->prenom;
+        $chemin_fiche = $request->file('chemin_fiche')->storeAs($privatedisk, $filename, 'public');
+
+
+
+        $prof = Fiche::findOrFail($id);
+        $prof->chemin_fiche = $chemin_fiche;
+        $prof->envoye = $validated; 
+        $prof->update();
+        return view('user.dashboard');
     }
 
     /**

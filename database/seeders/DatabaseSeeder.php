@@ -79,8 +79,8 @@ class DatabaseSeeder extends Seeder
                         'user_id'=>$k,
                         'mois_id'=>$j,
                         'annee_id'=>$i-2019,
-                        'chemin_fiche' => '2022_Jan.png',
-                        'envoye(O/N)' => 0,
+                        'chemin_fiche' => 'pathtest',
+                        'envoye' => 1,
                     ]);
                 }
                 
