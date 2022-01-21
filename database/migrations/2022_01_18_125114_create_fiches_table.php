@@ -15,8 +15,8 @@ class CreateFichesTable extends Migration
     {
         Schema::create('fiches', function (Blueprint $table) {
             $table->id();
-            $table->string('chemin_fiche');
-            $table->boolean('envoye');
+            $table->string('chemin_fiche')->nullable();
+            $table->boolean('envoye')->default(0);
             $table->timestamps();
 
 

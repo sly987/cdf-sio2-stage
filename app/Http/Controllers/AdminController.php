@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Annee;
+use App\Models\Fiche;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -72,7 +73,6 @@ class AdminController extends Controller
             'prenom'=> 'required',
         ]);
         $mdp = Str::random(8);
-
         $user = new User;
 
         $user->nom = $request->nom;
@@ -83,6 +83,18 @@ class AdminController extends Controller
 
         $user->save();
 
+        $annee =Annee::all()->last();
+        
+        //if()
+        //{
+            for($i=1; $i<=12;$i++)
+            {
+                $fiche = new Fiche;
+                $fiche->annee_id = $annee->id;
+                $fiche->mois_id = $i;
+                $user->fiches()->save($fiche);
+            }
+        //}
         return redirect('list')->with('status','La création a été effectué');
         
     }
