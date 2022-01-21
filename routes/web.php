@@ -2,9 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +23,12 @@ Route::get('/', function() {
 
 //Main resources controller
 Route::resources([
-    'user' => UserController::class,
-    'teacher' => TeacherController::class
+    'admin' => AdminController::class,
+    'user' => UserController::class
 ]);
 
 //Liste prof
-Route::get('list', [UserController::class, 'list'])->name('user.list');
+Route::get('list', [AdminController::class, 'list'])->name('admin.list');
 
 //Dashboard
 Route::get('/dashboard', function () {

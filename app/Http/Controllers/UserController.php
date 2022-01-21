@@ -4,121 +4,45 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Annee;
-use Illuminate\Support\Str;
+use App\Models\Fiche;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-
-    //Middleware : Doit etre connecté 
+    //Middleware : l'utilisateur doit etre connecté
     public function __construct()
     {
         $this->middleware('auth');
     }
-
-    //Page de connexion vers dashboard si connecté avec le middleware au dessus
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index(Request $request)
     {
-        if($request->user()->can('viewAny',User::class))
-        {
-            return view('admin.dashboard');
-        }
-    }
-
-    public function list(Request $request)
-    {
-        $profs = User::orderBy('nom')->paginate(10);
-        if($request->user()->can('viewAny',User::class))
-        {
-            return view('admin.list', compact('profs'));
-        }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request)
-    {
-        if($request->user()->can('create',User::class))
-        {
-            return view('admin.create');
-        }
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'email'=>[
-                'required',
-                'email',
-                'unique:users,email'
-            ],
-            'nom'=> 'required',
-            'prenom'=> 'required',
-        ]);
-        $mdp = Str::random(8);
-
-        $user = new User;
-
-        $user->nom = $request->nom;
-        $user->prenom = $request->prenom;
-        $user->admin = $request->admin;
-        $user->email = $request->email;
-        $user->password = bcrypt($mdp);
-
-        $user->save();
-
-        return redirect('user')->with('status','La création a été effectué');
-        
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request, $id)
-    {
-        $prof = User::findOrFail($id);
-        if($request->user()->can('view', $prof))
+        if($request->user()->can('view',Auth::user()))
         {
             $annee =Annee::all()->last();
-            return view('admin.show', [
+            return view('user.dashboard', [
                 'annee'=>$annee,
-                'prof'=>$prof
             ]);
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Request $request, $id)
+    public function show(Request $request, $id)
     {
         $prof = User::findOrFail($id);
-        if($request->user()->can('update', $prof))
+        if($request->user()->can('view', $prof ))
         {
-            return view('admin.edit', [
-                'prof' => $prof
+            $annee =Annee::all()->last();
+            return view('user.show', [
+                'annee'=>$annee,
+                'prof'=>$prof
             ]);
         }
     }
@@ -132,20 +56,16 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $prof = User::findOrFail($id);
+        $validated = 1;
+        $filename = date('Y') . '_' . date('M') . '_' . time() . '.' . $request->chemin_fiche->extension();
+        $privatedisk = Auth::user()->id . '_' . Auth::user()->nom . '_' . Auth::user()->prenom;
+        $chemin_fiche = $request->file('chemin_fiche')->storeAs($privatedisk, $filename, 'public');
 
-        $request->validate([
-            'email'=>[
-                'required',
-                'email',
-            ],
-            'nom'=> 'required',
-            'prenom'=> 'required',
-        ]);
-
-        $prof->update($request->input());
-
-        return redirect('user')->with('status','La modification a été effectué');
+        $prof = Fiche::findOrFail($id);
+        $prof->chemin_fiche = $chemin_fiche;
+        $prof->envoye = $validated; 
+        $prof->update();
+        return view('user.dashboard');
     }
 
     /**

@@ -18,7 +18,7 @@
                                 {{ $fiche->annee->annee }}
                                 {{ $fiche->mois->libelle }}
                                 <br>
-                                {!! Form::model($fiche, ['files'=>true,'method' =>'PUT', 'route'=>['teacher.update', $fiche->id]]) !!}
+                                {!! Form::model($fiche, ['files'=>true,'method' =>'PUT', 'route'=>['user.update', $fiche->id]]) !!}
 
                                 {{ Form::label('chemin_fiche','Téléverser votre fiche de paie') }}
                                 {{ Form::file('chemin_fiche') }}
