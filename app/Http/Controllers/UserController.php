@@ -18,14 +18,6 @@ class UserController extends Controller
     }
 
     //Page de connexion vers dashboard si connecté avec le middleware au dessus
-    public function connexion()
-    {
-        
-        if(Auth::User()->admin===1)
-            return view('admin.dashboard');
-        else
-            return view('user.dashboard');
-    }
 
     /**
      * Display a listing of the resource.
@@ -34,18 +26,20 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        if($request->user()->can('viewAny',User::class))
+        {
+            return view('admin.dashboard');
+        }
+    }
+
+    public function list(Request $request)
+    {
         $profs = User::orderBy('nom')->paginate(10);
         if($request->user()->can('viewAny',User::class))
         {
     
             return view('admin.list', compact('profs'));
         }
-
-
-        // $users = User::all();
-        // echo '<pre>' . var_export($users, true) . '</pre>';
-        // highlight_string("<?php\n\$users =\n" . var_export($users,true) . ";\n?//>");
-        // dd($users);
     }
 
     /**

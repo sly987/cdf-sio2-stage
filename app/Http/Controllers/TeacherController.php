@@ -22,11 +22,15 @@ class TeacherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index(Request $request)
     {
         if($request->user()->can('view',Auth::user()))
         {
-            return view('user.dashboard');
+            $annee =Annee::all()->last();
+            return view('user.dashboard', [
+                'annee'=>$annee,
+            ]);
         }
     }
 
@@ -37,20 +41,6 @@ class TeacherController extends Controller
         {
             $annee =Annee::all()->last();
             return view('user.show', [
-                'annee'=>$annee,
-                'prof'=>$prof
-            ]);
-        }
-    }
-
-
-    public function edit(Request $request, $id)
-    {
-        $prof = User::findOrFail($id);
-        if($request->user()->can('view', $prof ))
-        {
-            $annee =Annee::all()->last();
-            return view('user.edit', [
                 'annee'=>$annee,
                 'prof'=>$prof
             ]);

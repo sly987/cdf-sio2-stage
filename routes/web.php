@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfController;
 use App\Http\Controllers\UserController;
@@ -17,7 +18,9 @@ use App\Http\Controllers\TeacherController;
 */
 
 //Page de connexion
-Route::get('/', [UserController::class, 'connexion']);
+Route::get('/', function() {
+    return view('auth.login');
+});
 
 //Main resources controller
 Route::resources([
@@ -27,7 +30,10 @@ Route::resources([
 
 //Dashboard
 Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+    if (Auth::user()->admin === 1)
+        return view('admin.dashboard');
+    else
+        return view('user.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 //mail

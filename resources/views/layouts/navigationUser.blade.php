@@ -7,7 +7,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('teacher.index', Auth::id())" :active="request()->routeIs('teacher')">
+                <x-nav-link :href="route('teacher.index')">
                         <h4>Accueil</h4>
                     </x-nav-link>
                 </div>
@@ -17,12 +17,6 @@
                         <h4>Historique fiches</h4>
                     </x-nav-link>
                 </div>
-
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('teacher.edit', Auth::id())">
-                            <h4>Envoi</h4>
-                        </x-nav-link>
-                    </div>
 
             </div>
 
