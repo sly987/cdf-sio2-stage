@@ -15,13 +15,13 @@
                     <thead>
                         <tr>
                             <th width="30%">
+                                Mois
+                            </th>
+                            <th width="30%">
                                 Fiche
                             </th>
                             <th width="30%">
                                 Envoyé?
-                            </th>
-                            <th width="30%">
-                                Mois
                             </th>
                         </tr>
                     </thead>
@@ -30,16 +30,17 @@
                     <tbody>
                         <tr>
                             <td align="center">
-                                @if($fiche->envoye == 1 AND $fiche->chemin_fiche =! "pathtest")
-                                <a href="{{ Storage::url($fiche->chemin_fiche) }}" download="$fiche->chemin_fiche">Télécharger</a>
+                                {{ $fiche->mois->libelle }}
+                            </td>
+                            <td align="center">
+                                @if($fiche->envoye == 1 AND $fiche->chemin_fiche != "pathtest")
+                                    <a href="{{ Storage::url($fiche->chemin_fiche) }}" download="$fiche->chemin_fiche">Télécharger</a>
+                                @else
+                                    <p>&#x274C</p>
                                 @endif
                             </td>
-
                             <td align="center">
                                 {{ $fiche->envoye }}
-                            </td>
-                            <td align="center">
-                                {{ $fiche->mois->libelle }}
                             </td>
                         </tr>
                     </tbody>

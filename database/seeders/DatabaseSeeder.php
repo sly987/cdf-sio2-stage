@@ -80,7 +80,7 @@ class DatabaseSeeder extends Seeder
                         'mois_id'=>$j,
                         'annee_id'=>$i-2019,
                         'chemin_fiche' => 'pathtest',
-                        'envoye' => 1,
+                        'envoye' => 0,
                     ]);
                 }
                 

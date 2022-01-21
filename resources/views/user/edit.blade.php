@@ -11,7 +11,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     
                     @forelse($prof->fiches as $fiche)
-                        @if($fiche->envoye == 0)
+                        @if($fiche->envoye == 0 AND $fiche->annee_id == 3)
                             {{ $fiche->annee->annee }}
                             {{ $fiche->mois->libelle }}
                             <br>

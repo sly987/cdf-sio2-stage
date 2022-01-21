@@ -71,8 +71,6 @@ class TeacherController extends Controller
         $privatedisk = Auth::user()->id . '_' . Auth::user()->nom . '_' . Auth::user()->prenom;
         $chemin_fiche = $request->file('chemin_fiche')->storeAs($privatedisk, $filename, 'public');
 
-
-
         $prof = Fiche::findOrFail($id);
         $prof->chemin_fiche = $chemin_fiche;
         $prof->envoye = $validated; 

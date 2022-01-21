@@ -12,12 +12,12 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <x-nav-link :href="route('dashboard')">
                         <h4>Accueil</h4>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('user.index')" :active="request()->routeIs('admin')">
+                <x-nav-link :href="route('user.index')">
                         <h4>Liste professeurs</h4>
                     </x-nav-link>
                 </div>
