@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\test;
 use App\Models\User;
 use App\Models\Annee;
 use App\Models\Fiche;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -52,6 +54,7 @@ class AdminController extends Controller
         if($request->user()->can('create',User::class))
         {
             return view('admin.create');
+
         }
     }
 
@@ -76,6 +79,7 @@ class AdminController extends Controller
         $user = new User;
 
         $user->nom = $request->nom;
+        $mail = $request->nom;
         $user->prenom = $request->prenom;
         $user->admin = $request->admin;
         $user->email = $request->email;
@@ -83,6 +87,8 @@ class AdminController extends Controller
 
         $user->save();
 
+        Mail::to('test@mail.com')->send(new test($mail));
+        
         $annee =Annee::all()->last();
         
         //if()

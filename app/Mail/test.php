@@ -11,15 +11,16 @@ class test extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $data = '';
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(String $mail)
     {
-        //
+        $this->data = $mail;
     }
 
     /**
@@ -29,8 +30,9 @@ class test extends Mailable
      */
     public function build()
     {
-        return $this->from('admin@mail.fr', 'Example')
-                    ->view('mail.mailTest');
+        return $this->from('no-reply@tessier.fr')
+                    ->subject('Votre compte a été crée !')
+                    ->view('emails.test');
         
     }
 }
