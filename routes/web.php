@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ReglageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,14 @@ Route::get('/dashboard', function () {
     else
         return view('user.dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+//reglage
+Route::get('/reglage', [ReglageController::class, 'donnerAnnee'])->name('reglage');
+
+Route::post('/reglage', [ReglageController::class, 'donnerAnnee'])->name('reglage');
+
+
+
 
 //mail
 
