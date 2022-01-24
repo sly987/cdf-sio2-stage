@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MailCreateUser;
 use App\Models\User;
 use App\Models\Annee;
 use App\Models\Fiche;
-use App\Mail\MailTest;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -83,13 +83,13 @@ class AdminController extends Controller
         $user->password = bcrypt($mdp);
         $user->save();
 
-        $mailinfo = [
+        $datamail = [
         'nom' => $request->nom, 
         'prenom' => $request->prenom, 
         'email' => $request->email,
         'password' => $mdp
         ];
-        Mail::to($mailinfo['email'])->send(new MailTest($mailinfo));
+        Mail::to($datamail['email'])->send(new MailCreateUser($datamail));
         
         //Pour la génération des fiches apres la création de l'utisateur
         $annee =Annee::all()->last();

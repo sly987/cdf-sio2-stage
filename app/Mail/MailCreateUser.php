@@ -7,20 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MailTest extends Mailable
+class MailCreateUser extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $url = 'http://localhost';
     public $data = [];
-
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Array $user)
+    public function __construct(Array $datamail)
     {
-        $this->data = $user;
+        $this->data = $datamail;
     }
 
     /**
@@ -30,9 +30,7 @@ class MailTest extends Mailable
      */
     public function build()
     {
-        return $this->from('no-reply@tessier.fr')
-                    ->subject('Votre compte a été crée !')
-                    ->view('emails.test');
-        
+        return $this->subject('Compte crée par Madame Tessier')
+                    ->markdown('emails.mail-createuser');
     }
 }
