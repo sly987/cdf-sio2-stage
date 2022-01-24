@@ -79,7 +79,6 @@ class AdminController extends Controller
 
         $user->nom = $request->nom;
         $user->prenom = $request->prenom;
-        $user->admin = $request->admin;
         $user->email = $request->email;
         $user->password = bcrypt($mdp);
         $user->save();
@@ -90,12 +89,10 @@ class AdminController extends Controller
         'email' => $request->email,
         'password' => $mdp
         ];
-
         Mail::to($mailinfo['email'])->send(new MailTest($mailinfo));
         
+        //Pour la génération des fiches apres la création de l'utisateur
         $annee =Annee::all()->last();
-        //if()
-        //{
             for($i=1; $i<=12;$i++)
             {
                 $fiche = new Fiche;
@@ -103,7 +100,6 @@ class AdminController extends Controller
                 $fiche->mois_id = $i;
                 $user->fiches()->save($fiche);
             }
-        //}
         return redirect('list')->with('status','La création a été effectué');
         
     }
