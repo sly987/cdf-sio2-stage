@@ -70,8 +70,6 @@
                     @else
                         <span>Aucun compte n'a été crée</span>
                     @endif
-
-
                 </div>
                 <ul class="pagination justify-content-center mb-4">
     {{$profs->links("pagination::bootstrap-4")}}

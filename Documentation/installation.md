@@ -67,7 +67,6 @@ Formation complete<br>
 https://www.youtube.com/watch?v=2TIHglVz9NQ<br><br>
 Resource Controller<br>
 https://www.youtube.com/watch?v=J5WBTUr0QBE<br><br>
-
 Les emojis<br>
 https://unicode.org/emoji/charts/full-emoji-list.html<br><br>
 

@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Mail\MailTest;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\test;
 
 class MailController extends Controller
 {
@@ -21,7 +19,5 @@ class MailController extends Controller
 
         // Ship the order...
 
-        Mail::to('test@test.fr')->send(new test());
-        return view('mail.mailTest');
     }
 }

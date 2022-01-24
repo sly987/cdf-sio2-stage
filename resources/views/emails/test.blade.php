@@ -7,6 +7,8 @@
 	<title>Document</title>
 </head>
 <body>
-	<h1>{{ $data }}</h1>
+	<h4>Bonjour, {{ $data['nom'] }} {{ $data['prenom'] }}</h4>
+	Identifiant : {{ $data['email'] }} <br>
+	Mot de passe : {{ $data['password'] }}
 </body>
 </html>

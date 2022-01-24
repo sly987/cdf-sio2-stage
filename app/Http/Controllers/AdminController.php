@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\test;
 use App\Models\User;
 use App\Models\Annee;
 use App\Models\Fiche;
+use App\Mail\MailTest;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
@@ -79,18 +78,22 @@ class AdminController extends Controller
         $user = new User;
 
         $user->nom = $request->nom;
-        $mail = $request->nom;
         $user->prenom = $request->prenom;
         $user->admin = $request->admin;
         $user->email = $request->email;
         $user->password = bcrypt($mdp);
-
         $user->save();
 
-        Mail::to('test@mail.com')->send(new test($mail));
+        $mailinfo = [
+        'nom' => $request->nom, 
+        'prenom' => $request->prenom, 
+        'email' => $request->email,
+        'password' => $mdp
+        ];
+
+        Mail::to($mailinfo['email'])->send(new MailTest($mailinfo));
         
         $annee =Annee::all()->last();
-        
         //if()
         //{
             for($i=1; $i<=12;$i++)

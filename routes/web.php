@@ -44,11 +44,5 @@ Route::get('/reglage', [ReglageController::class, 'donnerAnnee'])->name('reglage
 
 Route::post('/reglage', [ReglageController::class, 'donnerAnnee'])->name('reglage');
 
-
-
-
 //mail
-
-Route::get('/mail', 'App\Http\Controllers\MailController@sending',);
-
 require __DIR__.'/auth.php';
