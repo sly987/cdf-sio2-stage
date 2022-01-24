@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Mail;
 class AdminController extends Controller
 {
 
-    //Middleware : Doit etre connecté 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     //Page de connexion vers dashboard si connecté avec le middleware au dessus
 

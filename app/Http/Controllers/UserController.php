@@ -11,12 +11,6 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    //Middleware : l'utilisateur doit etre connecté
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *

@@ -17,32 +17,33 @@ use App\Http\Controllers\ReglageController;
 |
 */
 
-//Page de connexion
+    //Page de connexion
 Route::get('/', function() {
     return view('auth.login');
 });
 
-//Main resources controller
-Route::resources([
-    'admin' => AdminController::class,
-    'user' => UserController::class
-]);
+Route::middleware(['auth'])->group(function () {
+    //Dashboard
+    Route::get('/dashboard', function () {
+        if (Auth::user()->admin === 1)
+            return view('admin.dashboard');
+        else
+            return view('user.dashboard');
+    })->name('dashboard');
 
-//Liste prof
-Route::get('list', [AdminController::class, 'list'])->name('admin.list');
+    //Main resources controller
+    Route::resources([
+        'admin' => AdminController::class,
+        'user' => UserController::class
+    ]);
 
-//Dashboard
-Route::get('/dashboard', function () {
-    if (Auth::user()->admin === 1)
-        return view('admin.dashboard');
-    else
-        return view('user.dashboard');
-})->middleware(['auth'])->name('dashboard');
+    //Liste prof
+    Route::get('list', [AdminController::class, 'list'])->name('admin.list');
 
-//reglage
-Route::get('/reglage', [ReglageController::class, 'donnerAnnee'])->name('reglage');
-
-Route::post('/reglage', [ReglageController::class, 'donnerAnnee'])->name('reglage');
+    //reglage
+    Route::get('/reglage', [ReglageController::class, 'donnerAnnee'])->name('reglage');
+    Route::post('/reglage', [ReglageController::class, 'donnerAnnee'])->name('reglage');
+});
 
 //mail
 require __DIR__.'/auth.php';
