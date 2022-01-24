@@ -22,6 +22,8 @@ Route::get('/', function() {
     return view('auth.login');
 });
 
+    Route::get('resetpassword', [UserController::class, 'reset'])->name('user.reset')->middleware(['auth', 'passchanged']);
+
 Route::middleware(['auth'])->group(function () {
     //Dashboard
     Route::get('/dashboard', function () {
