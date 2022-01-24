@@ -9,16 +9,16 @@ class ReglageController extends Controller
 {
     public function DonnerAnnee(Request $request)
     {
-        if($request ===null)
+        if($request===null)
         {
-            if($request->session()->get('anneeChoisie') ==null)
-                $request->session()->put('anneeChoisie', Annee::class->last());
+            if($request->session()->missing('anneeChoisie'))
+            session(['anneeChoisie' =>Annee::all()->last() ]); 
         }
         else
-            $request->session()->put('anneeChoisie', $request->annee);
+        session(['anneeChoisie' => $request->annee]);
+        $request->session()->keep('anneeChoisie');
         $annees =Annee::pluck('annee', 'id');
         
-        return view('reglage')->with('annees', $annees)
-                              ->with('request', $request);
+        return view('reglage')->with('annees', $annees);
     }
 }

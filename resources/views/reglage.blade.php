@@ -12,10 +12,13 @@
                     {!! Form::open(['route' => 'reglage', 'method' => 'post']) !!}
 
                     {{ Form::label('annee','annee : ') }}
-                    {{ Form::select('annee', $annees, $request->session()->get('anneeChoisie'))}}
+                    {{ Form::select('annee', $annees, Session('anneeChoisie'))}}
                     {{ Form::submit('Valider')}}
                     {!! Form::close() !!}
-                    
+                    {{-- @php
+                        dd(Session::get('anneeChoisie'));
+                    @endphp
+                     --}}
                 </div>
             </div>
         </div>
