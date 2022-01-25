@@ -26,7 +26,7 @@
                         </tr>
                     </thead>
                     @foreach($prof->fiches as $fiche)
-                        @if($fiche->annee_id == $anneeChoisie)
+                        @if($fiche->mois->annee_id == $anneeChoisie)
                     <tbody>
                         <tr>
                             <td align="center">

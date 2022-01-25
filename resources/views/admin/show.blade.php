@@ -29,6 +29,7 @@
                     </thead>
                     
                     @foreach($prof->fiches as $fiche)
+
                         @if($fiche->mois->annee_id == $anneeChoisie)
                             <tbody>
                                 <tr>
@@ -44,9 +45,6 @@
                                     </td>
                                     <td align="center">
                                         {{ $fiche->envoye }}
-                                    </td>
-                                    <td>
-                                        {{$fiche->mois->annee_id}}
                                     </td>
 
                                 </tr>

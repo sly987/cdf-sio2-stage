@@ -15,9 +15,7 @@
                     {{ Form::select('annee', $annees, $anneeChoisie)}}
                     {{ Form::submit('Valider')}}
                     {!! Form::close() !!}
-                    {{-- @php
-                        dd(Session::get('anneeChoisie'));
-                    @endphp --}}
+                  
                      
                 </div>
             </div>
