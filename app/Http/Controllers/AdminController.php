@@ -154,6 +154,7 @@ class AdminController extends Controller
             'prenom'=> 'required',
         ]);
 
+        $prof->admin = $request->input('admin');
         $prof->update($request->input());
 
         return redirect('list')->with('status','La modification a été effectué');

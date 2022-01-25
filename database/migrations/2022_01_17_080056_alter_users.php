@@ -17,6 +17,7 @@ class AlterUsers extends Migration
             $table->string('prenom');          
             $table->boolean('admin')->default(0);
             $table->renameColumn('name', 'nom');
+            $table->boolean('superAdmin')->default(0);
         });
     }
 

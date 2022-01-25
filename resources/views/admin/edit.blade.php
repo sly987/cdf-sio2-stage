@@ -27,12 +27,14 @@
                         {{ Form::label('prenom','Prenom : ') }}
                         {{ Form::text('prenom', old('prenom'), ['class' => 'form-control']) }}
                         <br>
+
+                        @if(Auth::user()->superAdmin == 1)
                         {{ Form::label('admin','Admin ? Oui ') }}
                         {{ Form::radio('admin','1', old('admin'))}}
                         {{ Form::label('admin','Non ') }}
                         {{ Form::radio('admin', '0', old('admin'))}}
                         <br>
-
+                        @endif
                         {{ Form::submit('Valider')}}
                     {!! Form::close() !!}
                 </div>

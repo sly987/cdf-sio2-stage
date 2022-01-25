@@ -19,7 +19,6 @@
                  <!-- Bouton création professeur -->
             <a href="{{ route('admin.create') }}"><button class="btn btn-warning">Ajouter prof</button></a>
                 <div class="p-6 bg-white border-b border-gray-200">
-                    @if($profs->count()>0)
                     <table>
                         <thead>
                             <tr>
@@ -43,34 +42,35 @@
                                 </th>
                             </tr>
                         </thead>
-                        @foreach($profs as $prof)
-                        <tbody>
-                            <tr>
-                                <td align="center">
-                                    {{ $prof->nom }}
-                                </td>
-                                <td align="center">
-                                    {{ $prof->prenom }}
-                                </td>
-                                <td align="center">
-                                    {{ $prof->email }}
-                                </td>
-                                <td align="center">
-                                    Actif
-                                </td>
-                                <td align="center">
-                                    <a href="{{ route('admin.show', $prof->id) }}">Voir fiches</a>
-                                </td>
-                                <td align="center">
-                                    <a href="{{ route('admin.edit', $prof->id) }}">Modifier</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                        @endforeach
+                        @forelse($profs as $prof)
+                            @if($prof->superAdmin == 0)
+                                <tbody>
+                                    <tr>
+                                        <td align="center">
+                                            {{ $prof->nom }}
+                                        </td>
+                                        <td align="center">
+                                            {{ $prof->prenom }}
+                                        </td>
+                                        <td align="center">
+                                            {{ $prof->email }}
+                                        </td>
+                                        <td align="center">
+                                            Actif
+                                        </td>
+                                        <td align="center">
+                                            <a href="{{ route('admin.show', $prof->id) }}">Voir fiches</a>
+                                        </td>
+                                        <td align="center">
+                                            <a href="{{ route('admin.edit', $prof->id) }}">Modifier</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                @endif
+                            @empty
+                                <span>Aucun compte n'a été crée</span>
+                            @endforelse
                     </table>
-                    @else
-                        <span>Aucun compte n'a été crée</span>
-                    @endif
                 </div>
                             <ul class="pagination justify-content-center mb-4">
                 {{$profs->links("pagination::bootstrap-4")}}

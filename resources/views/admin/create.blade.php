@@ -26,12 +26,13 @@
                         {{ Form::label('prenom','Prenom : ') }}
                         {{ Form::text('prenom', '', ['class' => 'form-control']) }}
                         <br>
+                        @if(Auth::user()->superAdmin == 1)
                         {{ Form::label('admin','Admin ? Oui ') }}
                         {{ Form::radio('admin','1' )}}
                         {{ Form::label('admin','Non ') }}
                         {{ Form::radio('admin', '0', true)}}
                         <br>
-
+                        @endif
                         Un mdp sera généré et envoyé automatiquement à l'adresse mail que vous avez inscrit<br><br>
                         {{ Form::submit('Valider')}}
                     {!! Form::close() !!}
