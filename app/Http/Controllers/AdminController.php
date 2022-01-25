@@ -76,6 +76,7 @@ class AdminController extends Controller
         $user->nom = $request->nom;
         $user->prenom = $request->prenom;
         $user->email = $request->email;
+        $user->admin = $request->admin;
         $user->password = bcrypt($mdp);
         $user->save();
 
@@ -84,7 +85,7 @@ class AdminController extends Controller
         
         //Pour la génération des fiches apres la création de l'utisateur
         $annee =\Session::get('anneeChoisie');
-            foreach($annee->mois() as $mois)
+            foreach($annee->mois as $mois)
             {
                 $fiche = new Fiche;
                 $fiche->annee_id = $annee;

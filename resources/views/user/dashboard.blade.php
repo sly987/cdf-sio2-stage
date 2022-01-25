@@ -14,9 +14,10 @@
 
                     <div class="p-6 bg-white border-b border-gray-200">
                         @forelse(Auth::user()->fiches as $fiche)
-                            @if($fiche->envoye == 0 AND $fiche->annee_id == 3)
-                                {{ $fiche->annee->annee }}
+                            @if($fiche->envoye == 0 AND $fiche->mois->annee_id == $anneeChoisie)
+                                
                                 {{ $fiche->mois->libelle }}
+                                {{ $fiche->mois->annee->annee }}
                                 <br>
                                 {!! Form::model($fiche, ['files'=>true,'method' =>'PUT', 'route'=>['user.update', $fiche->id]]) !!}
 
@@ -29,7 +30,7 @@
                                 <br>
                             @endif
                         @empty
-                            <span>Aucun doc a rendre bien joué</span>
+                            <span>Vous n'avez aucune fiche à rendre</span>
                         @endforelse
 
                     </div>

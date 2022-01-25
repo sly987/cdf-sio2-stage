@@ -7,6 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <a href="{{ url()->previous() }}"><button>&#x21A9 Retour</button></a>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @if($errors->any())
@@ -24,6 +25,11 @@
                         <br>
                         {{ Form::label('prenom','Prenom : ') }}
                         {{ Form::text('prenom', '', ['class' => 'form-control']) }}
+                        <br>
+                        {{ Form::label('admin','Admin ? Oui ') }}
+                        {{ Form::radio('admin','1' )}}
+                        {{ Form::label('admin','Non ') }}
+                        {{ Form::radio('admin', '0', true)}}
                         <br>
 
                         Un mdp sera généré et envoyé automatiquement à l'adresse mail que vous avez inscrit<br><br>
