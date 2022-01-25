@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200" align="center">
-                            {{$annee->annee}}
+                            {{$anneeChoisie+$anneeDebut-1}}
                 </div>
 
                 <table>
@@ -27,26 +27,31 @@
 
                         </tr>
                     </thead>
+                    
                     @foreach($prof->fiches as $fiche)
-                        @if($fiche->annee_id == $annee->id)
-                    <tbody>
-                        <tr>
-                            <td align="center">
-                                {{ $fiche->mois->libelle }}
-                            </td>
-                            <td align="center">
-                                @if($fiche->envoye == 1 AND $fiche->chemin_fiche != "pathtest")
-                                    <a href="{{ Storage::url($fiche->chemin_fiche) }}" download="$fiche->chemin_fiche">Télécharger</a>
-                                @else
-                                    <p>&#x274C</p>
-                                @endif
-                            </td>
-                            <td align="center">
-                                {{ $fiche->envoye }}
-                            </td>
+                        @if($fiche->mois->annee_id == $anneeChoisie)
+                            <tbody>
+                                <tr>
+                                    <td align="center">
+                                        {{ $fiche->mois->libelle }}
+                                    </td>
+                                    <td align="center">
+                                        @if($fiche->envoye == 1 AND $fiche->chemin_fiche != "pathtest")
+                                            <a href="{{ Storage::url($fiche->chemin_fiche) }}" download="$fiche->chemin_fiche">Télécharger</a>
+                                        @else
+                                            <p>&#x274C</p>
+                                        @endif
+                                    </td>
+                                    <td align="center">
+                                        {{ $fiche->envoye }}
+                                    </td>
+                                    <td>
+                                        {{$fiche->mois->annee_id}}
+                                    </td>
 
-                        </tr>
-                    </tbody>
+                                </tr>
+                            </tbody>
+                            
                         @endif
                     @endforeach
                 </table>

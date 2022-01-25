@@ -80,7 +80,6 @@ class DatabaseSeeder extends Seeder
                     Fiche::create([
                         'user_id'=>$k,
                         'mois_id'=>$j,
-                        'annee_id'=>$i-2019,
                         'chemin_fiche' => 'pathtest',
                         'envoye' => 0,
                     ]);

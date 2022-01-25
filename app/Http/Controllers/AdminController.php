@@ -87,12 +87,12 @@ class AdminController extends Controller
         Mail::to($datamail['email'])->send(new MailCreateUser($datamail));
         
         //Pour la génération des fiches apres la création de l'utisateur
-        $annee =Annee::all()->last();
-            for($i=1; $i<=12;$i++)
+        $annee =\Session::get('anneeChoisie');
+            foreach($annee->mois() as $mois)
             {
                 $fiche = new Fiche;
-                $fiche->annee_id = $annee->id;
-                $fiche->mois_id = $i;
+                $fiche->annee_id = $annee;
+                $fiche->mois_id = $mois;
                 $user->fiches()->save($fiche);
             }
         return redirect('list')->with('status','La création a été effectué');

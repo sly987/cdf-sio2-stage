@@ -21,7 +21,6 @@ class CreateFichesTable extends Migration
 
 
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('annee_id')->constrained();
             $table->foreignId('mois_id')->constrained();
             
         });

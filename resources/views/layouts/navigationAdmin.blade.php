@@ -21,6 +21,11 @@
                         <h4>Liste professeurs</h4>
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('reglage')">
+                        <h4>{{$anneeDebut+$anneeChoisie-1}}/{{$anneeDebut+$anneeChoisie}} </h4>
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

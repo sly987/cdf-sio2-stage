@@ -11,12 +11,10 @@ class ReglageController extends Controller
     {
         if($request===null)
         {
-            if($request->session()->missing('anneeChoisie'))
-            session(['anneeChoisie' =>Annee::all()->last() ]); 
+            return view('reglage')->with('annees', $annees);
         }
-        else
         session(['anneeChoisie' => $request->annee]);
-        $request->session()->keep('anneeChoisie');
+            
         $annees =Annee::pluck('annee', 'id');
         
         return view('reglage')->with('annees', $annees);

@@ -15,9 +15,4 @@ class Annee extends Model
     {
         return $this-> hasMany(Mois::class);
     }
-
-    public function fiches()
-    {
-        return $this-> hasMany(Fiche::class);
-    }
 }
