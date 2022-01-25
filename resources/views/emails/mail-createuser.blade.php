@@ -1,11 +1,12 @@
 @component('mail::message')
-Bonjour, {{ $data['nom'] }} {{ $data['prenom'] }}<br>
+Bonjour, {{ $user->nom }} {{ $user->prenom }}<br>
 
-	Identifiant : {{ $data['email'] }}
-	Mot de passe : {{ $data['password'] }}
+	Identifiant : {{ $user->email }}
+	Mot de passe : {{ $mdp }}
+	Vous avez la possibilité de changer votre mot de passe ici si ce dernier ne vous convient pas.
 
 @component('mail::button', ['url' => $url])
-Se connecter
+Acceder au site
 @endcomponent
 
 {{ config('app.name') }}

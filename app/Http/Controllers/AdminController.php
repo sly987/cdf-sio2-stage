@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\MailCreateUser;
 use App\Models\User;
 use App\Models\Annee;
 use App\Models\Fiche;
 use Illuminate\Support\Str;
+use App\Mail\MailCreateUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Notifications\UserCreatedNotification;
 
 class AdminController extends Controller
 {
@@ -78,13 +79,6 @@ class AdminController extends Controller
         $user->password = bcrypt($mdp);
         $user->save();
 
-        $datamail = [
-        'nom' => $request->nom, 
-        'prenom' => $request->prenom, 
-        'email' => $request->email,
-        'password' => $mdp
-        ];
-        
         //Notification quand un utilisateur est crée
         $user->notify(new UserCreatedNotification($user, $mdp));
         

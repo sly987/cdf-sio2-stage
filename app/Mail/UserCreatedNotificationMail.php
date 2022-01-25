@@ -7,20 +7,22 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MailCreateUser extends Mailable
+class UserCreatedNotificationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $url = 'http://localhost';
-    public $data = [];
+    public $user;
+    public $mdp;
+    public $url = 'http://127.0.0.1:8000';
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Array $datamail)
+    public function __construct($user, $mdp)
     {
-        $this->data = $datamail;
+        $this->user = $user;
+        $this->mdp = $mdp;
     }
 
     /**
