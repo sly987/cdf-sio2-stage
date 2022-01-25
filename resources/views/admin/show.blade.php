@@ -30,7 +30,7 @@
                     </thead>
                     
                     @foreach($prof->fiches as $fiche)
-
+                
                         @if($fiche->mois->annee_id == $anneeChoisie)
                             <tbody>
                                 <tr>

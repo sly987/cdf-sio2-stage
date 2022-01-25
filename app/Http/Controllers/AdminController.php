@@ -76,7 +76,7 @@ class AdminController extends Controller
         $user->nom = $request->nom;
         $user->prenom = $request->prenom;
         $user->email = $request->email;
-        $user->admin = $request->admin;
+        $user->admin = 0;
         $user->password = bcrypt($mdp);
         $user->save();
 
@@ -84,12 +84,14 @@ class AdminController extends Controller
         $user->notify(new UserCreatedNotification($user, $mdp));
         
         //Pour la génération des fiches apres la création de l'utisateur
-        $annee =\Session::get('anneeChoisie');
+        $annee =Annee::find(\Session::get('anneeChoisie'));
+        
+
             foreach($annee->mois as $mois)
             {
                 $fiche = new Fiche;
-                $fiche->annee_id = $annee;
-                $fiche->mois_id = $mois;
+                $fiche->user_id= User::all()->last()->id;
+                $fiche->mois_id = $mois->id;
                 $user->fiches()->save($fiche);
             }
         return redirect('list')->with('status','La création a été effectué');
