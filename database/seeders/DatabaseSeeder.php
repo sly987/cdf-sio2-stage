@@ -27,7 +27,6 @@ class DatabaseSeeder extends Seeder
             'email'=>'admin@mail.fr',
             'admin'=>1,
             'email_verified_at' => now(),
-            'password_changed' => 1,
             'password' => Hash::make('12345678'), // password
             'remember_token' => Str::random(10),
         ]);
@@ -38,7 +37,6 @@ class DatabaseSeeder extends Seeder
             'email'=>'user@mail.fr',
             'admin'=>0,
             'email_verified_at' => now(),
-            'password_changed' => 1,
             'password' => Hash::make('12345678'), // password
             'remember_token' => Str::random(10),
         ]);

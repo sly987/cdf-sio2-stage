@@ -84,7 +84,9 @@ class AdminController extends Controller
         'email' => $request->email,
         'password' => $mdp
         ];
-        Mail::to($datamail['email'])->send(new MailCreateUser($datamail));
+        
+        //Notification quand un utilisateur est crée
+        $user->notify(new UserCreatedNotification($user, $mdp));
         
         //Pour la génération des fiches apres la création de l'utisateur
         $annee =\Session::get('anneeChoisie');
