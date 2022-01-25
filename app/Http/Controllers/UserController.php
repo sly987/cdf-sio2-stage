@@ -41,17 +41,6 @@ class UserController extends Controller
         }
     }
 
-    public function reset(Request $request, $id)
-    {
-        $prof = User::findOrFail($id);
-        if($request->user()->can('view', $prof ))
-        {
-            return view('auth.reset-password', [
-                'prof'=>$prof
-            ]);
-        }
-    }
-
     /**
      * Update the specified resource in storage.
      *
