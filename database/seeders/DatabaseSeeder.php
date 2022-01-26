@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Mois;
 use App\Models\User;
-
 use App\Models\Annee;
 use App\Models\Fiche;
 use Illuminate\Support\Str;
@@ -89,7 +88,7 @@ class DatabaseSeeder extends Seeder
                     Fiche::create([
                         'user_id'=>$k,
                         'mois_id'=>$j+12*($i-2020),
-                        'chemin_fiche' => 'pathtest',
+                        'chemin_fiche' => NULL,
                         'envoye' => 0,
                     ]);
                 }

@@ -53,7 +53,7 @@ class UserController extends Controller
         $validated = 1;
         $filename = date('Y') . '_' . date('M') . '_' . time() . '.' . $request->chemin_fiche->extension();
         $privatedisk = Auth::user()->id . '_' . Auth::user()->nom . '_' . Auth::user()->prenom;
-        $chemin_fiche = $request->file('chemin_fiche')->storeAs($privatedisk, $filename, 'local');
+        $chemin_fiche = $request->file('chemin_fiche')->storeAs($privatedisk, $filename);
 
         $prof = Fiche::findOrFail($id);
         $prof->chemin_fiche = $chemin_fiche;

@@ -17,6 +17,7 @@ class CreateMoisTable extends Migration
             $table->id();
             $table->integer('mois');
             $table->string('libelle');
+            $table->boolean('actif')->default(0);
             $table->foreignId('annee_id')->constrained();
         });
     }

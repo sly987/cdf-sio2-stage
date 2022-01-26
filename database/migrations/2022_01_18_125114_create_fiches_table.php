@@ -17,6 +17,7 @@ class CreateFichesTable extends Migration
             $table->id();
             $table->string('chemin_fiche')->nullable();
             $table->boolean('envoye')->default(0);
+            $table->boolean('confirme')->default(0);
             $table->timestamps();
 
 

@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use App\Mail\MailCreateUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use App\Notifications\UserCreatedNotification;
 
 class AdminController extends Controller
@@ -76,7 +77,7 @@ class AdminController extends Controller
         $user->nom = $request->nom;
         $user->prenom = $request->prenom;
         $user->email = $request->email;
-        $user->admin = 0;
+        $user->admin = $request->admin;
         $user->password = bcrypt($mdp);
         $user->save();
 
@@ -159,7 +160,6 @@ class AdminController extends Controller
 
         return redirect('list')->with('status','La modification a été effectué');
     }
-
     /**
      * Remove the specified resource from storage.
      *
