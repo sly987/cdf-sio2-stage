@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AnneeController;
 use App\Http\Controllers\ReglageController;
 
 /*
@@ -34,7 +35,8 @@ Route::middleware(['auth'])->group(function () {
     //Main resources controller
     Route::resources([
         'admin' => AdminController::class,
-        'user' => UserController::class
+        'user' => UserController::class,
+        'annee'=>AnneeController::class
     ]);
 
     //Liste prof
