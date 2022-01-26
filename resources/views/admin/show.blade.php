@@ -31,7 +31,7 @@
                     
                     @foreach($prof->fiches as $fiche)
                 
-                        @if($fiche->mois->annee_id == $anneeChoisie)
+                        @if($fiche->mois->annee_id == $anneeChoisie AND $fiche->mois->actif==1)
                             <tbody>
                                 <tr>
                                     <td align="center">
