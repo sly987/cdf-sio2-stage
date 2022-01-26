@@ -21,7 +21,7 @@ class UserController extends Controller
     {
         if($request->user()->can('view',Auth::user()))
         {
-            $annee =Annee::all()->last();
+            $annee =\Session::get('anneeChoisie');
             return view('user.dashboard', [
                 'annee'=>$annee,
             ]);
