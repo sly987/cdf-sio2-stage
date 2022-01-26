@@ -69,6 +69,7 @@ Resource Controller<br>
 https://www.youtube.com/watch?v=J5WBTUr0QBE<br><br>
 Les emojis<br>
 https://unicode.org/emoji/charts/full-emoji-list.html<br><br>
-
+Disque privé<br>
+https://dev.to/fractalbit/tips-for-working-with-private-files-in-laravel-1g08<br><br>
 
 <h5>Outils : Word(CDC), Mocodonline(MCD), Lucidchart(Arbre), Wirecc(Maquette), Github et GithubDesktop (Stockage et versioning du code), Laravel(Framework), Php(Langage), Php namespace resolver, Laravel Snippets(VSExtensions)</h5>

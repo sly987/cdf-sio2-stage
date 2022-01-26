@@ -10,7 +10,7 @@
             <a href="{{ url()->previous() }}"><button>&#x21A9 Retour</button></a>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200" align="center">
-                {{ $anneeChoisie+$anneeDebut-1}}
+                    <h3>{{ $anneeChoisie+$anneeDebut-1}}</h3>
                 </div>
                 <table>
                     <thead>
@@ -35,7 +35,7 @@
                             </td>
                             <td align="center">
                                 @if($fiche->envoye == 1 AND $fiche->chemin_fiche != NULL)
-                                    <a href="{{ Storage::url($fiche->chemin_fiche) }}" download="$fiche->chemin_fiche">&#x23EC</a>
+                                    <a href="{{ route('file.download', $fiche->id) }}">&#x23EC</a>
                                 @else
                                     <p>&#x274C</p>
                                 @endif

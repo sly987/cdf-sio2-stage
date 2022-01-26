@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnneeController;
 use App\Http\Controllers\ReglageController;
+use App\Http\Controllers\FileAccessController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,9 @@ Route::middleware(['auth'])->group(function () {
         'annee'=>AnneeController::class
     ]);
 
+    //Telecharger
+    Route::get('/file/download/{fiche}', [FileAccessController::class, 'download'])->name('file.download');
+    
     //Liste prof
     Route::get('list', [AdminController::class, 'list'])->name('admin.list');
 
