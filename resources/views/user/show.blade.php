@@ -24,6 +24,9 @@
                             <th width="30%">
                                 Envoyé?
                             </th>
+                            <th width="30%">
+                                Confirmé?
+                            </th>
                         </tr>
                     </thead>
                     @foreach($prof->fiches as $fiche)
@@ -42,6 +45,13 @@
                             </td>
                             <td align="center">
                                 @if($fiche->envoye == 1)
+                                    <p>&#x2705</p>
+                                @else
+                                    <p>&#x274C</p>
+                                @endif
+                            </td>
+                            <td align="center">
+                                @if($fiche->confirme == 1)
                                     <p>&#x2705</p>
                                 @else
                                     <p>&#x274C</p>

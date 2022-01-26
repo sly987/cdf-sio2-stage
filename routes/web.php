@@ -42,9 +42,12 @@ Route::middleware(['auth'])->group(function () {
         'mois'=>MoisController::class
     ]);
 
-    //Telecharger
+    //Gestion de fichier
     Route::get('/file/download/{fiche}', [FileAccessController::class, 'download'])->name('file.download');
-    
+    Route::get('/file/{fiche}/destroy', [FileAccessController::class, 'destroy'])->name('file.destroy');
+
+    //Confirmé une fiche
+    Route::get('admin/{id}/confirmed', [AdminController::class, 'confirmed'])->name('admin.confirmed');
     //Liste prof
     Route::get('list', [AdminController::class, 'list'])->name('admin.list');
 

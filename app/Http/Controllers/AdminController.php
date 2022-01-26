@@ -87,7 +87,8 @@ class AdminController extends Controller
         //Pour la génération des fiches apres la création de l'utisateur
         $annee =Annee::find(\Session::get('anneeChoisie'));
         
-
+        if($request->admin == 0)
+        {
             foreach($annee->mois as $mois)
             {
                 $fiche = new Fiche;
@@ -95,6 +96,8 @@ class AdminController extends Controller
                 $fiche->mois_id = $mois->id;
                 $user->fiches()->save($fiche);
             }
+        }
+
         return redirect('list')->with('status','La création a été effectué');
         
     }
@@ -160,6 +163,17 @@ class AdminController extends Controller
 
         return redirect('list')->with('status','La modification a été effectué');
     }
+
+    public function confirmed($id)
+    {
+        $validated = 1;
+        $fiche = Fiche::findOrFail($id);
+        $fiche->confirme = $validated;
+        $fiche->update();
+
+        return redirect(url()->previous());
+    }
+
     /**
      * Remove the specified resource from storage.
      *

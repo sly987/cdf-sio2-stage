@@ -17,4 +17,14 @@ class FileAccessController extends Controller
             return abort('403');
         }
     }
+
+    public function destroy($id)
+    {
+        $fiche = Fiche::findOrFail($id);
+        $fiche->chemin_fiche = NULL;
+        $fiche->envoye = 0;
+        $fiche->update();
+
+        return redirect(url()->previous());
+    }
 }

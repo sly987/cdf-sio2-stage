@@ -25,13 +25,14 @@
                             <th width="30%">
                                 Envoyé?
                             </th>
-
+                            <th width="30%">
+                                Confirmé?
+                            </th>                            
                         </tr>
                     </thead>
-                    
                     @foreach($prof->fiches as $fiche)
-                
                         @if($fiche->mois->annee_id == $anneeChoisie AND $fiche->mois->actif==1)
+
                             <tbody>
                                 <tr>
                                     <td align="center">
@@ -40,6 +41,9 @@
                                     <td align="center">
                                         @if($fiche->envoye == 1 AND $fiche->chemin_fiche != NULL)
                                             <a href="{{ route('file.download', $fiche->id) }}">&#x23EC</a>
+                                            @if($fiche->confirme == 0)
+                                                <a href="{{ route('file.destroy', $fiche->id) }}">&#x1F5D1</a>
+                                            @endif
                                         @else
                                             <p>&#x274C</p>
                                         @endif
@@ -49,6 +53,13 @@
                                             <p>&#x2705</p>
                                         @else
                                             <p>&#x274C</p>
+                                        @endif
+                                    </td>
+                                    <td align="center">
+                                        @if($fiche->confirme == 1)
+                                            <p>&#x2705</p>
+                                        @else
+                                        <a href="{{ route('admin.confirmed', $fiche->id) }}">&#x274C</a>
                                         @endif
                                     </td>
                                 </tr>
