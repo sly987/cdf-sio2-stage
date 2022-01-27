@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Carbon\Carbon;
 use App\Models\Annee;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
@@ -37,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
              ->with('anneeDebut', \Session::get('anneeDebut'));   
     });  
 
+        Carbon::setLocale(config('app.locale'));
 
     }
 }

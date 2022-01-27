@@ -53,16 +53,32 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = 1;
-        $filename = date('Y') . '_' . date('M') . '_' . time() . '.' . $request->chemin_fiche->extension();
-        $privatedisk = Auth::user()->id . '_' . Auth::user()->nom . '_' . Auth::user()->prenom;
-        $chemin_fiche = $request->file('chemin_fiche')->storeAs($privatedisk, $filename);
+        $request->validate([
+            'chemin_fiche'=> 'required',
+        ]);
 
         $prof = Fiche::findOrFail($id);
-        $prof->chemin_fiche = $chemin_fiche;
-        $prof->envoye = $validated; 
-        $prof->update();
-        return view('user.dashboard');
+        $now = Carbon::now();
+        $namevetting = $now->year . '_' . $now->format('m') . '_' . 'BP' . '_' . $prof->mois->libelle . '.pdf';
+
+        $file = $request->file('chemin_fiche');
+        $name = $file->getClientOriginalName(); 
+
+        if($name != $namevetting)
+        {
+            return view('user.dashboard')->with('status','La fiche n\'est pas correcte');
+        }
+        else
+        {
+            $privatedisk = Auth::user()->id . '_' . Auth::user()->nom . '_' . Auth::user()->prenom;
+            $chemin_fiche = $request->file('chemin_fiche')->storeAs($privatedisk, $name);
+        
+            $prof->chemin_fiche = $chemin_fiche;
+            $prof->envoye = 1; 
+            $prof->update();
+            return view('user.dashboard')->with('status','La fiche est correcte et a été téléversé, elle est actuellement en attente de confirmation');
+        }
+
     }
 
     /**
