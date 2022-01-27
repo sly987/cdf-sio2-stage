@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Fiche;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Notifications\FileDeletedNotification;
 
 class FileAccessController extends Controller
 {
@@ -21,6 +23,9 @@ class FileAccessController extends Controller
     public function destroy($id)
     {
         $fiche = Fiche::findOrFail($id);
+        $user = User::findOrFail($fiche->user_id);
+        $user->notify(new FileDeletedNotification($user));
+
         $fiche->chemin_fiche = NULL;
         $fiche->envoye = 0;
         $fiche->update();

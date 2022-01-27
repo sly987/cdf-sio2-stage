@@ -11,8 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
-use App\Notifications\UserCreatedNotification;
-use App\Notifications\FileConfirmedNotification;
+use App\Notifications\FileDeletedNotification;
 
 class AdminController extends Controller
 {
