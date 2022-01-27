@@ -59,7 +59,11 @@
                                         @if($fiche->confirme == 1)
                                             <p>&#x2705</p>
                                         @else
-                                        <a href="{{ route('admin.confirmed', $fiche->id) }}">&#x274C</a>
+                                            @if($fiche->envoye == 1 AND $fiche->chemin_fiche != NULL)
+                                                <a href="{{ route('admin.confirmed', $fiche->id) }}">&#x274C</a>
+                                            @else
+                                                <p>&#x26D4</p>	
+                                            @endif
                                         @endif
                                     </td>
                                 </tr>
