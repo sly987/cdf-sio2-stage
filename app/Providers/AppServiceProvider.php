@@ -33,9 +33,11 @@ class AppServiceProvider extends ServiceProvider
             \Session::put('anneeChoisie', Annee::all()->last()->id);
 
         \Session::put('anneeDebut', Annee::all()->first()->annee);
+        \Session::put('moisEnCours', Carbon::now()->month);
         
         $view->with('anneeChoisie', \Session::get('anneeChoisie')) 
-             ->with('anneeDebut', \Session::get('anneeDebut'));   
+             ->with('anneeDebut', \Session::get('anneeDebut'))
+             ->with('moisEnCours', \Session::get('moisEnCours'));   
     });  
 
         Carbon::setLocale(config('app.locale'));
