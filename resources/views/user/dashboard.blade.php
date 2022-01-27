@@ -14,7 +14,8 @@
 
                     <div class="p-6 bg-white border-b border-gray-200">
                         @forelse(Auth::user()->fiches as $fiche)
-                            @if($fiche->envoye == 0 AND $fiche->mois->annee_id == $anneeChoisie AND $fiche->mois->actif==1)
+                   
+                            @if($fiche->envoye == 0 AND $fiche->mois->annee_id == $anneeChoisie AND $fiche->mois->actif==1 AND $fiche->mois->mois <= $moisEnCours)
                                 
                                 {{ $fiche->mois->libelle }}
                                 {{ $fiche->mois->annee->annee }}

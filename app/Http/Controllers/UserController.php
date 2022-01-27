@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Annee;
 use App\Models\Fiche;
@@ -22,9 +23,11 @@ class UserController extends Controller
         if($request->user()->can('view',Auth::user()))
         {
             $annee =\Session::get('anneeChoisie');
+            $moisEnCours=Carbon::now()->month;
             return view('user.dashboard', [
                 'annee'=>$annee,
-            ]);
+                
+            ])->with('moisEnCours',$moisEnCours);
         }
     }
 
