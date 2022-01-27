@@ -57,15 +57,18 @@ class UserController extends Controller
         ]);
 
         $prof = Fiche::findOrFail($id);
-        $now = Carbon::now();
-        $namevetting = $now->year . '_' . $now->format('m') . '_' . 'BP' . '_' . $prof->mois->libelle . '.pdf';
+        if($prof->mois->mois <= 9)
+            $zero = '_0';
+        else
+            $zero = '_';
+        $namevetting = $prof->mois->annee->annee . $zero . $prof->mois->mois . '_' . 'BP' . '_' . $prof->mois->libelle . '.pdf';
 
         $file = $request->file('chemin_fiche');
         $name = $file->getClientOriginalName(); 
 
         if($name != $namevetting)
         {
-            return view('user.dashboard')->with('status','La fiche n\'est pas correcte');
+            return redirect('/dashboard')->with('status','La fiche n\'est pas correcte');
         }
         else
         {
@@ -75,19 +78,8 @@ class UserController extends Controller
             $prof->chemin_fiche = $chemin_fiche;
             $prof->envoye = 1; 
             $prof->update();
-            return view('user.dashboard')->with('status','La fiche est correcte et a été téléversé, elle est actuellement en attente de confirmation');
+            return redirect('/dashboard')->with('status','La fiche est correcte et a été téléversé, elle est actuellement en attente de confirmation');
         }
 
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

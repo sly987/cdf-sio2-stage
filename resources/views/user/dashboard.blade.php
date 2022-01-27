@@ -4,7 +4,12 @@
             <h4>Dashboard</h4>
         </h2>
     </x-slot>
-
+    @if (session('status'))
+    <div class="alert alert-success">
+        <br>
+        <h4 align="center">{{ session('status') }}</h4>
+    </div>
+@endif
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @if($errors->any())
