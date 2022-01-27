@@ -8,9 +8,11 @@ use App\Models\Fiche;
 use Illuminate\Support\Str;
 use App\Mail\MailCreateUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use App\Notifications\UserCreatedNotification;
+use App\Notifications\FileConfirmedNotification;
 
 class AdminController extends Controller
 {
@@ -77,7 +79,14 @@ class AdminController extends Controller
         $user->nom = $request->nom;
         $user->prenom = $request->prenom;
         $user->email = $request->email;
-        $user->admin = $request->admin;
+        if(Auth::user()->superAdmin == 1)
+        {
+            $user->admin = $request->admin;
+        }
+        else
+        {
+            $user->admin = 0;
+        }
         $user->password = bcrypt($mdp);
         $user->save();
 
@@ -158,7 +167,14 @@ class AdminController extends Controller
             'prenom'=> 'required',
         ]);
 
-        $prof->admin = $request->input('admin');
+        if(Auth::user()->superAdmin == 1)
+        {
+            $prof->admin = $request->input('admin');
+        }
+        else
+        {
+            $prof->admin = $prof->admin;
+        }
         $prof->update($request->input());
 
         return redirect('list')->with('status','La modification a été effectué');
@@ -166,9 +182,8 @@ class AdminController extends Controller
 
     public function confirmed($id)
     {
-        $validated = 1;
         $fiche = Fiche::findOrFail($id);
-        $fiche->confirme = $validated;
+        $fiche->confirme = 1;
         $fiche->update();
 
         return redirect(url()->previous());

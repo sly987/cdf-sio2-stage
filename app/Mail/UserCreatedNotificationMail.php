@@ -32,7 +32,7 @@ class UserCreatedNotificationMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Compte crée par Madame Tessier')
+        return $this->subject('Votre compte vient d\'être crée')
                     ->markdown('emails.mail-createuser');
     }
 }
