@@ -9,14 +9,15 @@ class ReglageController extends Controller
 {
     public function DonnerAnnee(Request $request)
     {
+        $annees =Annee::pluck('annee', 'id');
         if($request===null)
         {
             return view('reglage')->with('annees', $annees);
         }
-        session(['anneeChoisie' => $request->annee]);
-            
-        $annees =Annee::pluck('annee', 'id');
-        
-        return view('reglage')->with('annees', $annees);
+        else
+        {
+            session(['anneeChoisie' => $request->annee]);     
+            return view('reglage')->with('annees', $annees);
+        }
     }
 }

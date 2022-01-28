@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnneeController;
 use App\Http\Controllers\ReglageController;
+use App\Http\Controllers\FicheMoisController;
 use App\Http\Controllers\FileAccessController;
 
 /*
@@ -39,7 +40,8 @@ Route::middleware(['auth'])->group(function () {
         'admin' => AdminController::class,
         'user' => UserController::class,
         'annee'=>AnneeController::class,
-        'mois'=>MoisController::class
+        'mois'=>MoisController::class,
+        'listeFiche'=>FicheMoisController::class
     ]);
 
     //Gestion de fichier
