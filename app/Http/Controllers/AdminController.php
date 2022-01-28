@@ -8,10 +8,12 @@ use App\Models\Fiche;
 use Illuminate\Support\Str;
 use App\Mail\MailCreateUser;
 use Illuminate\Http\Request;
+use App\Events\CreateUserEvent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use App\Notifications\FileDeletedNotification;
+use App\Notifications\UserCreatedNotification;
 
 class AdminController extends Controller
 {
@@ -34,7 +36,16 @@ class AdminController extends Controller
 
     public function list(Request $request)
     {
-        $profs = User::orderBy('nom')->paginate(10);
+        $search = $request['search'] ?? "";
+        if($search != "")
+        {
+            $profs = User::where('nom','LIKE',"%$search%")->orWhere('email','LIKE',"%$search%")->get();
+        }
+        else
+        {
+            $profs = User::orderBy('nom')->paginate(10);
+        }
+
         if($request->user()->can('viewAny',User::class))
         {
             return view('admin.list', compact('profs'));
@@ -72,6 +83,8 @@ class AdminController extends Controller
             'nom'=> 'required',
             'prenom'=> 'required',
         ]);
+
+
         $mdp = Str::random(8);
         $user = new User;
 
@@ -88,7 +101,7 @@ class AdminController extends Controller
         }
         $user->password = bcrypt($mdp);
         $user->save();
-
+        
         //Notification quand un utilisateur est crée
         $user->notify(new UserCreatedNotification($user, $mdp));
         

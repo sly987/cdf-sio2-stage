@@ -40,19 +40,27 @@
                                     </td>
                                     <td align="center">
                                         @if($fiche->envoye == 1 AND $fiche->chemin_fiche != NULL)
-                                            <a href="{{ route('file.download', $fiche->id) }}">&#x23EC</a>
+                                            <a href="{{ route('file.download', $fiche->id) }}">&#x1F4E5</a>
                                             @if($fiche->confirme == 0)
                                                 <a href="{{ route('file.destroy', $fiche->id) }}">&#x1F5D1</a>
                                             @endif
                                         @else
-                                            <p>&#x274C</p>
+                                            @if($fiche->mois->mois <= $moisEnCours)
+                                                <p>&#x1F553 Retard</p>
+                                            @else
+                                                <p>&#x274C</p>
+                                            @endif
                                         @endif
                                     </td>
                                     <td align="center">
                                         @if($fiche->envoye == 1)
-                                            <p>&#x2705</p>
+                                            <p>Oui</p>
                                         @else
-                                            <p>&#x274C</p>
+                                            @if($fiche->mois->mois <= $moisEnCours)
+                                                <p>Non</p>
+                                            @else
+                                                <p>Indisponible ce mois</p>
+                                            @endif
                                         @endif
                                     </td>
                                     <td align="center">

@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345678'), // password
             'remember_token' => Str::random(10),
         ]);
-        \App\Models\User::factory(3)->create();
+        \App\Models\User::factory(2)->create();
 
         $t_mois = array(
             "janvier",

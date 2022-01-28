@@ -16,10 +16,25 @@
             <a href="{{ url()->previous() }}"><button>&#x21A9 Retour</button></a>
            
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                
+                {{-- {!! Form::model($search, ['method' =>'GET', 'route'=>['admin.update', $search]]) !!}
+                    <div class="form-group" align="center">
+                        {{ Form::search('search', '') }}
+                        {{ Form::submit('Rechercher')}}
+                    </div>
+                {!! Form::close() !!} --}}
+                <form action="">
+                    <div class="form-group" align="center">
+                        <input type="search" name="search" id="" placeholder="Rechercher par nom ou email"/>
+                        <button>Search</button>
+                    </div>
+                    
+                </form>
+                <br>
                  <!-- Bouton création professeur -->
             <a href="{{ route('admin.create') }}"><button class="btn btn-warning">Ajouter prof</button></a>
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <table>
+                    <table cellpadding="2" cellspacing="0">
                         <thead>
                             <tr>
                                 <th width="20%">
@@ -56,7 +71,7 @@
                                             {{ $prof->email }}
                                         </td>
                                         <td align="center">
-                                            Actif
+                                            <span class="badge badge-success">Actif</span>
                                         </td>
                                         <td align="center">
                                             <a href="{{ route('admin.show', $prof->id) }}">Voir fiches</a>
@@ -72,8 +87,8 @@
                             @endforelse
                     </table>
                 </div>
-                            <ul class="pagination justify-content-center mb-4">
-                {{$profs->links("pagination::bootstrap-4")}}
+                    <ul class="pagination justify-content-center mb-4">
+                
             </ul>               
             </div>
         </div>

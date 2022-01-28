@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            HISTORIQUE
+            <h4>HISTORIQUE</h4>
         </h2>
     </x-slot>
 
@@ -38,16 +38,24 @@
                             </td>
                             <td align="center">
                                 @if($fiche->envoye == 1 AND $fiche->chemin_fiche != NULL)
-                                    <a href="{{ route('file.download', $fiche->id) }}">&#x23EC</a>
+                                    <a href="{{ route('file.download', $fiche->id) }}">&#x1F4E5</a>
                                 @else
-                                    <p>&#x274C</p>
+                                    @if($fiche->mois->mois <= $moisEnCours)
+                                        <p>&#x1F553 Retard</p>
+                                    @else
+                                        <p>&#x274C</p>
+                                    @endif
                                 @endif
                             </td>
                             <td align="center">
                                 @if($fiche->envoye == 1)
-                                    <p>&#x2705</p>
+                                    <p>Oui</p>
                                 @else
-                                    <p>&#x274C</p>
+                                    @if($fiche->mois->mois <= $moisEnCours)
+                                        <p>Non</p>
+                                    @else
+                                        <p>Indisponible ce mois</p>
+                                    @endif
                                 @endif
                             </td>
                             <td align="center">
