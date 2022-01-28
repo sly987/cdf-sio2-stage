@@ -48,6 +48,9 @@ Route::middleware(['auth'])->group(function () {
 
     //Confirmé une fiche
     Route::get('admin/{id}/confirmed', [UserManagementController::class, 'confirmed'])->name('admin.confirmed');
+    //Activité un mois
+    Route::get('admin/{id}/dactivemonth', [UserManagementController::class, 'dactivemonth'])->name('admin.dactivemonth');
+    Route::get('admin/{id}/activemonth', [UserManagementController::class, 'activemonth'])->name('admin.activemonth');
     //Liste prof
     Route::get('list', [UserManagementController::class, 'list'])->name('admin.list');
 

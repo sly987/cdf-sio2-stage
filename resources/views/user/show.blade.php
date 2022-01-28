@@ -27,8 +27,7 @@
                         </tr>
                     </thead>
                     @foreach($prof->fiches as $fiche)
-                        @if($fiche->mois->annee_id == $anneeChoisie)
-                        {{-- $fiche->mois->actif == 1 --}}
+                        @if($fiche->mois->annee_id == $anneeChoisie AND $fiche->actif == 1)
                     <tbody>
                         <tr>
                             <td align="center">
@@ -41,7 +40,7 @@
                                     @if($fiche->mois->mois <= $moisEnCours-1)
                                         <p>&#x1F4E4 Téléversable</p>
                                     @else
-                                        <p>&#x274C</p>
+                                        <p>&#x1F512</p>
                                     @endif
                                 @endif
                             </td>

@@ -16,15 +16,18 @@
                 <table>
                     <thead>
                         <tr>
-                            <th width="30%">
+                            <th width="20%">
                                 Mois
                             </th>
-                            <th width="30%">
+                            <th width="20%">
                                 Fiche
                             </th>
-                            <th width="30%">
+                            <th width="20%">
                                 Confirmé?
-                            </th>                            
+                            </th>   
+                            <th width="20%">
+                                Activé mois?
+                            </th>                                     
                         </tr>
                     </thead>
                     @foreach($prof->fiches as $fiche)
@@ -49,7 +52,7 @@
                                                 {{-- $fiche->mois->actif == 1 --}}
                                                     <p>&#x1F553 Retard</p>
                                                 @else
-                                                    <p>&#x274C</p>
+                                                    <p>&#x1F512</p>
                                                 @endif
                                             @endif
                                         @endif
@@ -63,6 +66,13 @@
                                             @else
                                                 <p>&#x1F512</p>	
                                             @endif
+                                        @endif
+                                    </td>
+                                    <td align="center">
+                                        @if($fiche->actif == 1)
+                                            <a href="{{ route('admin.dactivemonth', $fiche->id) }}">&#x2705</a>
+                                        @else
+                                            <a href="{{ route('admin.activemonth', $fiche->id) }}">&#x274C</a>
                                         @endif
                                     </td>
                                 </tr>

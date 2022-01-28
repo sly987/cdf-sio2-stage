@@ -91,8 +91,7 @@ class DatabaseSeeder extends Seeder
                         'chemin_fiche' => NULL,
                         'envoye' => 0,
                     ]);
-                }
-                
+                }   
             }
         }
     }

@@ -206,4 +206,22 @@ class UserManagementController extends Controller
 
         return redirect(url()->previous());
     }
+
+    public function dactivemonth($id)
+    {
+        $fiche = Fiche::findOrFail($id);
+        $fiche->actif = 0;
+        $fiche->update();
+
+        return redirect(url()->previous());
+    }
+
+    public function activemonth($id)
+    {
+        $fiche = Fiche::findOrFail($id);
+        $fiche->actif = 1;
+        $fiche->update();
+
+        return redirect(url()->previous());
+    }
 }

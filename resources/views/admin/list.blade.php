@@ -40,7 +40,7 @@
                                     Mail
                                 </th>
                                 <th width="20%">
-                                    Activité
+                                    Etat
                                 </th>
                                 <th width="10%">
                                     
@@ -64,7 +64,11 @@
                                             {{ $prof->email }}
                                         </td>
                                         <td align="center">
-                                            <span class="badge badge-success">Actif</span>
+                                            @if($prof->actif == 1)
+                                                <p>Actif</p>
+                                            @else
+                                                <p>Inactif</p>
+                                            @endif
                                         </td>
                                         <td align="center">
                                             <a href="{{ route('admin.show', $prof->id) }}">Voir fiches</a>

@@ -26,15 +26,24 @@
                         <br>
                         {{ Form::label('prenom','Prenom : ') }}
                         {{ Form::text('prenom', old('prenom'), ['class' => 'form-control']) }}
-                        <br>
+                        <br><br>
 
                         @if(Auth::user()->superAdmin == 1)
                         {{ Form::label('admin','Admin ? Oui ') }}
                         {{ Form::radio('admin','1', old('admin'))}}
                         {{ Form::label('admin','Non ') }}
                         {{ Form::radio('admin', '0', old('admin'))}}
-                        <br>
+                        <br><br>
                         @endif
+
+                        @if($prof->actif==1)
+                            Sera salarié pour l'année {{$anneeChoisie+$anneeDebut}} :
+                            {{Form::checkbox($prof->actif, 1, true)}}
+                        @else
+                            Sera salarié pour l'année {{$anneeChoisie+$anneeDebut}} :
+                            {{Form::checkbox($prof->actif, 1)}}
+                        @endif
+                        <br><br>
                         {{ Form::submit('Valider')}}
                     {!! Form::close() !!}
                 </div>
