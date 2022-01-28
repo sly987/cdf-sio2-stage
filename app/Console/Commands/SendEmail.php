@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use Carbon\Carbon;
+use App\Models\User;
 use App\Mail\ProfRetardMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -31,7 +33,7 @@ class SendEmail extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->admin=DB::table('users')->select('email')->where('admin', '=', 1)->get();
+        
     }
 
     /**
@@ -41,6 +43,18 @@ class SendEmail extends Command
      */
     public function handle()
     {
-        Mail::to($this->admin)->send(new ProfRetardMail());;
+        if(Carbon::now()->month==1)
+        {
+            $this->mois=$mois=12;
+            $this->annee=$annee=Carbon::now()->year-1;
+        }
+        else
+        {
+            $this->mois=$mois=Carbon::now()->month-1;
+            $this->annee=$annee=Carbon::now()->year;
+        }
+        $this->users=$users=User::all();
+        $this->admin=DB::table('users')->select('email')->where('admin', '=', 1)->get();
+        Mail::to($this->admin)->send(new ProfRetardMail($users,$mois,$annee));;
     }
 }

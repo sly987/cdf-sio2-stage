@@ -13,14 +13,15 @@ use Illuminate\Notifications\Messages\MailMessage;
 class ProfRetard extends Notification
 {
     use Queueable;
-
+    public $users;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($users)
     {
+        $this->users=$users=User::all();
         $this->admin=DB::table('users')->where('admin', '=', 0);
     }
 
