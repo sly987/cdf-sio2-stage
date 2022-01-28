@@ -23,16 +23,13 @@
                                 Fiche
                             </th>
                             <th width="30%">
-                                Envoyé?
-                            </th>
-                            <th width="30%">
                                 Confirmé?
                             </th>                            
                         </tr>
                     </thead>
                     @foreach($prof->fiches as $fiche)
-                        @if($fiche->mois->annee_id == $anneeChoisie AND $fiche->mois->actif==1)
-
+                        @if($fiche->mois->annee_id == $anneeChoisie) 
+                        {{-- $fiche->mois->actif==1 --}}
                             <tbody>
                                 <tr>
                                     <td align="center">
@@ -48,25 +45,11 @@
                                             @if($fiche->mois->mois <= $moisEnCours-1 AND $anneeChoisie+$anneeDebut-1 == date('Y'))
                                                 <p>&#x1F553 Retard</p>
                                             @else
-                                                @if($fiche->mois->actif == 1 AND $anneeChoisie+$anneeDebut-1 < date ('Y'))
+                                                @if($anneeChoisie+$anneeDebut-1 < date ('Y'))
+                                                {{-- $fiche->mois->actif == 1 --}}
                                                     <p>&#x1F553 Retard</p>
                                                 @else
                                                     <p>&#x274C</p>
-                                                @endif
-                                            @endif
-                                        @endif
-                                    </td>
-                                    <td align="center">
-                                        @if($fiche->envoye == 1)
-                                            <p>Oui</p>
-                                        @else
-                                            @if($fiche->mois->mois <= $moisEnCours-1 AND $anneeChoisie+$anneeDebut-1 == date('Y'))
-                                                <p>Non</p>
-                                            @else
-                                                @if($fiche->mois->actif == 1 AND $anneeChoisie+$anneeDebut-1 < date ('Y'))
-                                                    <p>Non</p>
-                                                @else
-                                                    <p>Disponible en fin de mois</p>
                                                 @endif
                                             @endif
                                         @endif
@@ -78,7 +61,7 @@
                                             @if($fiche->envoye == 1 AND $fiche->chemin_fiche != NULL)
                                                 <a href="{{ route('admin.confirmed', $fiche->id) }}">&#x274C</a>
                                             @else
-                                                <p>&#x26D4</p>	
+                                                <p>&#x1F512</p>	
                                             @endif
                                         @endif
                                     </td>

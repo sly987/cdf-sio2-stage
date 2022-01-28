@@ -68,7 +68,7 @@ class UserController extends Controller
 
         if($name != $namevetting)
         {
-            return redirect('/dashboard')->with('status','La fiche n\'est pas correcte');
+            return redirect('/dashboard')->with('status','La fiche n\'est pas conforme : veuillez téléverser une fiche de ce type : 2021_12_BP_decembre.pdf');
         }
         else
         {

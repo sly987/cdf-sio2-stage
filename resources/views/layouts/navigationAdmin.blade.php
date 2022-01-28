@@ -22,13 +22,13 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('annee.create')">
-                        <h4>Créer une année</h4>
+                    <x-nav-link :href="route('listeFiche.index')">
+                        <h4>Fiches par mois</h4>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('listeFiche.index')">
-                        <h4>voir fiche par mois</h4>
+                    <x-nav-link :href="route('annee.create')">
+                        <h4>Créer une année</h4>
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">

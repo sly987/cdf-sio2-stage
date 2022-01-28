@@ -22,15 +22,13 @@
                                 Fiche
                             </th>
                             <th width="30%">
-                                Envoyé?
-                            </th>
-                            <th width="30%">
                                 Confirmé?
                             </th>
                         </tr>
                     </thead>
                     @foreach($prof->fiches as $fiche)
-                        @if($fiche->mois->annee_id == $anneeChoisie AND $fiche->mois->actif==1)
+                        @if($fiche->mois->annee_id == $anneeChoisie)
+                        {{-- $fiche->mois->actif == 1 --}}
                     <tbody>
                         <tr>
                             <td align="center">
@@ -41,20 +39,9 @@
                                     <a href="{{ route('file.download', $fiche->id) }}">&#x1F4E5</a>
                                 @else
                                     @if($fiche->mois->mois <= $moisEnCours-1)
-                                        <p>&#x1F553 Retard</p>
+                                        <p>&#x1F4E4 Téléversable</p>
                                     @else
                                         <p>&#x274C</p>
-                                    @endif
-                                @endif
-                            </td>
-                            <td align="center">
-                                @if($fiche->envoye == 1)
-                                    <p>Oui</p>
-                                @else
-                                    @if($fiche->mois->mois <= $moisEnCours)
-                                        <p>Non</p>
-                                    @else
-                                        <p>Fiche non reçu</p>
                                     @endif
                                 @endif
                             </td>
@@ -62,7 +49,11 @@
                                 @if($fiche->confirme == 1)
                                     <p>&#x2705</p>
                                 @else
-                                    <p>&#x274C</p>
+                                    @if($fiche->envoye == 1 AND $fiche->confirme == 0)
+                                        <p>&#x1F553</p>
+                                    @else
+                                        <p>&#x1F512</p>
+                                    @endif
                                 @endif
                             </td>
                         </tr>
