@@ -99,6 +99,7 @@ class UserManagementController extends Controller
         {
             $user->admin = 0;
         }
+        $user->actif=1;
         $user->password = bcrypt($mdp);
         $user->save();
         
@@ -115,6 +116,7 @@ class UserManagementController extends Controller
                 $fiche = new Fiche;
                 $fiche->user_id= User::all()->last()->id;
                 $fiche->mois_id = $mois->id;
+                $fiche->actif=1;
                 $user->fiches()->save($fiche);
             }
         }
@@ -187,6 +189,10 @@ class UserManagementController extends Controller
         {
             $prof->admin = $prof->admin;
         }
+        if($request->actif===null)
+                $prof->actif= 0;
+        else
+            $prof->actif= $request->actif;
         $prof->update($request->input());
 
         return redirect('list')->with('status','La modification a été effectué');

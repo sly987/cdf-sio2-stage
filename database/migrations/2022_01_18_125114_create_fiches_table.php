@@ -19,7 +19,7 @@ class CreateFichesTable extends Migration
             $table->boolean('envoye')->default(0);
             $table->boolean('confirme')->default(0);
             $table->timestamps();
-
+            $table->boolean('actif')->default(1);
 
             $table->foreignId('user_id')->constrained();
             $table->foreignId('mois_id')->constrained();
