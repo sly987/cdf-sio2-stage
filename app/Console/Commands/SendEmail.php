@@ -2,8 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Mail\test;
+use App\Mail\ProfRetardMail;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class SendEmail extends Command
@@ -30,6 +31,7 @@ class SendEmail extends Command
     public function __construct()
     {
         parent::__construct();
+        $this->admin=DB::table('users')->select('email')->where('admin', '=', 1)->get();
     }
 
     /**
@@ -39,6 +41,6 @@ class SendEmail extends Command
      */
     public function handle()
     {
-        Mail::to('test@test.fr')->send(new test());;
+        Mail::to($this->admin)->send(new ProfRetardMail());;
     }
 }
