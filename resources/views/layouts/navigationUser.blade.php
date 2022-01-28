@@ -40,17 +40,6 @@
                     </x-slot>
                     
                     <x-slot name="content">
-                        <div class="mt-3 space-y-1">
-                            <form method="POST" action="{{ route('reglage') }}">
-                                @csrf
-            
-                                <x-responsive-nav-link :href="route('reglage')"
-                                        onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
-                                    {{ __('Regler l\'annee') }}
-                                </x-responsive-nav-link>
-                            </form>
-                        </div>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -90,18 +79,6 @@
             <div class="px-4">
                 <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
-
-            <div class="mt-3 space-y-1">
-                <form method="POST" action="{{ route('reglage') }}">
-                    @csrf
-
-                    <x-responsive-nav-link :href="route('reglage')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Regler l\'annee') }}
-                    </x-responsive-nav-link>
-                </form>
             </div>
             <div class="mt-3 space-y-1">
                 <!-- Authentication -->

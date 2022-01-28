@@ -45,10 +45,14 @@
                                                 <a href="{{ route('file.destroy', $fiche->id) }}">&#x1F5D1</a>
                                             @endif
                                         @else
-                                            @if($fiche->mois->mois <= $moisEnCours)
+                                            @if($fiche->mois->mois <= $moisEnCours-1 AND $anneeChoisie+$anneeDebut-1 == date('Y'))
                                                 <p>&#x1F553 Retard</p>
                                             @else
-                                                <p>&#x274C</p>
+                                                @if($fiche->mois->actif == 1 AND $anneeChoisie+$anneeDebut-1 < date ('Y'))
+                                                    <p>&#x1F553 Retard</p>
+                                                @else
+                                                    <p>&#x274C</p>
+                                                @endif
                                             @endif
                                         @endif
                                     </td>
@@ -56,10 +60,14 @@
                                         @if($fiche->envoye == 1)
                                             <p>Oui</p>
                                         @else
-                                            @if($fiche->mois->mois <= $moisEnCours)
+                                            @if($fiche->mois->mois <= $moisEnCours-1 AND $anneeChoisie+$anneeDebut-1 == date('Y'))
                                                 <p>Non</p>
                                             @else
-                                                <p>Indisponible ce mois</p>
+                                                @if($fiche->mois->actif == 1 AND $anneeChoisie+$anneeDebut-1 < date ('Y'))
+                                                    <p>Non</p>
+                                                @else
+                                                    <p>Disponible en fin de mois</p>
+                                                @endif
                                             @endif
                                         @endif
                                     </td>

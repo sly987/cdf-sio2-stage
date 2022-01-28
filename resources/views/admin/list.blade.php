@@ -16,17 +16,10 @@
             <a href="{{ url()->previous() }}"><button>&#x21A9 Retour</button></a>
            
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                
-                {{-- {!! Form::model($search, ['method' =>'GET', 'route'=>['admin.update', $search]]) !!}
-                    <div class="form-group" align="center">
-                        {{ Form::search('search', '') }}
-                        {{ Form::submit('Rechercher')}}
-                    </div>
-                {!! Form::close() !!} --}}
                 <form action="">
                     <div class="form-group" align="center">
                         <input type="search" name="search" id="" placeholder="Rechercher par nom ou email"/>
-                        <button>Search</button>
+                        <button>Rechercher</button>
                     </div>
                     
                 </form>

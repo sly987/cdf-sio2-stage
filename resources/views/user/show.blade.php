@@ -40,7 +40,7 @@
                                 @if($fiche->envoye == 1 AND $fiche->chemin_fiche != NULL)
                                     <a href="{{ route('file.download', $fiche->id) }}">&#x1F4E5</a>
                                 @else
-                                    @if($fiche->mois->mois <= $moisEnCours)
+                                    @if($fiche->mois->mois <= $moisEnCours-1)
                                         <p>&#x1F553 Retard</p>
                                     @else
                                         <p>&#x274C</p>
@@ -54,7 +54,7 @@
                                     @if($fiche->mois->mois <= $moisEnCours)
                                         <p>Non</p>
                                     @else
-                                        <p>Indisponible ce mois</p>
+                                        <p>Fiche non reçu</p>
                                     @endif
                                 @endif
                             </td>
