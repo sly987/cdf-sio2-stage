@@ -29,18 +29,18 @@
                                         <td>
                                             {!! Form::model($mois, ['method' =>'PUT', 'route'=>['mois.update', $mois->id]]) !!}
                                             @if($mois->actif==1)
-                                                {{Form::checkbox('actif', 1, true)}}
+                                                {{Form::checkbox($mois->mois, 1, true)}}
                                             @else
-                                                {{Form::checkbox('actif', 1)}}
+                                                {{Form::checkbox($mois->mois, 1)}}
                                             @endif
-                                        </td>
-                                        <td>
-                                            {{Form::submit('valider')}}
-                                            {!! Form::close() !!}
                                         </td>
                                     </tr>
                                 @endforeach
+                                
                         </table>
+                        <br>
+                        {{Form::submit('valider')}}
+                                {!! Form::close() !!}
                     </div>
                 </div>
             </div>

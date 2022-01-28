@@ -74,14 +74,17 @@ class MoisController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $mois = Mois::findOrFail($id);
-        if($request->input('actif')===null)
-            $mois->actif= 0;
-        else
-            $mois->actif= $request->input('actif');
-        $mois->update();
+
+        foreach(Annee::find(\Session::get('anneeChoisie'))->mois as $mois)
+        {
+            if($request->input($mois->mois)===null)
+                $mois->actif= 0;
+            else
+                $mois->actif= $request->input($mois->mois);
+            $mois->update();
+        }
 
         return redirect(route('mois.index'))->with('status','La modification a été effectué');
     }
