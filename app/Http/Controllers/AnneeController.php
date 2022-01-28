@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mois;
 use App\Models\User;
 use App\Models\Annee;
+use App\Models\Fiche;
 use Illuminate\Http\Request;
 
 class AnneeController extends Controller
@@ -57,6 +58,7 @@ class AnneeController extends Controller
             "novembre",
             "decembre",
         );
+        $users=User::where('actif','=',1)->where('admin','=',0)->get();
         for($i=1;$i<=12;$i++)
         {
             $mois=new Mois;
@@ -64,6 +66,15 @@ class AnneeController extends Controller
             $mois->libelle=$t_mois[$i-1];
             $mois->annee_id=Annee::all()->last()->id;
             $mois->save();
+
+            foreach($users as $user)
+            {
+                    $fiche=new Fiche;
+                    $fiche->user_id=$user->id;
+                    $fiche->actif = 1;
+                    $fiche->mois_id=$i+12*(Annee::all()->last()->id-1);
+                    $user->fiches()->save($fiche);
+            }  
 
         }
         return redirect(route('annee.create'))->with('status','La création a été effectué');
