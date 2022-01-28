@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MoisController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnneeController;
@@ -40,7 +39,6 @@ Route::middleware(['auth'])->group(function () {
         'admin' => AdminController::class,
         'user' => UserController::class,
         'annee'=>AnneeController::class,
-        'mois'=>MoisController::class,
         'listeFiche'=>FicheMoisController::class
     ]);
 

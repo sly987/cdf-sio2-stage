@@ -19,6 +19,8 @@
                   
                      
                 </div>
+                <br>
+                <x-nav-link :href="route('annee.create')"><button>créer une nouvelle année</button></x-nav-link>
             </div>
         </div>
     </div>
