@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\AnneeController;
 use App\Http\Controllers\ReglageController;
 use App\Http\Controllers\FicheMoisController;
@@ -36,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
 
     //Main resources controller
     Route::resources([
-        'admin' => AdminController::class,
+        'admin' => UserManagementController::class,
         'user' => UserController::class,
         'annee'=>AnneeController::class,
         'listeFiche'=>FicheMoisController::class
@@ -47,9 +47,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/file/{fiche}/destroy', [FileAccessController::class, 'destroy'])->name('file.destroy');
 
     //Confirmé une fiche
-    Route::get('admin/{id}/confirmed', [AdminController::class, 'confirmed'])->name('admin.confirmed');
+    Route::get('admin/{id}/confirmed', [UserManagementController::class, 'confirmed'])->name('admin.confirmed');
     //Liste prof
-    Route::get('list', [AdminController::class, 'list'])->name('admin.list');
+    Route::get('list', [UserManagementController::class, 'list'])->name('admin.list');
 
     //reglage
     Route::get('/reglage', [ReglageController::class, 'donnerAnnee'])->name('reglage');

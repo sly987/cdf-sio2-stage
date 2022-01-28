@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Notifications\FileDeletedNotification;
 use App\Notifications\UserCreatedNotification;
 
-class AdminController extends Controller
+class UserManagementController extends Controller
 {
 
 
