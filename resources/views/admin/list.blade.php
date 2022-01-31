@@ -51,7 +51,7 @@
                             </tr>
                         </thead>
                         @forelse($profs as $prof)
-                            @if($prof->superAdmin == 0)
+                            @if($prof->admin == 0)
                                 <tbody>
                                     <tr>
                                         <td align="center">
@@ -78,7 +78,7 @@
                                         </td>
                                     </tr>
                                 </tbody>
-                                @endif
+                            @endif
                             @empty
                                 <span>Aucun compte n'a été crée</span>
                             @endforelse

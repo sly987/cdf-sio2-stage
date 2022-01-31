@@ -9,10 +9,13 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ProfRetardMail extends Mailable
+class LateUserNotificationMail extends Mailable
 {
-    public $users;
+    use Queueable, SerializesModels;
+
+    public $user;
     public $mois;
+    public $url = 'http://127.0.0.1:8000';
     public $annee;
     use Queueable, SerializesModels;
     /**
@@ -20,9 +23,9 @@ class ProfRetardMail extends Mailable
      *
      * @return void
      */
-    public function __construct($users, $annee, $mois)
+    public function __construct($user, $annee, $mois)
     {
-        $this->users= $users;
+        $this->user = $user;
         $this->mois = $mois;
         $this->annee = $annee;
     }
@@ -34,7 +37,7 @@ class ProfRetardMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('[URGENT]Liste des retardataires')
-                    ->view('emails.mail-latecomers');
+        return $this->subject('Etat de votre fiche de paie')
+                    ->markdown('emails.mail-lateuser');
     }
 }

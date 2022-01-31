@@ -5,6 +5,7 @@ namespace App\Console;
 use App\Console\Commands\SendEmail;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Console\Commands\SendLateUser;
 
 class Kernel extends ConsoleKernel
 {
@@ -17,6 +18,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command(SendEmail::class)->monthlyOn(9, '09:00');
+        $schedule->command(SendLateUser::class)->weekly()->mondays()->at('13:00');
     }
 
     /**

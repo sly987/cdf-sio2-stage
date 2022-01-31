@@ -45,7 +45,7 @@
                                                 <a href="{{ route('file.destroy', $fiche->id) }}">&#x1F5D1</a>
                                             @endif
                                         @else
-                                            @if($fiche->mois->mois <= $moisEnCours-1 AND $anneeChoisie+$anneeDebut-1 == date('Y'))
+                                            @if($fiche->mois->mois < $moisEnCours AND $anneeChoisie+$anneeDebut-1 == date('Y'))
                                                 <p>&#x1F553 Retard</p>
                                             @else
                                                 @if($anneeChoisie+$anneeDebut-1 < date ('Y'))

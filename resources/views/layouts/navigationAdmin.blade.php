@@ -27,11 +27,6 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('annee.create')">
-                        <h4>Créer une année</h4>
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('reglage')">
                         <h4>{{$anneeDebut+$anneeChoisie-1}}/{{$anneeDebut+$anneeChoisie}} </h4>
                     </x-nav-link>

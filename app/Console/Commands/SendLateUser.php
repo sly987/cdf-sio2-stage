@@ -4,18 +4,20 @@ namespace App\Console\Commands;
 
 use Carbon\Carbon;
 use App\Models\User;
-use App\Mail\ProfRetardMail;
+use App\Models\Fiche;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\LateUserNotificationMail;
+use App\Notifications\LateUserNotification;
 
-class SendEmail extends Command
+class SendLateUser extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'command:sendMail';
+    protected $signature = 'command:SendLateUser';
 
     /**
      * The console command description.
@@ -32,7 +34,6 @@ class SendEmail extends Command
     public function __construct()
     {
         parent::__construct();
-        
     }
 
     /**
@@ -52,8 +53,15 @@ class SendEmail extends Command
             $this->mois=$mois=Carbon::now()->month-1;
             $this->annee=$annee=Carbon::now()->year;
         }
-        $this->users=$users=User::all();
-        $this->admin=User::select('email')->where('admin', '=', 1)->get();
-        Mail::to($this->admin)->send(new ProfRetardMail($users,$annee,$mois));;
+        $users=User::where('admin','=',0)->get();
+        foreach($users as $user)
+        {
+            $fiches = $user->fiches;
+            foreach($fiches as $fiche)
+            {
+                if($fiche->actif == 1 AND $fiche->envoye == 0 AND $fiche->mois->mois == $mois AND $fiche->mois->annee->annee == $annee)
+                    Mail::to($user->email)->send(new LateUserNotificationMail($user,$annee,$mois));
+            }
+        }
     }
 }

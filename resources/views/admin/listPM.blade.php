@@ -45,51 +45,53 @@
                         <tbody>
                             @if(isset($users))
                                 @foreach ($users as $user )
-                                    <tr>
-                                        <td>
-                                            {{$user->nom}}
-                                        </td>
-                                        <td>
-                                            {{$user->prenom}}
-                                        </td>
-                                        @foreach ($user->fiches as $fiche)
+                                    @if($user->admin == 0)
+                                        <tr>
+                                            <td>
+                                                {{$user->nom}}
+                                            </td>
+                                            <td>
+                                                {{$user->prenom}}
+                                            </td>
+                                            @foreach ($user->fiches as $fiche)
 
-                                            @if ($fiche->mois_id==$mois_id[0]->id)
-                                                <td> 
-                                                                
-                                                    @if($fiche->envoye == 1 AND $fiche->chemin_fiche != NULL)
-                                                        <a href="{{ route('file.download', $fiche->id) }}">&#x1F4E5</a>
-                                                        @if($fiche->confirme == 0)
-                                                            <a href="{{ route('file.destroy', $fiche->id) }}">&#x1F5D1</a>
-                                                        @endif
-                                                    @else
-                                                        
-                                                        @if($fiche->mois->annee->annee < date ('Y'))
-                                                            <p>&#x1F553 Retard</p>
+                                                @if ($fiche->mois_id==$mois_id[0]->id)
+                                                    <td> 
+                                                                    
+                                                        @if($fiche->envoye == 1 AND $fiche->chemin_fiche != NULL)
+                                                            <a href="{{ route('file.download', $fiche->id) }}">&#x1F4E5</a>
+                                                            @if($fiche->confirme == 0)
+                                                                <a href="{{ route('file.destroy', $fiche->id) }}">&#x1F5D1</a>
+                                                            @endif
                                                         @else
-                                                            @if($fiche->mois->mois < $moisEnCours AND $fiche->mois->annee->annee == date('Y'))
-                                                            {{-- $fiche->mois->actif == 1 --}}
+                                                            
+                                                            @if($fiche->mois->annee->annee < date ('Y'))
                                                                 <p>&#x1F553 Retard</p>
                                                             @else
-                                                                <p>&#x1F512</p>
+                                                                @if($fiche->mois->mois < $moisEnCours AND $fiche->mois->annee->annee == date('Y'))
+                                                                {{-- $fiche->mois->actif == 1 --}}
+                                                                    <p>&#x1F553 Retard</p>
+                                                                @else
+                                                                    <p>&#x1F512</p>
+                                                                @endif
                                                             @endif
                                                         @endif
-                                                    @endif
-                                                </td>
-                                                <td align="center">
-                                                    @if($fiche->confirme == 1)
-                                                        <p>&#x2705</p>
-                                                    @else
-                                                        @if($fiche->envoye == 1 AND $fiche->chemin_fiche != NULL)
-                                                            <a href="{{ route('admin.confirmed', $fiche->id) }}">&#x274C</a>
+                                                    </td>
+                                                    <td align="center">
+                                                        @if($fiche->confirme == 1)
+                                                            <p>&#x2705</p>
                                                         @else
-                                                            <p>&#x1F512</p>	
+                                                            @if($fiche->envoye == 1 AND $fiche->chemin_fiche != NULL)
+                                                                <a href="{{ route('admin.confirmed', $fiche->id) }}">&#x274C</a>
+                                                            @else
+                                                                <p>&#x1F512</p>	
+                                                            @endif
                                                         @endif
-                                                    @endif
-                                                </td>
-                                            @endif
-                                        @endforeach
-                                    </tr>
+                                                    </td>
+                                                @endif
+                                            @endforeach
+                                        </tr>
+                                    @endif
                                 @endforeach
                             @endif
                         </tbody>
