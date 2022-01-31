@@ -17,12 +17,12 @@
            
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <form action="">
+                {!! Form::open() !!}
                     <div class="form-group" align="center">
-                        <input type="search" name="search" id="" placeholder="Rechercher par nom ou email"/>
-                        <button>Rechercher</button>
+                        {{ Form::search('search', '', ['placeholder' => 'Rechercher par nom ou email']) }}
+                        {{ Form::submit('Rechercher')}}
                     </div>
-                    
-                </form>
+                {!! Form::close() !!}
                 <br>
                  <!-- Bouton création professeur -->
             <a href="{{ route('admin.create') }}"><button class="btn btn-warning">Ajouter prof</button></a>
