@@ -20,6 +20,8 @@
                 {!! Form::open() !!}
                     <div class="form-group" align="center">
                         {{ Form::search('search', '', ['placeholder' => 'Rechercher par nom ou email']) }}
+                        {{ Form::select('statut', $statut, $statutSelectionne) }}
+            
                         {{ Form::submit('Rechercher')}}
                     </div>
                 {!! Form::close() !!}
@@ -60,7 +62,7 @@
                                         <td align="center">
                                             {{ $prof->prenom }}
                                         </td>
-                                        <td align="center">
+                                        <td align="center">                                                
                                             {{ $prof->email }}
                                         </td>
                                         <td align="center">
@@ -71,17 +73,16 @@
                                             @endif
                                         </td>
                                         <td align="center">
-                                            <a href="{{ route('admin.show', $prof->id) }}">Voir fiches</a>
-                                        </td>
+                                            <a href="{{ route('admin.show', $prof->id) }}">Voir fiches</a>                                            </td>
                                         <td align="center">
                                             <a href="{{ route('admin.edit', $prof->id) }}">Modifier</a>
                                         </td>
                                     </tr>
                                 </tbody>
                             @endif
-                            @empty
-                                <span>Aucun compte n'a été crée</span>
-                            @endforelse
+                        @empty
+                            <span>Aucun compte n'a été crée</span>
+                        @endforelse
                     </table>
                 </div>
                     <ul class="pagination justify-content-center mb-4">

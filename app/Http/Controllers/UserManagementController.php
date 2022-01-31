@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Annee;
 use App\Models\Fiche;
+use App\Models\Statut;
+use App\Models\UserStatut;
 use Illuminate\Support\Str;
 use App\Mail\MailCreateUser;
 use Illuminate\Http\Request;
 use App\Events\CreateUserEvent;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
@@ -36,19 +39,37 @@ class UserManagementController extends Controller
 
     public function list(Request $request)
     {
-        $search = $request['search'] ?? "";
-        if($search != "")
-        {
-            $profs = User::where('nom','LIKE',"%$search%")->orWhere('email','LIKE',"%$search%")->get();
-        }
-        else
-        {
-            $profs = User::orderBy('nom')->paginate(10);
-        }
-
         if($request->user()->can('viewAny',User::class))
         {
-            return view('admin.list', compact('profs'));
+            $statut=Statut::pluck('libelle', 'id');
+            
+            $search = $request['search'] ?? "";
+            if($search != "")
+            {
+                $profs = User::where('nom','LIKE',"%$search%")->orWhere('email','LIKE',"%$search%")->get();
+                
+            }
+            else
+            {
+                $profs = User::orderBy('nom')->paginate(10);
+            }
+            if(isset($request->statut))
+            {
+                $statutSelectionne= $request->statut;
+                $profStatut=UserStatut::select('user_id')->where('statut_id', '=', $statutSelectionne);
+               
+                $profs=DB::table('users')->whereIn('id', $profStatut)
+                                         ->get();
+                return view('admin.list', compact('profs'))->with('statut', $statut)
+                                                            ->with('statutSelectionne', $statutSelectionne);
+            }
+            else
+            {
+                $statutSelectionne=Statut::all()->last();
+        
+                return view('admin.list', compact('profs'))->with('statut', $statut)
+                                                        ->with('statutSelectionne', $statutSelectionne);
+            }
         }
     }
 
