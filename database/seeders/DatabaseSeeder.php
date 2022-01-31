@@ -6,6 +6,8 @@ use App\Models\Mois;
 use App\Models\User;
 use App\Models\Annee;
 use App\Models\Fiche;
+use App\Models\Statut;
+use App\Models\UserStatut;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -20,6 +22,26 @@ class DatabaseSeeder extends Seeder
     
     public function run()
     {
+        Statut::create([
+            'libelle'=>'PRIMAIRE'
+        ]);
+
+        Statut::create([
+            'libelle'=>'COLLEGE'
+        ]);
+
+        Statut::create([
+            'libelle'=>'LYCEE'
+        ]);
+
+        Statut::create([
+            'libelle'=>'CAMPUS'
+        ]);
+
+        Statut::create([
+            'libelle'=>'REMPLACANT'
+        ]);
+
         User::create([
             'nom'=>'sadmin',
             'prenom'=>'sadmin',
@@ -94,5 +116,25 @@ class DatabaseSeeder extends Seeder
                 }   
             }
         }
+
+        UserStatut::create([
+            'user_id' => 4,
+            'statut_id' => 1
+        ]);
+
+        UserStatut::create([
+            'user_id' => 3,
+            'statut_id' => 3
+        ]);
+
+        UserStatut::create([
+            'user_id' => 5,
+            'statut_id' => 2
+        ]);
+
+        UserStatut::create([
+            'user_id' => 3,
+            'statut_id' => 2
+        ]);
     }
 }

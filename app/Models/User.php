@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Statut;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
@@ -53,4 +54,8 @@ class User extends Authenticatable
         return $this->hasMany(Fiche::class);
     }
 
+    public function statuts()
+    {
+        return $this->belongsToMany(Statut::class);
+    }
 }
