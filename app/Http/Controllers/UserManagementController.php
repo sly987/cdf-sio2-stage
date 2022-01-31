@@ -8,14 +8,9 @@ use App\Models\Fiche;
 use App\Models\Statut;
 use App\Models\UserStatut;
 use Illuminate\Support\Str;
-use App\Mail\MailCreateUser;
 use Illuminate\Http\Request;
-use App\Events\CreateUserEvent;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Storage;
-use App\Notifications\FileDeletedNotification;
 use App\Notifications\UserCreatedNotification;
 
 class UserManagementController extends Controller
@@ -33,6 +28,7 @@ class UserManagementController extends Controller
     {
         if($request->user()->can('viewAny',User::class))
         {
+            //DashboardController fusionner avec UserController
             return view('admin.dashboard');
         }
     }
@@ -201,7 +197,7 @@ class UserManagementController extends Controller
             'nom'=> 'required',
             'prenom'=> 'required',
         ]);
-
+//can policies
         if(Auth::user()->superAdmin == 1)
         {
             $prof->admin = $request->input('admin');
@@ -219,6 +215,7 @@ class UserManagementController extends Controller
         return redirect('list')->with('status','La modification a été effectué');
     }
 
+    //policies
     public function confirmed($id)
     {
         $fiche = Fiche::findOrFail($id);

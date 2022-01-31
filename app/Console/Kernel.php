@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        //daily
         $schedule->command(SendEmail::class)->monthlyOn(9, '09:00');
         $schedule->command(SendLateUser::class)->weekly()->mondays()->at('13:00');
     }

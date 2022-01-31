@@ -21,7 +21,7 @@ class CreateFichesTable extends Migration
             $table->timestamps();
             $table->boolean('actif')->default(1);
 
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('mois_id')->constrained();
             
         });

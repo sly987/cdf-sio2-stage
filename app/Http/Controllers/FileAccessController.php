@@ -26,6 +26,7 @@ class FileAccessController extends Controller
         $user = User::findOrFail($fiche->user_id);
         $user->notify(new FileDeletedNotification($user));
 
+        //mettre un tableau associatif dans update avec ce qui est a mettre a jour
         $fiche->chemin_fiche = NULL;
         $fiche->envoye = 0;
         $fiche->update();

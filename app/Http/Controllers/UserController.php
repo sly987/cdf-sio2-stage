@@ -9,6 +9,7 @@ use App\Models\Fiche;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Session;
 
 class UserController extends Controller
 {
@@ -22,7 +23,8 @@ class UserController extends Controller
     {
         if($request->user()->can('view',Auth::user()))
         {
-            $annee =\Session::get('anneeChoisie');
+            //DashboardController fusionner avec UserManagement
+            $annee =Session::get('anneeChoisie');
             return view('user.dashboard', [
                 'annee'=>$annee,
                 
@@ -36,10 +38,7 @@ class UserController extends Controller
         if($request->user()->can('view', $prof ))
         {
             $annee =Annee::all()->last();
-            return view('user.show', [
-                'annee'=>$annee,
-                'prof'=>$prof
-            ]);
+            return view('user.show', compact('annee', 'prof'));
         }
     }
 
@@ -57,10 +56,13 @@ class UserController extends Controller
         ]);
 
         $prof = Fiche::findOrFail($id);
+        //fonction dans le helper dans le model Mois
         if($prof->mois->mois <= 9)
             $zero = '_0';
         else
             $zero = '_';
+
+            //changer $prof->mois->annee->annee en nom
         $namevetting = $prof->mois->annee->annee . $zero . $prof->mois->mois . '_' . 'BP' . '_' . $prof->mois->libelle . '.pdf';
 
         $file = $request->file('chemin_fiche');
@@ -77,8 +79,9 @@ class UserController extends Controller
         
             $prof->chemin_fiche = $chemin_fiche;
             $prof->envoye = 1; 
+            //tableau associatif
             $prof->update();
-            return redirect('/dashboard')->with('status','La fiche est correcte et a été téléversé, elle est actuellement en attente de confirmation');
+            return redirect('/dashboard')->with('status','La fiche est correcte et a été téléversée, elle est actuellement en attente de confirmation');
         }
 
     }

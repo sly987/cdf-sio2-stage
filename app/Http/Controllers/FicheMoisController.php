@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mois;
 use App\Models\User;
 use App\Models\Annee;
+use App\Models\Statut;
+use App\Models\UserStatut;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,6 +23,7 @@ class FicheMoisController extends Controller
         {
           
 
+            $profs = User::orderBy('nom')->paginate(10);
             $annees=Annee::pluck('annee', 'id');
                 $libelle=array(
                     1=>"janvier",
@@ -35,25 +39,46 @@ class FicheMoisController extends Controller
                     11=>"novembre",
                     12=>"decembre",
                 );
+
+            $statut=Statut::pluck('libelle', 'id');
                 if($request->annee!=null)
                 {
-                    $mois_id=DB::table('mois')->select('id')
-                                              ->where('annee_id','=', Annee::find($request->annee)->id)
-                                              ->where('mois', '=', $request->mois)
-                                              ->get();
+                    $mois=$request->annee->mois()->where('id',$request->mois)->get();
                     
+                    if(isset($request->statut))
+                    {
+                        $statutSelectionne= $request->statut;
+                        $profStatut=UserStatut::select('user_id')->where('statut_id', '=', $statutSelectionne);
+                                                 
+                        $profs=DB::table('users')->whereIn('id', $profStatut)
+                                                 ->get();
+                        return view('admin.listPM')->with('statut', $statut)
+                                                   ->with('statutSelectionne', $statutSelectionne)
+                                                   ->with('annees', $annees)
+                                                   ->with('libelle', $libelle)
+                                                   ->with('moisSelectionne', $request->mois)
+                                                   ->with('anneeSelectionne', $request->annee)
+                                                   ->with('users', $profs)
+                                                   ->with('mois', $mois);
+                    }
+                    else
+                    {
+                        $statutSelectionne=Statut::all()->last();
+                                          
+                            return view('admin.listPM')->with('statut', $statut)
+                                                       ->with('statutSelectionne', $statutSelectionne)
+                                                       ->with('users',$profs)
+                                                       ->with('mois', $mois);
+                    }
 
-                    return view('admin.listPM')->with('annees', $annees)
-                                               ->with('libelle', $libelle)
-                                               ->with('moisSelectionne', $request->mois)
-                                               ->with('anneeSelectionne', $request->annee)
-                                               ->with('users', User::all())
-                                               ->with('mois_id', $mois_id);
                 }
                 else
                 {
                     return view('admin.listPM')->with('annees', $annees)
+                                               ->with('users',$profs)
                                                ->with('libelle', $libelle)
+                                               ->with('statut', $statut)
+                                               ->with('statutSelectionne', null)
                                                ->with('moisSelectionne', null)
                                                ->with('anneeSelectionne', null);
                 }

@@ -43,6 +43,7 @@ class SendLateUser extends Command
      */
     public function handle()
     {
+        //Tout mettre dans une fonction a appeler
         if(Carbon::now()->month==1)
         {
             $this->mois=$mois=12;

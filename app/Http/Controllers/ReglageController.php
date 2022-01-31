@@ -10,7 +10,7 @@ class ReglageController extends Controller
     public function DonnerAnnee(Request $request)
     {
         $annees =Annee::pluck('annee', 'id');
-        if($request===null)
+        if($request->annee===null) //mettre un isset
         {
             return view('reglage')->with('annees', $annees);
         }

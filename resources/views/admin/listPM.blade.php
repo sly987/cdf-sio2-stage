@@ -55,7 +55,7 @@
                                             </td>
                                             @foreach ($user->fiches as $fiche)
 
-                                                @if ($fiche->mois_id==$mois_id[0]->id)
+                                                @if ($fiche->mois_id==$mois[0]->mois->id)
                                                     <td> 
                                                                     
                                                         @if($fiche->envoye == 1 AND $fiche->chemin_fiche != NULL)
