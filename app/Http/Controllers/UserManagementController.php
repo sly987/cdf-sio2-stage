@@ -47,7 +47,7 @@ class UserManagementController extends Controller
             }
             else
             {
-                $profs = User::orderBy('nom')->paginate(10);
+                $profs = User::orderBy('nom')->where('admin',0)->paginate(10);
             }
             if(isset($request->statut))
             {
@@ -154,10 +154,7 @@ class UserManagementController extends Controller
         if($request->user()->can('view', $prof))
         {
             $annee =Annee::all()->last();
-            return view('admin.show', [
-                'annee'=>$annee,
-                'prof'=>$prof
-            ]);
+            return view('admin.show', compact('annee', 'prof'));
         }
     }
 
