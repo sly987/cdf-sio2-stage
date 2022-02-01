@@ -20,7 +20,7 @@
                 {!! Form::open() !!}
                     <div class="form-group" align="center">
                         {{ Form::search('search', '', ['placeholder' => 'Rechercher par nom ou email']) }}
-                        {{ Form::select('statut', $statut, $statutSelectionne) }}
+                        {{ Form::select('statut', $statut, $statutSelectionne,['placeholder' => 'niveau non sélectionné']) }}
             
                         {{ Form::submit('Rechercher')}}
                     </div>

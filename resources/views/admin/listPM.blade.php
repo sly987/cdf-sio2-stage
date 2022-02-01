@@ -19,7 +19,7 @@
                     <div class="form-group" align="center">
                         {{ Form::select('annee', $annees, $anneeSelectionne) }}
                         {{ Form::select('mois', $libelle, $moisSelectionne) }}
-                        {{ Form::select('statut', $statut, $statutSelectionne) }}
+                        {{ Form::select('statut', $statut, $statutSelectionne,['placeholder' => 'niveau non sélectionné'] ) }}
                         {{ Form::submit('Rechercher')}}
                     </div>
                         {!! Form::close() !!}

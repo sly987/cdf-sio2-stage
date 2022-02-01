@@ -61,10 +61,9 @@ class UserManagementController extends Controller
             }
             else
             {
-                $statutSelectionne=Statut::all()->last();
         
                 return view('admin.list', compact('profs'))->with('statut', $statut)
-                                                        ->with('statutSelectionne', $statutSelectionne);
+                                                        ->with('statutSelectionne', null);
             }
         }
     }

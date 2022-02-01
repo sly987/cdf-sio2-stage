@@ -65,10 +65,9 @@ class FicheMoisController extends Controller
                     }
                     else
                     {
-                        $statutSelectionne=Statut::all()->last();
                                           
                             return view('admin.listPM')->with('statut', $statut)
-                                                       ->with('statutSelectionne', $statutSelectionne)
+                                                       ->with('statutSelectionne', null)
                                                        ->with('users',$profs)
                                                        ->with('annees', $annees)
                                                        ->with('libelle', $libelle)
