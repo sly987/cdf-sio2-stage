@@ -43,15 +43,17 @@ class FicheMoisController extends Controller
             $statut=Statut::pluck('libelle', 'id');
                 if($request->annee!=null)
                 {
-                    $mois=$request->annee->mois()->where('id',$request->mois)->get();
+                    $mois=Mois::select('mois', 'id')->where('mois',$request->mois)
+                                                    ->where('annee_id', $request->annee)
+                                                    ->get();
                     
                     if(isset($request->statut))
                     {
                         $statutSelectionne= $request->statut;
                         $profStatut=UserStatut::select('user_id')->where('statut_id', '=', $statutSelectionne);
                                                  
-                        $profs=DB::table('users')->whereIn('id', $profStatut)
-                                                 ->get();
+                        $profs=User::whereIn('id', $profStatut)
+                                          ->get();
                         return view('admin.listPM')->with('statut', $statut)
                                                    ->with('statutSelectionne', $statutSelectionne)
                                                    ->with('annees', $annees)
@@ -68,6 +70,10 @@ class FicheMoisController extends Controller
                             return view('admin.listPM')->with('statut', $statut)
                                                        ->with('statutSelectionne', $statutSelectionne)
                                                        ->with('users',$profs)
+                                                       ->with('annees', $annees)
+                                                       ->with('libelle', $libelle)
+                                                       ->with('moisSelectionne', $request->mois)
+                                                       ->with('anneeSelectionne', $request->annee)
                                                        ->with('mois', $mois);
                     }
 
@@ -75,7 +81,6 @@ class FicheMoisController extends Controller
                 else
                 {
                     return view('admin.listPM')->with('annees', $annees)
-                                               ->with('users',$profs)
                                                ->with('libelle', $libelle)
                                                ->with('statut', $statut)
                                                ->with('statutSelectionne', null)

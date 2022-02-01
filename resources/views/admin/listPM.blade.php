@@ -19,6 +19,7 @@
                     <div class="form-group" align="center">
                         {{ Form::select('annee', $annees, $anneeSelectionne) }}
                         {{ Form::select('mois', $libelle, $moisSelectionne) }}
+                        {{ Form::select('statut', $statut, $statutSelectionne) }}
                         {{ Form::submit('Rechercher')}}
                     </div>
                         {!! Form::close() !!}
@@ -43,9 +44,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                        
                             @if(isset($users))
                                 @foreach ($users as $user )
                                     @if($user->admin == 0)
+                                    
                                         <tr>
                                             <td>
                                                 {{$user->nom}}
@@ -53,9 +56,9 @@
                                             <td>
                                                 {{$user->prenom}}
                                             </td>
+                                    
                                             @foreach ($user->fiches as $fiche)
-
-                                                @if ($fiche->mois_id==$mois[0]->mois->id)
+                                                @if ($fiche->mois_id==$mois[0]->id)
                                                     <td> 
                                                                     
                                                         @if($fiche->envoye == 1 AND $fiche->chemin_fiche != NULL)
