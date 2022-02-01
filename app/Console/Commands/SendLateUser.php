@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use Carbon\Carbon;
+use App\Models\Mois;
 use App\Models\User;
+use App\Models\Annee;
 use App\Models\Fiche;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
@@ -44,16 +46,10 @@ class SendLateUser extends Command
     public function handle()
     {
         //Tout mettre dans une fonction a appeler
-        if(Carbon::now()->month==1)
-        {
-            $this->mois=$mois=12;
-            $this->annee=$annee=Carbon::now()->year-1;
-        }
-        else
-        {
-            $this->mois=$mois=Carbon::now()->month-1;
-            $this->annee=$annee=Carbon::now()->year;
-        }
+        
+        $this->mois=$mois=Mois::moisPrecedent();
+        $this->annee=$annee=Annee::anneePrecedent();
+
         $users=User::where('admin','=',0)->get();
         foreach($users as $user)
         {

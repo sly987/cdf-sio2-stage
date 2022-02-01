@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use Carbon\Carbon;
+use App\Models\Mois;
 use App\Models\User;
 use App\Models\Annee;
 use App\Models\Fiche;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Session;
 
 class UserController extends Controller
 {
@@ -57,11 +58,8 @@ class UserController extends Controller
 
         $prof = Fiche::findOrFail($id);
         //fonction dans le helper dans le model Mois
-        if($prof->mois->mois <= 9)
-            $zero = '_0';
-        else
-            $zero = '_';
-
+        
+            $zero=Mois::zerotation($prof);
             //changer $prof->mois->annee->annee en nom
         $namevetting = $prof->mois->annee->annee . $zero . $prof->mois->mois . '_' . 'BP' . '_' . $prof->mois->libelle . '.pdf';
 
