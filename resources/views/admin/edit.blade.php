@@ -26,8 +26,22 @@
                         <br>
                         {{ Form::label('prenom','Prenom : ') }}
                         {{ Form::text('prenom', old('prenom'), ['class' => 'form-control']) }}
-                        <br><br>
+                        <br>
+                        
 
+                        @foreach($statuts as $statut)
+                                @if($userstatut->contains('statut_id', $statut->id))
+                                    {{Form::label($statut->libelle,$statut->libelle)}} 
+                                    {{Form::checkbox($statut->libelle, $statut->id, true)}}
+                                    &#xA0
+                                @else
+                                    {{Form::label($statut->libelle,$statut->libelle)}} 
+                                    {{Form::checkbox($statut->libelle, $statut->id)}}
+                                    &#xA0
+                                @endif
+                        @endforeach
+
+                        <br>
                         @if(Auth::user()->superAdmin == 1)
                         {{ Form::label('admin','Admin ? Oui ') }}
                         {{ Form::radio('admin','1', old('admin'))}}
@@ -38,10 +52,10 @@
 
                         @if($prof->actif==1)
                             Sera salarié pour l'année {{$anneeChoisie+$anneeDebut}} :
-                            {{Form::checkbox($prof->actif, 1, true)}}
+                            {{Form::checkbox('uactif', 1, true)}}
                         @else
                             Sera salarié pour l'année {{$anneeChoisie+$anneeDebut}} :
-                            {{Form::checkbox($prof->actif, 1)}}
+                            {{Form::checkbox('uactif', 1)}}
                         @endif
                         <br><br>
                         {{ Form::submit('Valider')}}

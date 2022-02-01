@@ -100,10 +100,8 @@ class UserManagementController extends Controller
             'prenom'=> 'required',
         ]);
 
-
         $mdp = Str::random(8);
         $user = new User;
-
         $user->nom = $request->nom;
         $user->prenom = $request->prenom;
         $user->email = $request->email;
@@ -118,7 +116,17 @@ class UserManagementController extends Controller
         $user->actif=1;
         $user->password = bcrypt($mdp);
         $user->save();
+
+
+        foreach($request->statut as $statut)
+        {
+            $userstatut = new UserStatut;
+            $userstatut->statut_id = $statut;
+            $userstatut->user_id = User::all()->last()->id;
+            $userstatut->save();
+        }
         
+
         //Notification quand un utilisateur est crée
         $user->notify(new UserCreatedNotification($user, $mdp));
         
@@ -166,11 +174,11 @@ class UserManagementController extends Controller
     public function edit(Request $request, $id)
     {
         $prof = User::findOrFail($id);
+        $userstatut = UserStatut::where('user_id',$id)->get();
+        $statuts = Statut::all();
         if($request->user()->can('update', $prof))
         {
-            return view('admin.edit', [
-                'prof' => $prof
-            ]);
+            return view('admin.edit', compact('prof', 'userstatut', 'statuts'));
         }
     }
 
@@ -202,11 +210,57 @@ class UserManagementController extends Controller
         {
             $prof->admin = $prof->admin;
         }
-        if($request->actif===null)
-                $prof->actif= 0;
+        if(isset($request->uactif))
+        {
+            $prof->actif= $request->uactif;
+        }
         else
-            $prof->actif= $request->actif;
+        {
+            $prof->actif = 0;
+        }
         $prof->update($request->input());
+        
+        UserStatut::where('user_id', $prof->id)->forceDelete();
+
+        if(isset($request->PRIMAIRE))
+        {
+            $userstatut = new UserStatut;
+            $userstatut->statut_id = 1;
+            $userstatut->user_id = $prof->id;
+            $userstatut->save();
+        }
+
+        if(isset($request->COLLEGE))
+        {
+            $userstatut = new UserStatut;
+            $userstatut->statut_id = 2;
+            $userstatut->user_id = $prof->id;
+            $userstatut->save();
+        }
+
+        if(isset($request->LYCEE))
+        {
+            $userstatut = new UserStatut;
+            $userstatut->statut_id = 3;
+            $userstatut->user_id = $prof->id;
+            $userstatut->save();
+        }
+
+        if(isset($request->CAMPUS))
+        {
+            $userstatut = new UserStatut;
+            $userstatut->statut_id = 4;
+            $userstatut->user_id = $prof->id;
+            $userstatut->save();
+        }
+
+        if(isset($request->REMPLACANT))
+        {
+            $userstatut = new UserStatut;
+            $userstatut->statut_id = 5;
+            $userstatut->user_id = $prof->id;
+            $userstatut->save();
+        }
 
         return redirect('list')->with('status','La modification a été effectué');
     }

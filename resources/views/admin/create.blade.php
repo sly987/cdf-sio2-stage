@@ -26,6 +26,21 @@
                         {{ Form::label('prenom','Prenom : ') }}
                         {{ Form::text('prenom', '', ['class' => 'form-control']) }}
                         <br>
+                        {{ Form::label('statut[]','Primaire : ') }}
+                        {{Form::checkbox('statut[]', 1)}}
+
+                        {{ Form::label('statut[]','College : ') }}
+                        {{Form::checkbox('statut[]', 2)}}
+                        &#xA0
+                        {{ Form::label('statut[]','Lycée : ') }}
+                        {{Form::checkbox('statut[]', 3)}}
+
+                        {{ Form::label('statut[]','Campus : ') }}
+                        {{Form::checkbox('statut[]', 4)}}
+                        &#xA0
+                        {{ Form::label('statut[]','Remplacant : ') }}
+                        {{Form::checkbox('statut[]', 5)}}
+                        <br>
                         @if(Auth::user()->superAdmin == 1)
                         {{ Form::label('admin','Admin ? Oui ') }}
                         {{ Form::radio('admin','1' )}}
@@ -33,7 +48,8 @@
                         {{ Form::radio('admin', '0', true)}}
                         <br>
                         @endif
-                        Un mdp sera généré et envoyé automatiquement à l'adresse mail que vous avez inscrit<br><br>
+                        <br>
+                        Un mdp sera généré et envoyé automatiquement à l'adresse mail que vous aurez inscrit.<br><br>
                         {{ Form::submit('Valider')}}
                     {!! Form::close() !!}
                 </div>
