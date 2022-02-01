@@ -19,5 +19,9 @@ class Fiche extends Model
         return $this->belongsTo(Mois::class);
     }
 
+    public function typenotifications()
+    {
+        return $this->belongsToMany(TypeNotification::class);
+    }
 }
 
