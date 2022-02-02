@@ -34,11 +34,18 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <div class="min-h-screen bg-gray-100">
-                            @yield('navbar')
+                            @if(isset(Auth::User()->admin))
+                                @if(Auth::User()->isAdmin())
+                                    @include('layouts.navigationAdmin')
+                                @else
+                                    @include('layouts.navigationUser')
+                                @endIf
+                            @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                        @yield('navbar')
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
