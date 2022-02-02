@@ -1,9 +1,11 @@
-<x-app-layout>
-    <x-slot name="header">
+@extends('layouts.app')
+
+@section('content')
+    <div class="container">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <h4>Fiche par mois</h4>
         </h2>
-    </x-slot>
+    </div>
     @if (session('status'))
     <div class="alert alert-success">
         <br>
@@ -25,7 +27,8 @@
                         {!! Form::close() !!}
                     </div>
                 </div>
-                <div>
+
+                <div class="container">
                     <table cellpadding="10" cellspacing="0">
                         <thead>
                             <tr>
@@ -99,7 +102,4 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+@endsection

@@ -1,4 +1,21 @@
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{route('dashboard.index')}}">&#x2800 Accueil &#x2800<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{route('manage.show', Auth::id())}}">&#x2800 Historique fiches &#x2800<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="{{ Auth::user()->nom }} &#x2699">
+            <a class="dropdown-item" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+      </li>
+
+{{-- <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -92,4 +109,4 @@
             </div>
         </div>
     </div>
-</nav>
+</nav> --}}

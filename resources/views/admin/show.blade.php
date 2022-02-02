@@ -1,20 +1,20 @@
-<x-app-layout>
-    <x-slot name="header">
+@extends('layouts.app')
+
+
+@section('content')
+    <div class="container">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
         M. {{ $prof->nom }} {{ $prof->prenom }}     
         </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <a href="{{ route('manage.list') }}"><button>&#x21A9 Retour</button></a>
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+    </div>
+            <div class="container bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <a href="{{ route('manage.list') }}"><button>&#x21A9 Retour</button></a>
                 <div class="p-6 bg-white border-b border-gray-200" align="center">
                     <h3>{{$anneeChoisie+$anneeDebut-1}}</h3>
                 </div>
 
                 <table>
-                    <thead>
+                    <thead align="center">
                         <tr>
                             <th width="20%">
                                 Mois
@@ -33,12 +33,12 @@
                     @foreach($prof->fiches as $fiche)
                         @if($fiche->mois->annee_id == $anneeChoisie) 
                         {{-- $fiche->mois->actif==1 --}}
-                            <tbody>
+                            <tbody align="center">
                                 <tr>
-                                    <td align="center">
+                                    <td>
                                         {{ $fiche->mois->libelle }}
                                     </td>
-                                    <td align="center">
+                                    <td>
                                         @if($fiche->envoye == 1 AND $fiche->chemin_fiche != NULL)
                                             <a href="{{ route('file.download', $fiche->id) }}">&#x1F4E5</a>
                                             @if($fiche->confirme == 0)
@@ -57,7 +57,7 @@
                                             @endif
                                         @endif
                                     </td>
-                                    <td align="center">
+                                    <td>
                                         @if($fiche->confirme == 1)
                                             <p>&#x2705</p>
                                         @else
@@ -68,7 +68,7 @@
                                             @endif
                                         @endif
                                     </td>
-                                    <td align="center">
+                                    <td>
                                         @if($fiche->actif == 1)
                                             <a href="{{ route('manage.dactivemonth', $fiche->id) }}">&#x2705</a>
                                         @else
@@ -81,6 +81,4 @@
                     @endforeach
                 </table>
             </div>
-        </div>
-    </div>
-</x-app-layout>
+@endsection

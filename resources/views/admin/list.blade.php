@@ -2,22 +2,27 @@
 
 
 @section('content')
+    <div class="container">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <h4>Liste des professeurs</h4>
         </h2>
-
+    </div>
     @if (session('status'))
     <div class="alert alert-success">
         <br>
         <h4 align="center">{{ session('status') }}</h4>
     </div>
     @endif
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <a href="{{ url()->previous() }}"><button>&#x21A9 Retour</button></a>
+            
            
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="container">
+                <a href="{{ url()->previous() }}"><button>&#x21A9 Retour</button></a>
+                </div>
                 <form action="">
                 {!! Form::open() !!}
                     <div class="form-group" align="center">
@@ -29,15 +34,18 @@
                 {!! Form::close() !!}
                 <br>
                  <!-- Bouton création professeur -->
-            <a href="{{ route('manage.create') }}">
-                <button class="ml-3">
-                    Ajouter prof
-                </button>
-            </a>
-                <div class="container p-6 bg-white border-b border-gray-200">
+                 <div class="container">
+                    <a href="{{ route('manage.create') }}">
+                        <button class="btn btn-success">
+                            Ajouter prof
+                        </button>
+                    </a>
+                </div>
+
+                <div class="container">
                     <table cellpadding="2" cellspacing="0">
                         <thead>
-                            <tr>
+                            <tr align="center">
                                 <th width="20%">
                                     Nom
                                 </th>
@@ -59,28 +67,28 @@
                             </tr>
                         </thead>
                         @forelse($profs as $prof)
-                                <tbody>
+                                <tbody align="center">
                                     <tr>
-                                        <td align="center">
+                                        <td>
                                             {{ $prof->nom }}
                                         </td>
-                                        <td align="center">
+                                        <td>
                                             {{ $prof->prenom }}
                                         </td>
-                                        <td align="center">                                                
+                                        <td>                                                
                                             {{ $prof->email }}
                                         </td>
-                                        <td align="center">
+                                        <td>
                                             @if($prof->actif == 1)
                                                 <p>Actif</p>
                                             @else
                                                 <p>Inactif</p>
                                             @endif
                                         </td>
-                                        <td align="center">
+                                        <td>
                                             <a href="{{ route('manage.show', $prof->id) }}">Voir fiches</a>                                            
                                         </td>
-                                        <td align="center">
+                                        <td>
                                             <a href="{{ route('manage.edit', $prof->id) }}">Modifier</a>
                                         </td>
                                     </tr>
