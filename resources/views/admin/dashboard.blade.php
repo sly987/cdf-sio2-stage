@@ -1,12 +1,5 @@
 @extends('layouts.app')
 
-@section('navbar')
-    @if(Auth::User()->isAdmin())
-    @include('layouts.navigationAdmin')
-    @else
-    @include('layouts.navigationUser')
-    @endIf
-@endsection
 
 @section('content')
 <div class="container">

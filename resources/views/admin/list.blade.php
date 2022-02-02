@@ -1,12 +1,5 @@
 @extends('layouts.app')
 
-@section('navbar')
-    @if(Auth::User()->isAdmin())
-    @include('layouts.navigationAdmin')
-    @else
-    @include('layouts.navigationUser')
-    @endIf
-@endsection
 
 @section('content')
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -37,11 +30,11 @@
                 <br>
                  <!-- Bouton création professeur -->
             <a href="{{ route('manage.create') }}">
-                <x-button class="ml-3">
+                <button class="ml-3">
                     Ajouter prof
-                </x-button>
+                </button>
             </a>
-                <div class="p-6 bg-white border-b border-gray-200">
+                <div class="container p-6 bg-white border-b border-gray-200">
                     <table cellpadding="2" cellspacing="0">
                         <thead>
                             <tr>
