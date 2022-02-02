@@ -48,7 +48,6 @@
                             @if(isset($users))
                                 @foreach ($users as $user )
                                     @if($user->admin == 0)
-                                    
                                         <tr>
                                             <td>
                                                 {{$user->nom}}
@@ -85,7 +84,7 @@
                                                             <p>&#x2705</p>
                                                         @else
                                                             @if($fiche->envoye == 1 AND $fiche->chemin_fiche != NULL)
-                                                                <a href="{{ route('admin.confirmed', $fiche->id) }}">&#x274C</a>
+                                                                <a href="{{ route('manage.confirmed', $fiche->id) }}">&#x274C</a>
                                                             @else
                                                                 <p>&#x1F512</p>	
                                                             @endif

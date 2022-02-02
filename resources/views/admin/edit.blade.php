@@ -16,7 +16,7 @@
                         @endforeach
                     @endif
 
-                    {!! Form::model($prof, ['method' =>'PUT', 'route'=>['admin.update', $prof->id]]) !!}
+                    {!! Form::model($prof, ['method' =>'PUT', 'route'=>['manage.update', $prof->id]]) !!}
 
                         {{ Form::label('email','Email : ') }}
                         {{ Form::email('email', old('email'), ['class' => 'form-control']) }}

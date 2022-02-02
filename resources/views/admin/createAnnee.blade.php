@@ -19,7 +19,7 @@
                     {!! Form::open(['route' => 'annee.store', 'method' => 'post']) !!}
                     {{form::submit('validé')}}
                     {!! Form::close() !!}
-                    <a href="{{ route('admin.index') }}">
+                    <a href="{{ route('dashboard.index') }}">
                         annuler
                     </a>
                 </div>

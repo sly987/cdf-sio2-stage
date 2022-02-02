@@ -15,7 +15,7 @@
                             <div class='text-red-500'>{{ $error }}</div>
                         @endforeach
                     @endif
-                    {!! Form::open(['route' => 'admin.store', 'method' => 'post']) !!}
+                    {!! Form::open(['route' => 'manage.store', 'method' => 'post']) !!}
 
                         {{ Form::label('email','Email : ') }}
                         {{ Form::email('email', '', ['class' => 'form-control']) }}
