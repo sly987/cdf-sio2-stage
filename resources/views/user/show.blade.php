@@ -7,7 +7,6 @@
             <h4>HISTORIQUE</h4>
         </h2>
     </div>
-
             <div class="container bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <a href="{{ url()->previous() }}"><button>&#x21A9 Retour</button></a>
                 <div class="p-6 bg-white border-b border-gray-200" align="center">
