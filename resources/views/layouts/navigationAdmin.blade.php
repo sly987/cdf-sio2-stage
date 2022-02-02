@@ -1,38 +1,27 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard.index') }}">
-                        <img src="images/cdflogo.png" alt="" class="block h-10 w-auto fill-current text-gray-600">
-                    </a>
-                </div>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{route('dashboard.index')}}">&#x2800 Accueil &#x2800<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{route('manage.list')}}">&#x2800 Liste professeurs &#x2800<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{route('listeFiche.index')}}">&#x2800 Fiches par mois &#x2800<span class="sr-only"></span></a>
+      </li>      
+      <li>
+        <a class="nav-link" href="{{route('reglage')}}">&#x2800 {{$anneeDebut+$anneeChoisie-1}}/{{$anneeDebut+$anneeChoisie}} &#x2800<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="{{ Auth::user()->nom }} &#x2699">
+            <a class="dropdown-item" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+      </li>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('dashboard.index')">
-                        <h4>Accueil</h4>
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link :href="route('manage.list')">
-                        <h4>Liste professeurs</h4>
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('listeFiche.index')">
-                        <h4>Fiches par mois</h4>
-                    </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('reglage')">
-                        <h4>{{$anneeDebut+$anneeChoisie-1}}/{{$anneeDebut+$anneeChoisie}} </h4>
-                    </x-nav-link>
-                </div>
-            </div>
-
+{{-- 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
@@ -125,4 +114,4 @@
             </div>
         </div>
     </div>
-</nav>
+</nav> --}}

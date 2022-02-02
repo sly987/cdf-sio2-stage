@@ -1,15 +1,24 @@
-<x-app-layout>
-    <x-slot name="header">
+@extends('layouts.app')
+
+@section('navbar')
+    @if(Auth::User()->isAdmin())
+    @include('layouts.navigationAdmin')
+    @else
+    @include('layouts.navigationUser')
+    @endIf
+@endsection
+
+@section('content')
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <h4>Liste des professeurs</h4>
         </h2>
-    </x-slot>
+
     @if (session('status'))
     <div class="alert alert-success">
         <br>
         <h4 align="center">{{ session('status') }}</h4>
     </div>
-@endif
+    @endif
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
@@ -89,9 +98,5 @@
                     </table>
                 </div>
                     <ul class="pagination justify-content-center mb-4">
-                
-            </ul>               
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+                </ul>               
+@endsection
