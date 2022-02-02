@@ -191,105 +191,118 @@ class UserManagementController extends Controller
      */
     public function update(Request $request, $id)
     {
+       
         $prof = User::findOrFail($id);
+        if($request->user()->can('update', $prof))
+        {
+            $request->validate([
+                'email'=>[
+                    'required',
+                    'email',
+                ],
+                'nom'=> 'required',
+                'prenom'=> 'required',
+            ]);
+    //can policies
+            if(Auth::user()->superAdmin == 1)
+            {
+                $prof->admin = $request->input('admin');
+            }
+            else
+            {
+                $prof->admin = $prof->admin;
+            }
+            if(isset($request->uactif))
+            {
+                $prof->actif= $request->uactif;
+            }
+            else
+            {
+                $prof->actif = 0;
+            }
+            $prof->update($request->input());
+            
+            UserStatut::where('user_id', $prof->id)->forceDelete();
 
-        $request->validate([
-            'email'=>[
-                'required',
-                'email',
-            ],
-            'nom'=> 'required',
-            'prenom'=> 'required',
-        ]);
-//can policies
-        if(Auth::user()->superAdmin == 1)
-        {
-            $prof->admin = $request->input('admin');
-        }
-        else
-        {
-            $prof->admin = $prof->admin;
-        }
-        if(isset($request->uactif))
-        {
-            $prof->actif= $request->uactif;
-        }
-        else
-        {
-            $prof->actif = 0;
-        }
-        $prof->update($request->input());
-        
-        UserStatut::where('user_id', $prof->id)->forceDelete();
+            if(isset($request->PRIMAIRE))
+            {
+                $userstatut = new UserStatut;
+                $userstatut->statut_id = 1;
+                $userstatut->user_id = $prof->id;
+                $userstatut->save();
+            }
 
-        if(isset($request->PRIMAIRE))
-        {
-            $userstatut = new UserStatut;
-            $userstatut->statut_id = 1;
-            $userstatut->user_id = $prof->id;
-            $userstatut->save();
-        }
+            if(isset($request->COLLEGE))
+            {
+                $userstatut = new UserStatut;
+                $userstatut->statut_id = 2;
+                $userstatut->user_id = $prof->id;
+                $userstatut->save();
+            }
 
-        if(isset($request->COLLEGE))
-        {
-            $userstatut = new UserStatut;
-            $userstatut->statut_id = 2;
-            $userstatut->user_id = $prof->id;
-            $userstatut->save();
-        }
+            if(isset($request->LYCEE))
+            {
+                $userstatut = new UserStatut;
+                $userstatut->statut_id = 3;
+                $userstatut->user_id = $prof->id;
+                $userstatut->save();
+            }
 
-        if(isset($request->LYCEE))
-        {
-            $userstatut = new UserStatut;
-            $userstatut->statut_id = 3;
-            $userstatut->user_id = $prof->id;
-            $userstatut->save();
-        }
+            if(isset($request->CAMPUS))
+            {
+                $userstatut = new UserStatut;
+                $userstatut->statut_id = 4;
+                $userstatut->user_id = $prof->id;
+                $userstatut->save();
+            }
 
-        if(isset($request->CAMPUS))
-        {
-            $userstatut = new UserStatut;
-            $userstatut->statut_id = 4;
-            $userstatut->user_id = $prof->id;
-            $userstatut->save();
-        }
+            if(isset($request->REMPLACANT))
+            {
+                $userstatut = new UserStatut;
+                $userstatut->statut_id = 5;
+                $userstatut->user_id = $prof->id;
+                $userstatut->save();
+            }
 
-        if(isset($request->REMPLACANT))
-        {
-            $userstatut = new UserStatut;
-            $userstatut->statut_id = 5;
-            $userstatut->user_id = $prof->id;
-            $userstatut->save();
+            return redirect('list')->with('status','La modification a été effectué');
         }
-
-        return redirect('list')->with('status','La modification a été effectué');
     }
 
     //policies
-    public function confirmed($id)
+    public function confirmed($id, Request $request)
     {
-        $fiche = Fiche::findOrFail($id);
-        $fiche->confirme = 1;
-        $fiche->update();
+       $fiche = Fiche::findOrFail($id);
+       if($request->user()->can('update', $fiche->user))
+       {     
+            $fiche->confirme = 1;
+            $fiche->update();
 
-        return redirect(url()->previous());
+            return redirect(url()->previous());
+       }
+        
     }
 
-    public function dactivemonth($id)
+    public function dactivemonth($id, Request $request)
     {
+        
         $fiche = Fiche::findOrFail($id);
-        $fiche->actif = 0;
-        $fiche->update();
+        if($request->user()->can('update', $fiche->user))
+       {
+            $fiche->actif = 0;
+            $fiche->update();
 
-        return redirect(url()->previous());
+            return redirect(url()->previous());
+       }
     }
 
-    public function activemonth($id)
+    public function activemonth($id, Request $request)
     {
         $fiche = Fiche::findOrFail($id);
-        $fiche->actif = 1;
-        $fiche->update();
-
-        return redirect(url()->previous());
+        if($request->user()->can('update', $fiche->user))
+       {
+            $fiche->actif = 1;
+            $fiche->update();
+            return redirect(url()->previous());
+       }
     }
 }
