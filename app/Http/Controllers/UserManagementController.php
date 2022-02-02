@@ -318,7 +318,6 @@ class UserManagementController extends Controller
 
     public function dactivemonth($id, Request $request)
     {
-        
         $fiche = Fiche::findOrFail($id);
         if($request->user()->can('update', $fiche->user))
        {

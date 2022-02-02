@@ -27,7 +27,11 @@
                 {!! Form::close() !!}
                 <br>
                  <!-- Bouton création professeur -->
-            <a href="{{ route('manage.create') }}"><button class="btn btn-warning">Ajouter prof</button></a>
+            <a href="{{ route('manage.create') }}">
+                <x-button class="ml-3">
+                    Ajouter prof
+                </x-button>
+            </a>
                 <div class="p-6 bg-white border-b border-gray-200">
                     <table cellpadding="2" cellspacing="0">
                         <thead>
@@ -72,7 +76,8 @@
                                             @endif
                                         </td>
                                         <td align="center">
-                                            <a href="{{ route('manage.show', $prof->id) }}">Voir fiches</a>                                            </td>
+                                            <a href="{{ route('manage.show', $prof->id) }}">Voir fiches</a>                                            
+                                        </td>
                                         <td align="center">
                                             <a href="{{ route('manage.edit', $prof->id) }}">Modifier</a>
                                         </td>
