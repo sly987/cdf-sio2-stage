@@ -20,6 +20,8 @@
                 {{ __('Logout') }}
             </a>
       </li>
+    </ul>
+
 
 {{-- 
             <!-- Settings Dropdown -->
