@@ -12,16 +12,8 @@
       <li>
         <a class="nav-link" href="{{route('reglage')}}">&#x2800 {{$anneeDebut+$anneeChoisie-1}}/{{$anneeDebut+$anneeChoisie}} &#x2800<span class="sr-only"></span></a>
       </li>
-      <li class="nav-item dropdown">
-        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="{{ Auth::user()->nom }} &#x2699">
-            <a class="dropdown-item" href="{{ route('logout') }}"
-               onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
-      </li>
-    </ul>
-
+     
+     </ul>
 
 {{-- 
             <!-- Settings Dropdown -->
