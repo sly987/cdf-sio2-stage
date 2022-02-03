@@ -14,6 +14,6 @@
         {{ Form::submit('Valider')}}
         {!! Form::close() !!}
         <br>
-        <a href="route('annee.create')"><button>Créer une nouvelle année</button></a>
+        <a href="{{route('annee.create')}}"><button>Créer une nouvelle année</button></a>
     </div>
 @endsection
