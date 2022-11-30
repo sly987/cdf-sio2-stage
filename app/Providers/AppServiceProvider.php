@@ -2,9 +2,12 @@
 
 namespace App\Providers;
 
+
+use Session;
 use Carbon\Carbon;
 use App\Models\Annee;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,14 +29,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
         Paginator::useBootstrap();
         view()->composer('*', function ($view) 
     {
-        if(\Session::get('anneeChoisie')===null)
+        if(Session::get('anneeChoisie')===null)
             \Session::put('anneeChoisie', Annee::all()->last()->id);
 
         \Session::put('anneeDebut', Annee::all()->first()->annee);
-        \Session::put('moisEnCours', Carbon::now()->month);
+        Session::put('moisEnCours', Carbon::now()->month);
         
         $view->with('anneeChoisie', \Session::get('anneeChoisie')) 
              ->with('anneeDebut', \Session::get('anneeDebut'))
